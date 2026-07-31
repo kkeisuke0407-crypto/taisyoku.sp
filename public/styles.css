@@ -1,0 +1,23 @@
+:root{ --sumi:#1a2130; --body:#3d4351; --muted:#767c88; --line:#e3e0d8; --gold:#8f7228; --bg:#fbfaf7; }
+*{ box-sizing:border-box; }
+body{ margin:0; background:var(--bg); color:var(--body);
+  font-family:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;
+  font-size:15px; line-height:1.95; }
+.site-header,.site-footer{ background:#fff; border-bottom:1px solid var(--line); }
+.site-footer{ border-bottom:none; border-top:1px solid var(--line); margin-top:48px; }
+.wrap{ max-width:760px; margin:0 auto; padding:0 18px; }
+.site-header .wrap{ padding-top:16px; padding-bottom:16px; }
+.site-footer .wrap{ padding-top:22px; padding-bottom:28px; }
+.site-header a{ color:var(--sumi); font-weight:800; text-decoration:none; font-size:16px; }
+main{ background:#fff; max-width:760px; margin:24px auto; padding:28px 18px 40px; border:1px solid var(--line); border-radius:10px; }
+h1{ font-size:23px; line-height:1.5; color:var(--sumi); margin:0 0 8px; }
+h2{ font-size:17px; line-height:1.6; color:var(--sumi); margin:32px 0 10px; padding-left:10px; border-left:4px solid var(--gold); }
+p,li{ font-size:14.5px; }
+ul{ padding-left:1.2em; }
+dl{ margin:0; } dt{ font-weight:700; color:var(--sumi); margin-top:14px; } dd{ margin:4px 0 0; }
+a{ color:var(--gold); }
+.lead{ color:var(--muted); font-size:13px; margin:0 0 20px; }
+.site-footer nav{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:10px; }
+.site-footer nav a{ font-size:13px; }
+.copy{ font-size:12px; color:var(--muted); margin:0; }
+.note{ font-size:12.5px; color:var(--muted); }

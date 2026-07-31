@@ -1,0 +1,22 @@
+---
+// ルート( / )は主力LP（/taishoku-kyufukin/）へ転送する。
+// GitHub Pages は静的ホスティングでサーバーリダイレクト不可のため、
+// meta refresh ＋ JS ＋ canonical で送る。
+const TARGET = "/taishoku-kyufukin/";
+const CANONICAL = "https://taisyoku.hakobu-family.com/taishoku-kyufukin/";
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>退職給付金ガイド</title>
+    <link rel="canonical" href={CANONICAL} />
+    <meta http-equiv="refresh" content={`0; url=${TARGET}`} />
+    <meta name="robots" content="noindex, follow" />
+    <script is:inline set:html={`location.replace(${JSON.stringify(TARGET)});`}></script>
+  </head>
+  <body>
+    <p>ページを移動しています。自動で移動しない場合は <a href={TARGET}>こちら</a> をタップしてください。</p>
+  </body>
+</html>
