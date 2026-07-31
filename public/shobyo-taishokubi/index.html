@@ -14,8 +14,14 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="style.css?v=20260730">
 <!-- Google tag (gtag.js)：退職給付金サイト専用のGA4 + Google広告CV計測。
-     買取（LP3系）と共用していた G-DMCWVLP3E3 から差し替えた（2026-07-31） -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DD332W5J8R"></script>
+     買取（LP3系）と共用していた G-DMCWVLP3E3 から差し替えた（2026-07-31）
+
+     ★読み込むIDは GT-K55F94TT（Googleタグ）で、G-DD332W5J8R ではない。
+       G-DD332W5J8R は既存のGoogleタグに相乗りする形で作られたGA4測定IDのため、
+       gtag/js?id=G-DD332W5J8R は 404 を返す（＝計測が全部止まる）。
+       GT-K55F94TT の配信内容に AW-18129603657 と G-DD332W5J8R の両方が入っている。
+       config には従来どおり G- と AW- を明示的に書く。ここを G- に戻さないこと。 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GT-K55F94TT"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
