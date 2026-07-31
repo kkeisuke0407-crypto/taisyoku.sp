@@ -292,7 +292,8 @@ const tokens = {
   H1: d(cfg.h1, `${ITEM}買取、結局どこがいいの？`),
   LANDING_INTENT: cfg.landingIntent,
   RESEARCH_DATE: d(cfg.researchDate, "公式サイトでご確認ください"),
-  GA4_ID: d(cfg.ga4Id, "G-DMCWVLP3E3"),
+  // 退職給付金サイト専用のGA4。買取（LP3系）とはプロパティを分けている
+  GA4_ID: d(cfg.ga4Id, "G-DD332W5J8R"),
   ADS_ID: d(cfg.adsId, "AW-18129603657"),
   EV_PREFIX: d(cfg.evPrefix, "gold_kaitori"),
   CV_PRIMARY: d(cfg.cvPrimary, "gold_kaitori_affiliate_click"),

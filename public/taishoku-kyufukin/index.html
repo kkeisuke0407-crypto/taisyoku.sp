@@ -13,12 +13,13 @@
 <meta property="og:image" content="https://taisyoku.hakobu-family.com/taishoku-kyufukin/images/fv-taishoku-kyufukin.webp">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="style.css?v=20260731">
-<!-- Google tag (gtag.js)：LP3系・比較記事型と同一のGA4 + Google広告CV計測 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DMCWVLP3E3"></script>
+<!-- Google tag (gtag.js)：退職給付金サイト専用のGA4 + Google広告CV計測。
+     買取（LP3系）と共用していた G-DMCWVLP3E3 から差し替えた（2026-07-31） -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DD332W5J8R"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date()); gtag('config', 'G-DMCWVLP3E3'); gtag('config', 'AW-18129603657');
+  gtag('js', new Date()); gtag('config', 'G-DD332W5J8R'); gtag('config', 'AW-18129603657');
 </script>
 <script>
   (function(c,l,a,r,i,t,y){ c[a]=c[a]||function(){ (c[a].q=c[a].q||[]).push(arguments); };
@@ -507,7 +508,7 @@
       var cv = "taishoku_relief_line_click";
       if(window.dataLayer) window.dataLayer.push(Object.assign({event:cv}, params));
       if(typeof gtag==="function") gtag("event", cv, Object.assign({}, params, { transport_type:"beacon" }));
-      if(typeof gtag==="function") gtag("event", "taishoku_relief_cta_click", Object.assign({}, params, { send_to:"G-DMCWVLP3E3", transport_type:"beacon" }));
+      if(typeof gtag==="function") gtag("event", "taishoku_relief_cta_click", Object.assign({}, params, { send_to:"G-DD332W5J8R", transport_type:"beacon" }));
     });
   });
   // 固定CTAは、FVのCTAが画面から出てから表示する。
