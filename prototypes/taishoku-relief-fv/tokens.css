@@ -1,0 +1,52 @@
+:root {
+  --color-paper: oklch(97.5% 0.008 85);
+  --color-paper-blue: oklch(94% 0.014 248);
+  --color-paper-green: oklch(95% 0.025 145);
+  --color-ink: oklch(23% 0.072 260);
+  --color-ink-soft: oklch(37% 0.045 260);
+  --color-muted: oklch(48% 0.026 250);
+  --color-rule: oklch(84% 0.018 248);
+  --color-rule-strong: oklch(70% 0.04 250);
+  --color-accent: oklch(60% 0.16 145);
+  --color-accent-hover: oklch(54% 0.15 145);
+  --color-accent-ink: oklch(22% 0.055 158);
+  --color-emphasis: oklch(62% 0.15 78);
+  --color-focus: oklch(50% 0.19 255);
+  --color-photo-wash: oklch(92% 0.028 86);
+
+  --font-display: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  --font-body: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.25rem;
+  --text-lg: 1.563rem;
+  --text-xl: 1.953rem;
+  --text-2xl: 2.441rem;
+  --text-display: clamp(2.45rem, 8vw, 5.1rem);
+
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-xs: 0.25rem;
+  --rule-hair: 1px;
+  --page-gutter: clamp(1rem, 4vw, 3rem);
+  --content-max: 70rem;
+
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
