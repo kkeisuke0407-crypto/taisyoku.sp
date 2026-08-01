@@ -208,13 +208,16 @@ ul,ol{ margin:0; padding:0; list-style:none; }
    ②スマホ画面 ＋ 信頼バッジ
    ============================================================ */
 .trust{ display:grid; grid-template-columns:minmax(0,1fr) 110px; gap:10px; align-items:stretch; padding:0 var(--pad) 24px; }
+/* ノッチは「端末の枠」に置く。画面(.chat-phone)の中に入れると、
+   上部の青いバーに重なって「退職リリーフ」の文字が潰れる */
 .trust__phone{
-  display:flex; margin:0; padding:5px 5px 0; overflow:hidden;
+  position:relative;
+  display:flex; margin:0; padding:15px 5px 0; overflow:hidden;
   border:3px solid #13243a; border-bottom:0; border-radius:22px 22px 0 0;
   background:#13243a; box-shadow:0 5px 15px rgba(11,35,65,.2);
 }
-.chat-phone{ position:relative; flex:1; min-height:0; overflow:hidden; border-radius:15px 15px 0 0; background:#e9f0f5; }
-.chat-phone__notch{ position:absolute; z-index:2; top:7px; left:50%; width:38%; height:5px; border-radius:999px; transform:translateX(-50%); background:#101d2e; }
+.chat-phone{ flex:1; min-height:0; overflow:hidden; border-radius:15px 15px 0 0; background:#e9f0f5; }
+.chat-phone__notch{ position:absolute; z-index:2; top:5px; left:50%; width:34%; height:5px; border-radius:999px; transform:translateX(-50%); background:#0b1626; }
 .chat-phone__bar{
   display:flex; align-items:center; justify-content:space-between; gap:4px;
   height:29px; padding:0 8px; background:#1f527f; color:#fff;
@@ -333,7 +336,10 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 
 .callout{ display:grid; grid-template-columns:104px 1fr; gap:10px; align-items:center; margin-top:14px; }
 .callout__art{ width:104px; aspect-ratio:104/74; margin:0; overflow:hidden; border-radius:10px; background:var(--panel); }
-.callout__art .asset-img{ object-position:50% 68%; }
+/* support-advisors.webp は 467x700 で、2人の頭が原寸 y=185〜330 にある。
+   68% だと y=250 から下しか出ず頭が切れるので 38%（y=140〜472）にした。
+   この画像を別の枠で使うときも、頭より上を必ず残すこと */
+.callout__art .asset-img{ object-position:50% 38%; }
 .callout__txt{ font-size:12.5px; line-height:1.8; color:var(--ink); }
 
 /* ============================================================
@@ -394,7 +400,8 @@ ul,ol{ margin:0; padding:0; list-style:none; }
    ============================================================ */
 .brand{ display:grid; grid-template-columns:1fr 108px; gap:10px; align-items:center; }
 .brand__art{ width:108px; aspect-ratio:108/86; margin:0; overflow:hidden; border-radius:10px; background:var(--panel); }
-.brand__art .asset-img{ object-position:55% 68%; }
+/* 同上。68% だと y=223 からで頭が切れる。40%（y=131〜503）で頭が入る */
+.brand__art .asset-img{ object-position:50% 40%; }
 .brand__txt{ font-size:12.5px; line-height:1.85; color:var(--ink); }
 .pr-badge{
   display:inline-block; margin-left:6px; padding:1px 6px;
@@ -567,8 +574,8 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   <!-- ============ ②スマホ画面＋信頼バッジ ============ -->
   <div class="trust">
     <figure class="trust__phone" aria-label="LINEで相談する画面のイメージ">
+      <span class="chat-phone__notch" aria-hidden="true"></span>
       <div class="chat-phone" aria-hidden="true">
-        <span class="chat-phone__notch"></span>
         <div class="chat-phone__bar"><span>‹</span><span class="chat-phone__brand">退職リリーフ</span><span>•••</span></div>
         <div class="chat-phone__body">
           <div class="chat">
@@ -590,7 +597,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
       </div>
       <div class="trust__item" data-todo="copy">
         <span class="trust__icon" style="--icon-x:50%;--icon-y:50%" aria-hidden="true"></span>
-        受給まで<br>伴走サポート
+        申請まで<br>伴走サポート
       </div>
       <div class="trust__item" data-todo="copy">
         <span class="trust__icon" style="--icon-x:0%;--icon-y:100%" aria-hidden="true"></span>
@@ -621,7 +628,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
         <p class="step__no">3</p>
         <p class="step__ttl" data-todo="copy">結果が<br>届く</p>
         <div class="step__ph" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen mini-phone__screen--result">確認<br>完了</span></span></div>
-        <p class="step__txt" data-todo="copy">対象になりそうかと、金額の目安が返ってきます。</p>
+        <p class="step__txt" data-todo="copy">対象になりそうかどうかと、金額の目安が届きます。</p>
       </li>
     </ol>
 
@@ -633,7 +640,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
     <h2 class="h2" data-todo="copy">退職後に受け取れるお金は、1つじゃない</h2>
     <p class="lead" data-todo="copy">
       病気やケガで働けない状態にある場合、失業保険とは別のお金を受け取れる制度があります。
-      在職中から使えますが、申請した人しか受け取れません。会社から案内されることは、ほとんどありません。
+      在職中から始められますが、申請した人しか受け取れません。会社から案内されることは、ほとんどありません。
     </p>
 
     <div class="stat">
@@ -661,7 +668,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
       </div>
       <div class="duo__card">
         <p class="duo__ttl" data-todo="copy">失業保険（基本手当）</p>
-        <p class="duo__txt" data-todo="copy">働ける状態になってから、仕事探しをしながら受け取るもの。療養中は受け取れません。</p>
+        <p class="duo__txt" data-todo="copy">働ける状態になってから、仕事を探しながら受け取ります。療養中は対象になりません。</p>
       </div>
     </div>
 
@@ -669,7 +676,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
       <p class="warn__ttl" data-todo="copy">自己都合で辞めると、失業保険はすぐには出ません</p>
       <p class="warn__txt" data-todo="copy">
         手続きのあと7日間の待期があり、そのあと、自己都合退職には原則1か月の給付制限がかかります。
-        つまり辞めてすぐは、収入が途切れます。
+        つまり辞めてすぐは、収入が空きます。ここを埋められるかどうかが、退職後のいちばん苦しい時期を左右します。
       </p>
     </div>
   </section>
@@ -842,9 +849,9 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 
     <div class="brand">
       <p class="brand__txt" data-todo="copy">
-        退職に伴う公的制度の相談に、社労士・弁護士の監修のもとで対応。
-        受け取れる可能性の診断から、申請までの伴走サポートまで行います。
-        相談は無料・LINEで完結・いつでもブロックできます。
+        運営は労働組合の新宿ユニオンで、社労士・弁護士の監修が入っています。
+        受け取れる可能性の確認から、退職日の決め方、書類の準備と進め方まで相談できます。
+        相談は無料。LINEで完結し、いつでもブロックできます。
       </p>
       <figure class="brand__art">
         <img class="asset-img" src="./assets/support-advisors.webp" width="560" height="700" loading="lazy" decoding="async" alt="相談を支えるスタッフのイメージ">
@@ -975,7 +982,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
         <p class="sum__lead" data-todo="copy">受け取れるはずのお金は、<br>申請しなければ消えます</p>
       </div>
       <div class="sum__side">
-        <p data-todo="copy">制度は自分で知り、行動した人の味方です。まずは、対象かどうかをLINEでチェック。相談だけでも、お気軽にどうぞ。</p>
+        <p data-todo="copy">いま決めなくて、いいんです。ただ、退職日が過ぎてからでは動かせない条件があります。自分が対象かどうかだけは、今日たしかめられます。</p>
         <figure class="sum__art">
           <img class="asset-img" src="./assets/summary-pointing-woman.webp" width="467" height="700" loading="lazy" decoding="async" alt="相談前に確認しておきたいことを案内する女性のイメージ">
         </figure>
