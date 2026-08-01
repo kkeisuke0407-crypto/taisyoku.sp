@@ -14,14 +14,29 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <!-- Google tag (gtag.js)：退職給付金サイト専用のGA4 + Google広告CV計測。
-     ★読み込むIDは GT-K55F94TT（Googleタグ）で、G-DD332W5J8R ではない。
-       G-DD332W5J8R は既存のGoogleタグに相乗りする形で作られたGA4測定IDのため、
-       gtag/js?id=G-DD332W5J8R は 404 を返す（＝計測が全部止まる）。 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=GT-K55F94TT"></script>
+
+     ★読み込むのは Googleタグ ID の GT-WB2N4H34。測定ID（G-DD332W5J8R）ではない。
+       gtag/js?id=G-DD332W5J8R は 404 を返す。測定IDは config に書くもので、
+       script の読み込みIDには使えない。
+
+     経緯（2026-08-01）：
+       当初は買取と共用の GT-K55F94TT を読み込んでいた。しかし GT-K55F94TT は
+       広告アカウント AW-18129603657 のタグで、その宛先に G-DD332W5J8R が
+       相乗り登録されていたため、買取サイトが gtag(config, AW-18129603657) を
+       実行するだけで買取のデータが退職のGA4に流れ込んでいた。
+       退職専用のGoogleタグ GT-WB2N4H34 を発行して切り替えた。
+
+     ★GT-WB2N4H34 の宛先は G-DD332W5J8R のみで、広告は含まれない。
+       AW-18129603657 は config で追加している。この行を消すと広告CVが止まる。 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GT-WB2N4H34"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date()); gtag('config', 'G-DD332W5J8R'); gtag('config', 'AW-18129603657');
+  // config も Googleタグ ID を使う。測定ID（G-DD332W5J8R）を config に書くと
+  // gtag が gtag/js?id=G-DD332W5J8R&cx=c を個別に取りに行き、それが404で
+  // GA4だけ初期化に失敗する（広告は生きるので気づきにくい）。
+  // GT-WB2N4H34 を config すれば、その宛先である G-DD332W5J8R に自動で送られる。
+  gtag('js', new Date()); gtag('config', 'GT-WB2N4H34'); gtag('config', 'AW-18129603657');
 </script>
 <!-- Microsoft Clarity は外してある（2026-08-01）。
      以前入っていた wxnujpnscp は買取サイト（kaitori.hakobu-family.com）と
@@ -1150,8 +1165,10 @@ ul,ol{ margin:0; padding:0; list-style:none; }
       if(window.dataLayer) window.dataLayer.push(Object.assign({event:cv}, params));
       if(typeof gtag==="function"){
         gtag("event", cv, Object.assign({}, params, { transport_type:"beacon" }));
+        // send_to もタグIDで指定する。測定IDだと宛先として解決できないことがある。
+        // GT-WB2N4H34 の宛先は G-DD332W5J8R だけなので、これでGA4限定になる
         gtag("event", "taishoku_relief_cta_click",
-             Object.assign({}, params, { send_to:"G-DD332W5J8R", transport_type:"beacon" }));
+             Object.assign({}, params, { send_to:"GT-WB2N4H34", transport_type:"beacon" }));
       }
     });
   });
