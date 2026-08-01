@@ -155,13 +155,26 @@ ul,ol{ margin:0; padding:0; list-style:none; }
    CTAボタン上端を画面上から400px以内に収める（本番LPと同じ実測ルール）
    ============================================================ */
 .fv{ position:relative; isolation:isolate; overflow:hidden; padding:0 var(--pad) 14px; }
-.fv > :not(.fv__art){ position:relative; z-index:1; }
+.fv > :not(.fv__art):not(.fv__pr){ position:relative; z-index:1; }
+
+/* 右上のPR表記（ステマ規制対応）。左上のタブと対になる位置に置く */
+.fv__pr{
+  position:absolute; z-index:2; top:9px; right:var(--pad);
+  padding:1px 7px; background:#fff;
+  border:1px solid var(--muted); border-radius:4px;
+  font-size:10px; font-weight:700; letter-spacing:.06em;
+  line-height:1.7; color:var(--muted);
+}
+
+/* 人物は枠の下端に合わせて配置している。画像を大きくすると、下端が固定なぶん
+   頭の位置が上がる。枠の高さも一緒に上げないと頭が切れるので、必ずセットで変える。
+   （原寸467x700、頭は y=310〜425） */
 .fv__art{
   position:absolute; z-index:0; left:-2px; bottom:0;
-  width:130px; height:190px; margin:0; overflow:hidden; pointer-events:none;
+  width:142px; height:218px; margin:0; overflow:hidden; pointer-events:none;
 }
 .fv__art .asset-img{
-  position:absolute; left:0; bottom:0; width:210px; max-width:none; height:auto;
+  position:absolute; left:0; bottom:0; width:236px; max-width:none; height:auto;
   object-fit:contain;
 }
 
@@ -183,7 +196,8 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .fv__lead{ display:block; margin-top:0; font-size:32px; line-height:1.2; }
 .fv__note{ margin:8px 0 0; font-size:11px; line-height:1.6; color:var(--muted); }
 
-.fv__cta{ margin-top:12px; padding-left:116px; min-height:132px; }
+/* 左の余白は人物枠(142px)を避けるぶん。人物を大きくしたらここも一緒に広げる */
+.fv__cta{ margin-top:12px; padding-left:128px; min-height:132px; }
 .cta__badge{ margin:0; font-size:16px; font-weight:700; color:var(--navy); text-align:center; }
 .cta__headline{
   margin:1px 0 6px; font-size:22px; font-weight:800;
@@ -198,7 +212,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .fv__cta .btn-line__logo{ padding:2px 6px; font-size:10px; }
 
 .cta__sub{ margin:8px 0 0; font-size:12px; color:var(--muted); text-align:center; }
-.fv__operator{ margin:10px 0 0 116px; font-size:11.5px; line-height:1.75; color:var(--muted); text-align:left; }
+.fv__operator{ margin:10px 0 0 128px; font-size:11.5px; line-height:1.75; color:var(--muted); text-align:left; }
 
 /* ============================================================
    LINEボタン（全CTA共通）
@@ -514,7 +528,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .disc li::before{ content:"・"; position:absolute; left:0; top:0; }
 
 /* 固定CTAのぶんだけ足元を空ける */
-.foot{ padding:16px var(--pad) calc(96px + env(safe-area-inset-bottom,0px)); text-align:center; }
+.foot{ padding:16px var(--pad) calc(112px + env(safe-area-inset-bottom,0px)); text-align:center; }
 .foot nav{ display:flex; flex-wrap:wrap; justify-content:center; gap:6px 16px; margin-bottom:8px; }
 .foot a{ font-size:12px; color:var(--muted); text-decoration:underline; }
 .foot p{ font-size:11px; color:#9aa1ab; }
@@ -533,6 +547,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .sticky-cta[hidden]{ display:none !important; }
 .sticky-cta .btn-line{ max-width:412px; margin-inline:auto; height:50px; }
 .sticky-cta .btn-line__label{ font-size:18px; }
+.sticky-cta__note{ margin-top:4px; font-size:10px; line-height:1.5; color:var(--muted); text-align:center; }
 
 /* ============================================================
    狭い端末（320〜359px）
@@ -544,12 +559,14 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   .fv__amount .u-unit{ font-size:26px; }
   .fv__lead{ font-size:28px; }
   .btn-line__label{ font-size:19px; }
-  .fv__art{ width:96px; height:150px; }
-  .fv__art .asset-img{ width:165px; }
-  .fv__cta{ padding-left:90px; min-height:116px; }
-  .fv__operator{ margin-left:90px; }
+  .fv__art{ width:104px; height:172px; }
+  .fv__art .asset-img{ width:180px; }
+  .fv__cta{ padding-left:98px; min-height:116px; }
+  .fv__operator{ margin-left:98px; }
   .cta__badge{ font-size:13px; letter-spacing:-.05em; white-space:nowrap; }
   .fv__cta .btn-line__label{ font-size:15px; }
+  /* 12pxだと「不要」「ます」が単独行に落ちる。幅196pxに18文字入る大きさにする */
+  .cta__sub{ font-size:10px; letter-spacing:-.02em; }
   .h2{ font-size:19px; }
   /* 320pxで3列にすると1枚100pxしかなく、一言が1〜2文字だけ折り返して読めない。
      この幅だけ2列にする（見本は390px前提の設計なので、崩すのはここだけ） */
@@ -570,6 +587,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
       <img class="asset-img" src="./assets/hero-office-worker.webp" width="467" height="700"
            fetchpriority="high" decoding="async" alt="">
     </figure>
+    <span class="fv__pr" aria-label="広告を含む記事です">PR</span>
     <p class="fv__tab" data-todo="copy">退職予定の方へ</p>
 
     <h1 class="fv__h1" data-todo="copy">
@@ -590,7 +608,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
             <span class="btn-line__logo">LINE</span>
             <span class="btn-line__label" data-todo="copy">LINEで無料診断</span>
           </a>
-          <p class="cta__sub" data-todo="copy">友だち追加だけ・無料／電話番号は不要</p>
+          <p class="cta__sub" data-todo="copy">友だち追加だけ・無料／電話番号は不要<br>退職リリーフの公式サイトへ移動します</p>
         </div>
       </div>
     </div>
@@ -845,6 +863,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
         <span class="btn-line__label" data-todo="copy">LINEで無料診断</span>
       </a>
     </div>
+    <p class="note" style="margin-top:8px" data-todo="copy">※ ボタンをタップすると退職リリーフの公式サイトへ移動します。</p>
   </section>
 
   <!-- ============ ⑧セルフチェック ============ -->
@@ -1028,6 +1047,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
       <span class="btn-line__label" data-todo="copy">LINEで無料診断</span>
     </a>
     <p class="final__note" data-todo="copy">
+      ボタンをタップすると退職リリーフの公式サイトへ移動します。
       診断は1分ほど。相談した時点で契約になることはありません。料金とサポート範囲は、契約前に必ず文字で確認してください。
     </p>
   </section>
@@ -1065,6 +1085,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
     <span class="btn-line__logo">LINE</span>
     <span class="btn-line__label" data-todo="copy">LINEで無料診断</span>
   </a>
+  <p class="sticky-cta__note" data-todo="copy">退職リリーフの公式サイトへ移動します</p>
 </div>
 
 <script>
