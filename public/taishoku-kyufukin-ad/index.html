@@ -84,7 +84,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .asset-img{ display:block; width:100%; height:100%; object-fit:cover; }
 
 /* 生成イラストは、説明文より目立ちすぎないよう小さな枠で使う */
-.trust__icon,.reason__icon,.why__art,.reject__art{
+.trust__icon,.reason__icon,.why__art{
   display:block;
   background-image:url("./assets/procedure-icon-grid.webp");
   background-repeat:no-repeat;
@@ -273,7 +273,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 
 .callout{ display:grid; grid-template-columns:104px 1fr; gap:10px; align-items:center; margin-top:14px; }
 .callout__art{ width:104px; aspect-ratio:104/74; margin:0; overflow:hidden; border-radius:10px; background:var(--panel); }
-.callout__art .asset-img{ object-position:50% 36%; }
+.callout__art .asset-img{ object-position:50% 68%; }
 .callout__txt{ font-size:12.5px; line-height:1.8; color:var(--ink); }
 
 /* ============================================================
@@ -334,7 +334,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
    ============================================================ */
 .brand{ display:grid; grid-template-columns:1fr 108px; gap:10px; align-items:center; }
 .brand__art{ width:108px; aspect-ratio:108/86; margin:0; overflow:hidden; border-radius:10px; background:var(--panel); }
-.brand__art .asset-img{ object-position:55% 40%; }
+.brand__art .asset-img{ object-position:55% 68%; }
 .brand__txt{ font-size:12.5px; line-height:1.85; color:var(--ink); }
 .pr-badge{
   display:inline-block; margin-left:6px; padding:1px 6px;
@@ -354,7 +354,8 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   width:6px; height:6px; border-radius:50%; background:var(--amber);
 }
 .reject__list li:nth-child(even)::before{ background:#7fb069; }
-.reject__art{ width:92px; aspect-ratio:92/84; border-radius:10px; background-color:#fff; }
+.reject__art{ width:92px; aspect-ratio:92/84; margin:0; overflow:hidden; border-radius:10px; background:#fff; }
+.reject__art .asset-img{ object-position:50% 68%; }
 
 /* ============================================================
    ⑪FAQ（アコーディオン）
@@ -402,7 +403,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .sum__lead{ margin-top:6px; font-size:12.5px; font-weight:700; color:var(--navy); line-height:1.7; }
 .sum__side{ font-size:12.5px; line-height:1.85; color:var(--ink); }
 .sum__art{ width:84px; aspect-ratio:84/96; margin:8px 0 0 auto; overflow:hidden; border-radius:10px; background:var(--panel); }
-.sum__art .asset-img{ object-position:62% 42%; }
+.sum__art .asset-img{ object-position:62% 62%; }
 
 /* ============================================================
    最終CTA・免責・フッター
@@ -775,7 +776,9 @@ ul,ol{ margin:0; padding:0; list-style:none; }
           <li>受け取れる金額を、診断の時点で断言する</li>
           <li>総額を聞いても答えず、契約を先に進めようとする</li>
         </ul>
-        <span class="reject__art" style="--icon-x:100%;--icon-y:100%" aria-hidden="true"></span>
+        <figure class="reject__art">
+          <img class="asset-img" src="./assets/caution-buildings.webp" width="467" height="700" loading="lazy" decoding="async" alt="">
+        </figure>
       </div>
     </div>
 
@@ -881,7 +884,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
       <div class="sum__side">
         <p data-todo="copy">制度は自分で知り、行動した人の味方です。まずは、対象かどうかをLINEでチェック。相談だけでも、お気軽にどうぞ。</p>
         <figure class="sum__art">
-          <img class="asset-img" src="./assets/selfcheck-woman.webp" width="560" height="700" loading="lazy" decoding="async" alt="相談前に内容を確認する女性のイメージ">
+          <img class="asset-img" src="./assets/summary-pointing-woman.webp" width="467" height="700" loading="lazy" decoding="async" alt="相談前に確認しておきたいことを案内する女性のイメージ">
         </figure>
       </div>
     </div>
