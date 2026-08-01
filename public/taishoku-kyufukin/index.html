@@ -354,25 +354,22 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   background:#fff; border:1px solid var(--line); border-radius:10px;
   padding:8px 7px; display:flex; flex-direction:column;
 }
-.why__head{ display:grid; grid-template-columns:18px 1fr; gap:5px; align-items:start; }
+/* 番号は見出しの上に置く。横に並べると見出し欄が80px＝1行7文字しか使えず、
+   結論を書ききれない。上に逃がすと全幅105px＝1行10文字使える */
+.why__head{ display:block; }
 .why__no{
-  display:grid; place-items:center; width:18px; height:18px;
+  display:grid; place-items:center; width:18px; height:18px; margin:0 auto 5px;
   background:var(--amber); color:#fff; border-radius:50%;
   font-size:10px; font-weight:800; line-height:1;
 }
+/* 見出しは「何の話か」ではなく「で、どうなるか」を書く。1カード1メッセージ */
 .why__ttl{
   font-size:10.5px; font-weight:700; color:var(--navy);
-  line-height:1.45; letter-spacing:-.01em;
+  line-height:1.5; letter-spacing:-.02em; text-align:center;
 }
 /* アイコンは正方形を保つこと。スプライトを background-size:300% で切っているので、
    枠を長方形にするとセルが歪む。小さくするのは可。 */
-.why__art{ width:52px; height:52px; margin:7px auto 6px; border-radius:6px; background-color:var(--panel-2); }
-/* 見出しだけだと「で、何が起きるのか」が分からない。結論を1行で置く */
-.why__note{
-  margin-top:auto; padding-top:5px; border-top:1px dashed var(--line);
-  font-size:9.5px; font-weight:700; line-height:1.5; letter-spacing:-.02em;
-  color:var(--red); text-align:center;
-}
+.why__art{ width:64px; height:64px; margin:8px auto 0; border-radius:6px; background-color:var(--panel-2); }
 
 /* 黄色いCTA帯 */
 .cta-bar{
@@ -773,57 +770,48 @@ ul,ol{ margin:0; padding:0; list-style:none; }
     <ol class="why">
       <li class="why__card">
         <div class="why__head"><span class="why__no">1</span>
-          <p class="why__ttl" data-todo="copy">退職日に出勤すると、受け取れなくなる</p></div>
+          <p class="why__ttl" data-todo="copy">退職日に半日でも<br>出社したら対象外</p></div>
         <span class="why__art" style="--icon-x:0%;--icon-y:0%" aria-hidden="true"></span>
-        <p class="why__note" data-todo="copy">半日の出社でも対象外</p>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">2</span>
-          <p class="why__ttl" data-todo="copy">健康保険の加入期間が「1年」あるかを数える</p></div>
+          <p class="why__ttl" data-todo="copy">健康保険が1年ないと<br>対象外</p></div>
         <span class="why__art" style="--icon-x:50%;--icon-y:0%" aria-hidden="true"></span>
-        <p class="why__note" data-todo="copy">1日足りなくても対象外</p>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">3</span>
-          <p class="why__ttl" data-todo="copy">医師に「働けない状態」の証明を書いてもらう</p></div>
+          <p class="why__ttl" data-todo="copy">医師の証明は<br>診断書とは別物</p></div>
         <span class="why__art" style="--icon-x:100%;--icon-y:0%" aria-hidden="true"></span>
-        <p class="why__note" data-todo="copy">診断書とは別の用紙</p>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">4</span>
-          <p class="why__ttl" data-todo="copy">申請書は4枚あって、書く人が違う</p></div>
+          <p class="why__ttl" data-todo="copy">申請書は4枚<br>1枚欠けても不可</p></div>
         <span class="why__art" style="--icon-x:0%;--icon-y:50%" aria-hidden="true"></span>
-        <p class="why__note" data-todo="copy">1枚欠けても通らない</p>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">5</span>
-          <p class="why__ttl" data-todo="copy">申請は1回では終わらない</p></div>
+          <p class="why__ttl" data-todo="copy">申請も医師の証明も<br>毎月必要</p></div>
         <span class="why__art" style="--icon-x:50%;--icon-y:50%" aria-hidden="true"></span>
-        <p class="why__note" data-todo="copy">原則1か月ごとに提出</p>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">6</span>
-          <p class="why__ttl" data-todo="copy">失業保険の「受給期間の延長」に期限がある</p></div>
+          <p class="why__ttl" data-todo="copy">失業保険の延長を<br>忘れると消える</p></div>
         <span class="why__art" style="--icon-x:100%;--icon-y:50%" aria-hidden="true"></span>
-        <p class="why__note" data-todo="copy">忘れると資格ごと消える</p>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">7</span>
-          <p class="why__ttl" data-todo="copy">健康保険を「任意継続」か「国保」か、20日で決める</p></div>
+          <p class="why__ttl" data-todo="copy">任意継続か国保か<br>20日以内に決める</p></div>
         <span class="why__art" style="--icon-x:0%;--icon-y:100%" aria-hidden="true"></span>
-        <p class="why__note" data-todo="copy">翌日から20日で締切</p>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">8</span>
-          <p class="why__ttl" data-todo="copy">傷病手当金と失業保険の切り替えタイミング</p></div>
+          <p class="why__ttl" data-todo="copy">切り替えが早くても<br>遅くても損</p></div>
         <span class="why__art" style="--icon-x:50%;--icon-y:100%" aria-hidden="true"></span>
-        <p class="why__note" data-todo="copy">早くても遅くても損</p>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">9</span>
-          <p class="why__ttl" data-todo="copy">不支給になったとき、どうするか</p></div>
+          <p class="why__ttl" data-todo="copy">不支給でも<br>理由を見て出し直せる</p></div>
         <span class="why__art" style="--icon-x:100%;--icon-y:100%" aria-hidden="true"></span>
-        <p class="why__note" data-todo="copy">理由を確認して出し直す</p>
       </li>
     </ol>
 
