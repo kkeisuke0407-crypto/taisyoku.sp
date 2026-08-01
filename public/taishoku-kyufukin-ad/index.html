@@ -403,7 +403,275 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 }
 .faq__q::-moz-focus-inner{ border:0; }
 .faq__q:focus-visible{ outline:2px solid var(--green); outline-offset:-2px; }
-.faq__q .u-q{ color:var(--muted)…3424 tokens truncated…：何を書くかも自分で調べる</li>
+.faq__q .u-q{ color:var(--muted); margin-right:4px; font-weight:800; }
+.faq__mark{
+  width:22px; height:22px; position:relative; justify-self:end;
+  transition:transform .22s ease;
+}
+.faq__mark::before,.faq__mark::after{
+  content:""; position:absolute; left:5px; top:10px; width:12px; height:2px;
+  background:var(--muted); border-radius:1px;
+}
+.faq__mark::after{ transform:rotate(90deg); }
+.faq__item.is-open .faq__mark{ transform:rotate(45deg); }
+.faq__a{
+  overflow:hidden; height:0;
+  transition:height .24s ease;
+}
+.faq__a-inner{ padding:0 13px 13px; font-size:12.5px; line-height:1.85; color:var(--ink); }
+
+/* JS無効時はすべて開いた状態で読める（広告LPで内容が読めないのは致命的） */
+.no-js .faq__a{ height:auto; }
+.no-js .faq__mark{ display:none; }
+
+/* ============================================================
+   ⑫まとめ
+   ============================================================ */
+.sum{ display:grid; grid-template-columns:132px 1fr; gap:12px; align-items:start; margin-top:12px; }
+.sum__box{
+  padding:12px 11px; background:var(--amber-bg);
+  border:2px solid var(--amber); border-radius:10px;
+}
+.sum__ttl{ font-size:15px; font-weight:800; color:var(--navy); line-height:1.5; }
+.sum__lead{ margin-top:6px; font-size:12.5px; font-weight:700; color:var(--navy); line-height:1.7; }
+.sum__side{ font-size:12.5px; line-height:1.85; color:var(--ink); }
+.sum__art{ width:84px; aspect-ratio:84/96; margin:8px 0 0 auto; overflow:hidden; border-radius:10px; background:var(--panel); }
+.sum__art .asset-img{ object-position:62% 62%; }
+
+/* ============================================================
+   最終CTA・免責・フッター
+   ============================================================ */
+.final{ padding:22px var(--pad) 26px; background:var(--panel-2); text-align:center; }
+.final__ttl{ font-size:17px; font-weight:800; color:var(--navy); line-height:1.6; margin-bottom:12px; }
+.final .btn-line{ height:58px; }
+.final .btn-line__label{ font-size:22px; }
+.final__note{ margin-top:10px; font-size:11.5px; line-height:1.75; color:var(--muted); text-align:left; }
+
+.disc{ padding:18px var(--pad); background:#f2f4f7; }
+.disc li{ position:relative; padding-left:12px; font-size:10.5px; line-height:1.75; color:var(--muted); }
+.disc li + li{ margin-top:5px; }
+.disc li::before{ content:"・"; position:absolute; left:0; top:0; }
+
+.foot{ padding:16px var(--pad) calc(20px + env(safe-area-inset-bottom,0px)); text-align:center; }
+.foot nav{ display:flex; flex-wrap:wrap; justify-content:center; gap:6px 16px; margin-bottom:8px; }
+.foot a{ font-size:12px; color:var(--muted); text-decoration:underline; }
+.foot p{ font-size:11px; color:#9aa1ab; }
+
+/* ============================================================
+   狭い端末（320〜359px）
+   ============================================================ */
+@media (max-width:359px){
+  :root{ --pad:13px; }
+  .fv__amount{ font-size:30px; }
+  .fv__amount em{ font-size:56px; }
+  .fv__amount .u-unit{ font-size:26px; }
+  .fv__lead{ font-size:28px; }
+  .btn-line__label{ font-size:19px; }
+  .fv__art{ width:96px; height:150px; }
+  .fv__art .asset-img{ width:165px; }
+  .fv__cta{ padding-left:90px; min-height:116px; }
+  .fv__operator{ margin-left:90px; }
+  .cta__badge{ font-size:13px; letter-spacing:-.05em; white-space:nowrap; }
+  .fv__cta .btn-line__label{ font-size:15px; }
+  .h2{ font-size:19px; }
+  .why{ margin-inline:-8px; gap:5px; }
+  .why__ttl{ font-size:9.5px; line-height:1.42; }
+  .cmp__list li{ font-size:11px; }
+  .cta-bar{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body class="no-js">
+
+<main class="lp">
+
+  <!-- ============ ①FV ============ -->
+  <section class="fv">
+    <figure class="fv__art" aria-hidden="true">
+      <img class="asset-img" src="./assets/hero-office-worker.webp" width="467" height="700"
+           fetchpriority="high" decoding="async" alt="">
+    </figure>
+    <p class="fv__tab" data-todo="copy">退職予定の方へ</p>
+
+    <h1 class="fv__h1" data-todo="copy">
+      <span class="fv__amount">最大<em>365</em><span class="u-unit">万円</span></span>
+      <span class="fv__lead">受け取れる制度を<br>ご存じですか？</span>
+    </h1>
+
+    <p class="fv__note" data-todo="copy">※ 月収30万円の場合。条件を満たしたときの、制度上の上限です。</p>
+
+    <div class="fv__cta">
+      <p class="cta__badge" data-todo="copy">まずは、受け取れるかどうか</p>
+      <p class="cta__headline" data-todo="copy"><span class="u-line">LINE</span>で無料診断</p>
+
+      <div class="cta__row">
+        <div class="cta__main">
+          <a class="btn-line" href="#" data-todo="link" data-track="fv_line"
+             target="_blank" rel="sponsored nofollow noopener noreferrer">
+            <span class="btn-line__logo">LINE</span>
+            <span class="btn-line__label" data-todo="copy">LINEで無料診断</span>
+          </a>
+          <p class="cta__sub" data-todo="copy">友だち追加だけ・無料／電話番号は不要</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="fv__operator" data-todo="copy">
+      運営：労働組合 新宿ユニオン（社労士・弁護士監修）<br>いつでもブロックできます
+    </p>
+  </section>
+
+  <!-- ============ ②スマホ画面＋信頼バッジ ============ -->
+  <div class="trust">
+    <figure class="trust__phone" aria-label="LINEで相談する画面のイメージ">
+      <div class="chat-phone" aria-hidden="true">
+        <span class="chat-phone__notch"></span>
+        <div class="chat-phone__bar"><span>‹</span><span class="chat-phone__brand">退職リリーフ</span><span>•••</span></div>
+        <div class="chat-phone__body">
+          <div class="chat">
+            <span class="chat__avatar">相</span>
+            <p class="chat__bubble">はじめまして！<br>退職リリーフです。<br>受け取れる可能性を確認できます。</p>
+          </div>
+          <div class="chat chat--sent"><p class="chat__bubble">お願いします！</p></div>
+          <div class="chat">
+            <span class="chat__avatar">相</span>
+            <p class="chat__bubble">いくつか質問します。<br>選ぶだけで進めます。</p>
+          </div>
+        </div>
+      </div>
+    </figure>
+    <div class="trust__list">
+      <div class="trust__item" data-todo="copy">
+        <span class="trust__icon" style="--icon-x:100%;--icon-y:0%" aria-hidden="true"></span>
+        社労士・弁護士<br>監修で安心
+      </div>
+      <div class="trust__item" data-todo="copy">
+        <span class="trust__icon" style="--icon-x:50%;--icon-y:50%" aria-hidden="true"></span>
+        受給まで<br>伴走サポート
+      </div>
+      <div class="trust__item" data-todo="copy">
+        <span class="trust__icon" style="--icon-x:0%;--icon-y:100%" aria-hidden="true"></span>
+        相談は無料<br>ブロックOK
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ③LINEで3ステップ ============ -->
+  <section class="sec sec--panel">
+    <h2 class="h2" data-todo="copy">無料診断は、LINEで3ステップ</h2>
+    <p class="lead" data-todo="copy">答えるのは、かんたんな質問だけです。ここまでは無料で、途中でやめても構いません。</p>
+
+    <ol class="steps">
+      <li class="step">
+        <p class="step__no">1</p>
+        <p class="step__ttl" data-todo="copy">LINEで<br>友だち追加</p>
+        <div class="step__ph" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen mini-phone__screen--add">友だち<br>追加</span></span></div>
+        <p class="step__txt" data-todo="copy">ボタンを押すとLINEが開きます。登録に費用はかかりません。</p>
+      </li>
+      <li class="step">
+        <p class="step__no">2</p>
+        <p class="step__ttl" data-todo="copy">質問に<br>答える</p>
+        <div class="step__ph" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen">質問に<br>答える</span></span></div>
+        <p class="step__txt" data-todo="copy">年齢・退職の予定・健康保険に入っていた期間など。選ぶだけで進みます。</p>
+      </li>
+      <li class="step">
+        <p class="step__no">3</p>
+        <p class="step__ttl" data-todo="copy">結果が<br>届く</p>
+        <div class="step__ph" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen mini-phone__screen--result">確認<br>完了</span></span></div>
+        <p class="step__txt" data-todo="copy">対象になりそうかと、金額の目安が返ってきます。</p>
+      </li>
+    </ol>
+
+    <p class="punch" data-todo="copy">ここまで、およそ1分。<br>やりとりはLINEだけ。</p>
+  </section>
+
+  <!-- ============ ④受け取れるお金は1つじゃない ============ -->
+  <section class="sec">
+    <h2 class="h2" data-todo="copy">退職後に受け取れるお金は、1つじゃない</h2>
+    <p class="lead" data-todo="copy">
+      病気やケガで働けない状態にある場合、失業保険とは別のお金を受け取れる制度があります。
+      在職中から使えますが、申請した人しか受け取れません。会社から案内されることは、ほとんどありません。
+    </p>
+
+    <div class="stat">
+      <div class="stat__head">
+        <div>
+          <p class="stat__lede" data-todo="copy">傷病手当金を受け取った人の</p>
+          <p class="stat__big" data-todo="copy"><b>3</b>人に<b>1</b>人以上は、</p>
+          <p class="stat__tail" data-todo="copy">心の不調が理由です。</p>
+        </div>
+        <div class="stat__donut" role="img"
+             aria-label="精神及び行動の障害が35.20%、がんが13.57%、その他が51.23%">
+        </div>
+      </div>
+      <p class="stat__legend" data-todo="copy">
+        精神及び行動の障害が <b>35.20%</b> で最も多く、がん（13.57%）の約2.6倍。<br>
+        平均の支給期間は <b>158日</b>（約5か月）。
+      </p>
+      <p class="stat__src">出典：<a href="https://www.kyoukaikenpo.or.jp/disclosure/statistics/statistical_survey/beneficiary_status_survey/r05/" target="_blank" rel="noopener noreferrer">全国健康保険協会「現金給付受給者状況調査」令和5年度</a></p>
+    </div>
+
+    <div class="duo">
+      <div class="duo__card">
+        <p class="duo__ttl" data-todo="copy">傷病手当金</p>
+        <p class="duo__txt" data-todo="copy">病気やケガで働けない期間の生活を支える制度。給与のおよそ3分の2を、通算1年6か月まで。</p>
+      </div>
+      <div class="duo__card">
+        <p class="duo__ttl" data-todo="copy">失業保険（基本手当）</p>
+        <p class="duo__txt" data-todo="copy">働ける状態になってから、仕事探しをしながら受け取るもの。療養中は受け取れません。</p>
+      </div>
+    </div>
+
+    <div class="warn">
+      <p class="warn__ttl" data-todo="copy">自己都合で辞めると、失業保険はすぐには出ません</p>
+      <p class="warn__txt" data-todo="copy">
+        手続きのあと7日間の待期があり、そのあと、自己都合退職には原則1か月の給付制限がかかります。
+        つまり辞めてすぐは、収入が途切れます。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ ⑤なぜ知られていないのか ============ -->
+  <section class="sec sec--panel">
+    <h2 class="h2" data-todo="copy">なぜ、多くの人が知らないのか</h2>
+
+    <div class="reasons">
+      <div class="reason">
+        <span class="reason__icon" style="--icon-x:0%;--icon-y:50%" aria-hidden="true"></span>
+        <div>
+          <p class="reason__ttl" data-todo="copy">会社は教えてくれない</p>
+          <p class="reason__txt" data-todo="copy">会社に案内する義務はなく、人事の担当者自身が知らないことも珍しくありません。</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="reason__icon" style="--icon-x:100%;--icon-y:0%" aria-hidden="true"></span>
+        <div>
+          <p class="reason__ttl" data-todo="copy">役所は聞かれたことにしか答えない</p>
+          <p class="reason__txt" data-todo="copy">窓口では制度を説明してくれますが、「あなたはどうすべきか」までは踏み込みません。</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="reason__icon" style="--icon-x:0%;--icon-y:100%" aria-hidden="true"></span>
+        <div>
+          <p class="reason__ttl" data-todo="copy">申請した人だけが受け取れる</p>
+          <p class="reason__txt" data-todo="copy">制度そのものは何十年も前からあります。裏技でも抜け道でもありません。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ⑥ひとりでやる？伴走してもらう？ ============ -->
+  <section class="sec">
+    <h2 class="h2" data-todo="copy">ひとりでやる？　伴走してもらう？</h2>
+
+    <div class="cmp">
+      <div class="cmp__col cmp__col--solo">
+        <p class="cmp__head" data-todo="copy">ひとりでやる</p>
+        <ul class="cmp__list" data-todo="copy">
+          <li>かかるお金：<b>0円</b></li>
+          <li>退職日の決め方：誰も教えてくれない</li>
+          <li>受け取る順番：自分で調べる</li>
+          <li>書類の準備：何を書くかも自分で調べる</li>
           <li>毎月の手続き：体調が悪い日も自分で判断</li>
           <li>出し忘れ・不備：取り返せないことがある</li>
           <li>退職の意思表示：自分で伝える</li>
@@ -770,4 +1038,3 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 
 </body>
 </html>
-
