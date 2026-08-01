@@ -16,7 +16,6 @@
 
   差し替え待ちの箇所は data-todo 属性で印を付けてある。
     data-todo="copy"   … 正式な日本語テキストが来たら差し替え
-    data-todo="asset"  … 人物イラスト・スマホ画面の素材が来たら差し替え
     data-todo="link"   … アフィリエイトの実リンクが来たら差し替え
 
   文言の制約（CLAUDE.md より。崩さないこと）：
@@ -61,7 +60,7 @@
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
-html,body{ margin:0; padding:0; }
+html,body{ margin:0; padding:0; overflow-x:clip; }
 body{
   background:var(--bg); color:var(--ink);
   font-family:var(--sans); font-size:15px; line-height:1.75;
@@ -82,6 +81,16 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   display:grid; place-items:center; text-align:center;
   color:#a7adb6; font-size:9.5px; line-height:1.5;
 }
+.asset-img{ display:block; width:100%; height:100%; object-fit:cover; }
+
+/* 生成イラストは、説明文より目立ちすぎないよう小さな枠で使う */
+.trust__icon,.reason__icon,.why__art{
+  display:block;
+  background-image:url("./assets/procedure-icon-grid.webp");
+  background-repeat:no-repeat;
+  background-size:300% 300%;
+  background-position:var(--icon-x, 0%) var(--icon-y, 0%);
+}
 
 /* 見出し */
 .h2{
@@ -96,7 +105,16 @@ ul,ol{ margin:0; padding:0; list-style:none; }
    高さ予算：390×844 の実効可視は約638px。
    CTAボタン上端を画面上から400px以内に収める（本番LPと同じ実測ルール）
    ============================================================ */
-.fv{ position:relative; padding:0 var(--pad) 14px; }
+.fv{ position:relative; isolation:isolate; overflow:hidden; padding:0 var(--pad) 14px; }
+.fv > :not(.fv__art){ position:relative; z-index:1; }
+.fv__art{
+  position:absolute; z-index:0; left:-2px; bottom:0;
+  width:130px; height:190px; margin:0; overflow:hidden; pointer-events:none;
+}
+.fv__art .asset-img{
+  position:absolute; left:0; bottom:0; width:210px; max-width:none; height:auto;
+  object-fit:contain;
+}
 
 .fv__tab{
   display:inline-block;
@@ -116,7 +134,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .fv__lead{ display:block; margin-top:0; font-size:32px; line-height:1.2; }
 .fv__note{ margin:8px 0 0; font-size:11px; line-height:1.6; color:var(--muted); }
 
-.fv__cta{ position:relative; margin-top:12px; }
+.fv__cta{ margin-top:12px; padding-left:116px; min-height:132px; }
 .cta__badge{ margin:0; font-size:16px; font-weight:700; color:var(--navy); text-align:center; }
 .cta__headline{
   margin:1px 0 6px; font-size:22px; font-weight:800;
@@ -124,15 +142,14 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 }
 .cta__headline .u-line{ color:var(--green); }
 
-/* 人物はフローから外す。flexアイテムのままだと人物の高さで
-   CTA下が押し下がり、見本より約60px間延びする */
 .cta__row{ position:relative; }
-.cta__person{ position:absolute; left:0; bottom:0; width:92px; margin:0; pointer-events:none; }
-.cta__person .ph{ width:100%; aspect-ratio:92/118; }
-.cta__main{ margin-left:100px; }
+.cta__main{ min-width:0; }
+.fv__cta .btn-line{ gap:6px; padding-inline:8px; }
+.fv__cta .btn-line__label{ font-size:17px; }
+.fv__cta .btn-line__logo{ padding:2px 6px; font-size:10px; }
 
 .cta__sub{ margin:8px 0 0; font-size:12px; color:var(--muted); text-align:center; }
-.fv__operator{ margin:10px 0 0; font-size:11.5px; line-height:1.75; color:var(--muted); text-align:center; }
+.fv__operator{ margin:10px 0 0 116px; font-size:11.5px; line-height:1.75; color:var(--muted); text-align:left; }
 
 /* ============================================================
    LINEボタン（全CTA共通）
@@ -163,14 +180,40 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 /* ============================================================
    ②スマホ画面 ＋ 信頼バッジ
    ============================================================ */
-.trust{ display:grid; grid-template-columns:1fr 122px; gap:10px; padding:0 var(--pad) 24px; }
-.trust__phone .ph{ width:100%; aspect-ratio:230/430; }
+.trust{ display:grid; grid-template-columns:minmax(0,1fr) 110px; gap:10px; align-items:stretch; padding:0 var(--pad) 24px; }
+.trust__phone{
+  display:flex; margin:0; padding:5px 5px 0; overflow:hidden;
+  border:3px solid #13243a; border-bottom:0; border-radius:22px 22px 0 0;
+  background:#13243a; box-shadow:0 5px 15px rgba(11,35,65,.2);
+}
+.chat-phone{ position:relative; flex:1; min-height:0; overflow:hidden; border-radius:15px 15px 0 0; background:#e9f0f5; }
+.chat-phone__notch{ position:absolute; z-index:2; top:7px; left:50%; width:38%; height:5px; border-radius:999px; transform:translateX(-50%); background:#101d2e; }
+.chat-phone__bar{
+  display:flex; align-items:center; justify-content:space-between; gap:4px;
+  height:29px; padding:0 8px; background:#1f527f; color:#fff;
+  font-size:clamp(8px,2.4vw,10px); font-weight:700;
+}
+.chat-phone__brand{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.chat-phone__body{ display:flex; flex-direction:column; gap:8px; padding:10px 7px; }
+.chat{ display:flex; align-items:flex-start; gap:4px; }
+.chat--sent{ justify-content:flex-end; }
+.chat__avatar{
+  display:grid; flex:0 0 auto; place-items:center; width:16px; height:16px;
+  border-radius:50%; background:#fff; color:#1f527f; font-size:8px; font-weight:800;
+}
+.chat__bubble{
+  max-width:calc(100% - 22px); margin:0; padding:6px 7px;
+  border-radius:8px; background:#fff; color:var(--ink);
+  font-size:clamp(8.5px,2.45vw,10.5px); font-weight:700; line-height:1.52;
+  box-shadow:0 1px 2px rgba(27,52,79,.08);
+}
+.chat--sent .chat__bubble{ max-width:82%; background:#a9df8a; }
 .trust__list{ display:flex; flex-direction:column; gap:8px; }
 .trust__item{
   background:var(--panel); border-radius:10px; padding:12px 8px;
-  text-align:center; font-size:12px; font-weight:700; line-height:1.55; color:var(--navy);
+  min-width:0; text-align:center; font-size:12px; font-weight:700; line-height:1.55; color:var(--navy);
 }
-.trust__item .ph{ width:38px; height:38px; margin:0 auto 6px; border-radius:50%; font-size:8px; }
+.trust__icon{ width:38px; height:38px; margin:0 auto 6px; border-radius:50%; background-color:#fff; }
 
 /* ============================================================
    ③LINEで3ステップ
@@ -183,7 +226,12 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   font-size:13px; font-weight:800; line-height:1;
 }
 .step__ttl{ font-size:12.5px; font-weight:800; color:var(--navy); text-align:center; line-height:1.5; }
-.step__ph .ph{ width:100%; aspect-ratio:1/1.15; margin:7px 0; }
+.step__ph{ display:grid; place-items:center; aspect-ratio:1/.92; overflow:hidden; border:1px solid var(--line); border-radius:6px; background:#eef4f6; margin:7px 0; }
+.mini-phone{ position:relative; display:grid; place-items:center; width:43px; height:65px; padding:7px 3px 3px; border:2px solid #1a2b40; border-radius:8px; background:#142238; }
+.mini-phone::before{ content:""; position:absolute; top:3px; left:50%; width:14px; height:2px; border-radius:999px; transform:translateX(-50%); background:#fff; }
+.mini-phone__screen{ display:grid; place-items:center; width:100%; height:100%; padding:3px; border-radius:3px; background:#e6eef2; color:#173153; text-align:center; font-size:7px; font-weight:800; line-height:1.25; }
+.mini-phone__screen--add{ background:#e6f7ea; color:#087c35; }
+.mini-phone__screen--result{ background:#edf7ef; color:#087c35; }
 .step__txt{ font-size:11px; line-height:1.65; color:var(--muted); }
 .punch{
   margin-top:14px; font-size:14px; font-weight:700; line-height:1.8;
@@ -228,7 +276,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
    ============================================================ */
 .reasons{ display:flex; flex-direction:column; gap:12px; }
 .reason{ display:grid; grid-template-columns:44px 1fr; gap:10px; align-items:start; }
-.reason .ph{ width:44px; height:44px; }
+.reason__icon{ width:44px; height:44px; border-radius:10px; background-color:#fff; }
 .reason__ttl{ font-size:15px; font-weight:800; color:var(--navy); line-height:1.5; }
 .reason__txt{ font-size:12px; line-height:1.75; color:var(--muted); }
 
@@ -257,7 +305,8 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .cmp__list b{ font-weight:800; }
 
 .callout{ display:grid; grid-template-columns:104px 1fr; gap:10px; align-items:center; margin-top:14px; }
-.callout .ph{ width:104px; aspect-ratio:104/74; }
+.callout__art{ width:104px; aspect-ratio:104/74; margin:0; overflow:hidden; border-radius:10px; background:var(--panel); }
+.callout__art .asset-img{ object-position:50% 68%; }
 .callout__txt{ font-size:12.5px; line-height:1.8; color:var(--ink); }
 
 /* ============================================================
@@ -270,7 +319,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 }
 .why__card{
   background:#fff; border:1px solid var(--line); border-radius:10px;
-  padding:8px 6px 7px; display:flex; flex-direction:column;
+  padding:8px 7px; display:flex; flex-direction:column;
 }
 .why__head{ display:grid; grid-template-columns:18px 1fr; gap:5px; align-items:start; }
 .why__no{
@@ -282,7 +331,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   font-size:10.5px; font-weight:700; color:var(--navy);
   line-height:1.45; letter-spacing:-.01em;
 }
-.why__card .ph{ width:100%; aspect-ratio:1/.62; margin-top:8px; }
+.why__art{ width:100%; aspect-ratio:1; margin-top:8px; border-radius:6px; background-color:var(--panel-2); }
 
 /* 黄色いCTA帯 */
 .cta-bar{
@@ -310,13 +359,15 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   width:5px; height:9px; border:solid #fff; border-width:0 2px 2px 0;
   transform:rotate(45deg);
 }
-.check-wrap .ph{ width:96px; aspect-ratio:96/124; }
+.check__art{ width:96px; aspect-ratio:96/124; margin:0; overflow:hidden; border-radius:10px; background:var(--panel); }
+.check__art .asset-img{ object-position:67% 47%; }
 
 /* ============================================================
    ⑨サービス紹介
    ============================================================ */
 .brand{ display:grid; grid-template-columns:1fr 108px; gap:10px; align-items:center; }
-.brand .ph{ width:108px; aspect-ratio:108/86; }
+.brand__art{ width:108px; aspect-ratio:108/86; margin:0; overflow:hidden; border-radius:10px; background:var(--panel); }
+.brand__art .asset-img{ object-position:55% 68%; }
 .brand__txt{ font-size:12.5px; line-height:1.85; color:var(--ink); }
 .pr-badge{
   display:inline-block; margin-left:6px; padding:1px 6px;
@@ -336,7 +387,8 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   width:6px; height:6px; border-radius:50%; background:var(--amber);
 }
 .reject__list li:nth-child(even)::before{ background:#7fb069; }
-.reject__grid .ph{ width:92px; aspect-ratio:92/84; }
+.reject__art{ width:92px; aspect-ratio:92/84; margin:0; overflow:hidden; border-radius:10px; background:#fff; }
+.reject__art .asset-img{ object-position:50% 68%; }
 
 /* ============================================================
    ⑪FAQ（アコーディオン）
@@ -383,7 +435,8 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .sum__ttl{ font-size:15px; font-weight:800; color:var(--navy); line-height:1.5; }
 .sum__lead{ margin-top:6px; font-size:12.5px; font-weight:700; color:var(--navy); line-height:1.7; }
 .sum__side{ font-size:12.5px; line-height:1.85; color:var(--ink); }
-.sum__side .ph{ width:84px; aspect-ratio:84/96; margin-top:8px; margin-left:auto; }
+.sum__art{ width:84px; aspect-ratio:84/96; margin:8px 0 0 auto; overflow:hidden; border-radius:10px; background:var(--panel); }
+.sum__art .asset-img{ object-position:62% 62%; }
 
 /* ============================================================
    最終CTA・免責・フッター
@@ -414,8 +467,12 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   .fv__amount .u-unit{ font-size:26px; }
   .fv__lead{ font-size:28px; }
   .btn-line__label{ font-size:19px; }
-  .cta__person{ width:80px; }
-  .cta__main{ margin-left:86px; }
+  .fv__art{ width:96px; height:150px; }
+  .fv__art .asset-img{ width:165px; }
+  .fv__cta{ padding-left:90px; min-height:116px; }
+  .fv__operator{ margin-left:90px; }
+  .cta__badge{ font-size:13px; letter-spacing:-.05em; white-space:nowrap; }
+  .fv__cta .btn-line__label{ font-size:15px; }
   .h2{ font-size:19px; }
   .why{ margin-inline:-8px; gap:5px; }
   .why__ttl{ font-size:9.5px; line-height:1.42; }
@@ -430,6 +487,10 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 
   <!-- ============ ①FV ============ -->
   <section class="fv">
+    <figure class="fv__art" aria-hidden="true">
+      <img class="asset-img" src="./assets/hero-office-worker.webp" width="467" height="700"
+           fetchpriority="high" decoding="async" alt="">
+    </figure>
     <p class="fv__tab" data-todo="copy">退職予定の方へ</p>
 
     <h1 class="fv__h1" data-todo="copy">
@@ -444,9 +505,6 @@ ul,ol{ margin:0; padding:0; list-style:none; }
       <p class="cta__headline" data-todo="copy"><span class="u-line">LINE</span>で無料診断</p>
 
       <div class="cta__row">
-        <figure class="cta__person" data-todo="asset">
-          <div class="ph" role="presentation">人物<br>イラスト</div>
-        </figure>
         <div class="cta__main">
           <a class="btn-line" href="#" data-todo="link" data-track="fv_line"
              target="_blank" rel="sponsored nofollow noopener noreferrer">
@@ -465,20 +523,34 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 
   <!-- ============ ②スマホ画面＋信頼バッジ ============ -->
   <div class="trust">
-    <figure class="trust__phone" data-todo="asset">
-      <div class="ph" role="presentation">LINEの<br>やりとり画面</div>
+    <figure class="trust__phone" aria-label="LINEで相談する画面のイメージ">
+      <div class="chat-phone" aria-hidden="true">
+        <span class="chat-phone__notch"></span>
+        <div class="chat-phone__bar"><span>‹</span><span class="chat-phone__brand">退職リリーフ</span><span>•••</span></div>
+        <div class="chat-phone__body">
+          <div class="chat">
+            <span class="chat__avatar">相</span>
+            <p class="chat__bubble">はじめまして！<br>退職リリーフです。<br>受け取れる可能性を確認できます。</p>
+          </div>
+          <div class="chat chat--sent"><p class="chat__bubble">お願いします！</p></div>
+          <div class="chat">
+            <span class="chat__avatar">相</span>
+            <p class="chat__bubble">いくつか質問します。<br>選ぶだけで進めます。</p>
+          </div>
+        </div>
+      </div>
     </figure>
     <div class="trust__list">
       <div class="trust__item" data-todo="copy">
-        <div class="ph" data-todo="asset">icon</div>
+        <span class="trust__icon" style="--icon-x:100%;--icon-y:0%" aria-hidden="true"></span>
         社労士・弁護士<br>監修で安心
       </div>
       <div class="trust__item" data-todo="copy">
-        <div class="ph" data-todo="asset">icon</div>
+        <span class="trust__icon" style="--icon-x:50%;--icon-y:50%" aria-hidden="true"></span>
         受給まで<br>伴走サポート
       </div>
       <div class="trust__item" data-todo="copy">
-        <div class="ph" data-todo="asset">icon</div>
+        <span class="trust__icon" style="--icon-x:0%;--icon-y:100%" aria-hidden="true"></span>
         相談は無料<br>ブロックOK
       </div>
     </div>
@@ -493,19 +565,19 @@ ul,ol{ margin:0; padding:0; list-style:none; }
       <li class="step">
         <p class="step__no">1</p>
         <p class="step__ttl" data-todo="copy">LINEで<br>友だち追加</p>
-        <div class="step__ph" data-todo="asset"><div class="ph">スクショ</div></div>
+        <div class="step__ph" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen mini-phone__screen--add">友だち<br>追加</span></span></div>
         <p class="step__txt" data-todo="copy">ボタンを押すとLINEが開きます。登録に費用はかかりません。</p>
       </li>
       <li class="step">
         <p class="step__no">2</p>
         <p class="step__ttl" data-todo="copy">質問に<br>答える</p>
-        <div class="step__ph" data-todo="asset"><div class="ph">スクショ</div></div>
+        <div class="step__ph" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen">質問に<br>答える</span></span></div>
         <p class="step__txt" data-todo="copy">年齢・退職の予定・健康保険に入っていた期間など。選ぶだけで進みます。</p>
       </li>
       <li class="step">
         <p class="step__no">3</p>
         <p class="step__ttl" data-todo="copy">結果が<br>届く</p>
-        <div class="step__ph" data-todo="asset"><div class="ph">スクショ</div></div>
+        <div class="step__ph" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen mini-phone__screen--result">確認<br>完了</span></span></div>
         <p class="step__txt" data-todo="copy">対象になりそうかと、金額の目安が返ってきます。</p>
       </li>
     </ol>
@@ -565,21 +637,21 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 
     <div class="reasons">
       <div class="reason">
-        <div class="ph" data-todo="asset">icon</div>
+        <span class="reason__icon" style="--icon-x:0%;--icon-y:50%" aria-hidden="true"></span>
         <div>
           <p class="reason__ttl" data-todo="copy">会社は教えてくれない</p>
           <p class="reason__txt" data-todo="copy">会社に案内する義務はなく、人事の担当者自身が知らないことも珍しくありません。</p>
         </div>
       </div>
       <div class="reason">
-        <div class="ph" data-todo="asset">icon</div>
+        <span class="reason__icon" style="--icon-x:100%;--icon-y:0%" aria-hidden="true"></span>
         <div>
           <p class="reason__ttl" data-todo="copy">役所は聞かれたことにしか答えない</p>
           <p class="reason__txt" data-todo="copy">窓口では制度を説明してくれますが、「あなたはどうすべきか」までは踏み込みません。</p>
         </div>
       </div>
       <div class="reason">
-        <div class="ph" data-todo="asset">icon</div>
+        <span class="reason__icon" style="--icon-x:0%;--icon-y:100%" aria-hidden="true"></span>
         <div>
           <p class="reason__ttl" data-todo="copy">申請した人だけが受け取れる</p>
           <p class="reason__txt" data-todo="copy">制度そのものは何十年も前からあります。裏技でも抜け道でもありません。</p>
@@ -620,7 +692,9 @@ ul,ol{ margin:0; padding:0; list-style:none; }
     </div>
 
     <div class="callout">
-      <div class="ph" data-todo="asset">人物<br>イラスト</div>
+      <figure class="callout__art">
+        <img class="asset-img" src="./assets/support-advisors.webp" width="560" height="700" loading="lazy" decoding="async" alt="">
+      </figure>
       <p class="callout__txt" data-todo="copy">
         給付金の申請そのものは、どちらの場合も本人が行います。
         変わるのは「何を、いつ、どう出すか」を自分ひとりで判断するかどうかです。
@@ -640,47 +714,47 @@ ul,ol{ margin:0; padding:0; list-style:none; }
       <li class="why__card">
         <div class="why__head"><span class="why__no">1</span>
           <p class="why__ttl" data-todo="copy">退職日に出勤すると、受け取れなくなる</p></div>
-        <div class="ph" data-todo="asset">icon</div>
+        <span class="why__art" style="--icon-x:0%;--icon-y:0%" aria-hidden="true"></span>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">2</span>
           <p class="why__ttl" data-todo="copy">健康保険の加入期間が「1年」あるかを数える</p></div>
-        <div class="ph" data-todo="asset">icon</div>
+        <span class="why__art" style="--icon-x:50%;--icon-y:0%" aria-hidden="true"></span>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">3</span>
           <p class="why__ttl" data-todo="copy">医師に「働けない状態」の証明を書いてもらう</p></div>
-        <div class="ph" data-todo="asset">icon</div>
+        <span class="why__art" style="--icon-x:100%;--icon-y:0%" aria-hidden="true"></span>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">4</span>
           <p class="why__ttl" data-todo="copy">申請書は4枚あって、書く人が違う</p></div>
-        <div class="ph" data-todo="asset">icon</div>
+        <span class="why__art" style="--icon-x:0%;--icon-y:50%" aria-hidden="true"></span>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">5</span>
           <p class="why__ttl" data-todo="copy">申請は1回では終わらない</p></div>
-        <div class="ph" data-todo="asset">icon</div>
+        <span class="why__art" style="--icon-x:50%;--icon-y:50%" aria-hidden="true"></span>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">6</span>
           <p class="why__ttl" data-todo="copy">失業保険の「受給期間の延長」に期限がある</p></div>
-        <div class="ph" data-todo="asset">icon</div>
+        <span class="why__art" style="--icon-x:100%;--icon-y:50%" aria-hidden="true"></span>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">7</span>
           <p class="why__ttl" data-todo="copy">健康保険を「任意継続」か「国保」か、20日で決める</p></div>
-        <div class="ph" data-todo="asset">icon</div>
+        <span class="why__art" style="--icon-x:0%;--icon-y:100%" aria-hidden="true"></span>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">8</span>
           <p class="why__ttl" data-todo="copy">傷病手当金と失業保険の切り替えタイミング</p></div>
-        <div class="ph" data-todo="asset">icon</div>
+        <span class="why__art" style="--icon-x:50%;--icon-y:100%" aria-hidden="true"></span>
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">9</span>
           <p class="why__ttl" data-todo="copy">不支給になったとき、どうするか</p></div>
-        <div class="ph" data-todo="asset">icon</div>
+        <span class="why__art" style="--icon-x:100%;--icon-y:100%" aria-hidden="true"></span>
       </li>
     </ol>
 
@@ -708,7 +782,9 @@ ul,ol{ margin:0; padding:0; list-style:none; }
         <li>辞めたあとの生活費に不安がある</li>
         <li>会社に退職を言い出せずにいる</li>
       </ul>
-      <figure data-todo="asset" style="margin:0"><div class="ph">人物<br>イラスト</div></figure>
+      <figure class="check__art">
+        <img class="asset-img" src="./assets/selfcheck-woman.webp" width="560" height="700" loading="lazy" decoding="async" alt="スマートフォンを見ながら確認する女性のイメージ">
+      </figure>
     </div>
 
     <p class="note" style="margin-top:12px" data-todo="copy">
@@ -727,7 +803,9 @@ ul,ol{ margin:0; padding:0; list-style:none; }
         受け取れる可能性の診断から、申請までの伴走サポートまで行います。
         相談は無料・LINEで完結・いつでもブロックできます。
       </p>
-      <figure data-todo="asset" style="margin:0"><div class="ph">人物<br>イラスト</div></figure>
+      <figure class="brand__art">
+        <img class="asset-img" src="./assets/support-advisors.webp" width="560" height="700" loading="lazy" decoding="async" alt="相談を支えるスタッフのイメージ">
+      </figure>
     </div>
 
     <p class="note" style="margin-top:12px" data-todo="copy">
@@ -748,7 +826,9 @@ ul,ol{ margin:0; padding:0; list-style:none; }
           <li>受け取れる金額を、診断の時点で断言する</li>
           <li>総額を聞いても答えず、契約を先に進めようとする</li>
         </ul>
-        <figure data-todo="asset" style="margin:0"><div class="ph">建物<br>イラスト</div></figure>
+        <figure class="reject__art">
+          <img class="asset-img" src="./assets/caution-buildings.webp" width="467" height="700" loading="lazy" decoding="async" alt="">
+        </figure>
       </div>
     </div>
 
@@ -853,7 +933,9 @@ ul,ol{ margin:0; padding:0; list-style:none; }
       </div>
       <div class="sum__side">
         <p data-todo="copy">制度は自分で知り、行動した人の味方です。まずは、対象かどうかをLINEでチェック。相談だけでも、お気軽にどうぞ。</p>
-        <figure data-todo="asset" style="margin:0"><div class="ph">人物<br>イラスト</div></figure>
+        <figure class="sum__art">
+          <img class="asset-img" src="./assets/summary-pointing-woman.webp" width="467" height="700" loading="lazy" decoding="async" alt="相談前に確認しておきたいことを案内する女性のイメージ">
+        </figure>
       </div>
     </div>
   </section>
