@@ -169,8 +169,10 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 /* 人物は枠の下端に合わせて配置している。画像を大きくすると、下端が固定なぶん
    頭の位置が上がる。枠の高さも一緒に上げないと頭が切れるので、必ずセットで変える。
    （原寸467x700、頭は y=310〜425） */
+/* bottom を上げると人物ごと上に動く（サイズは変えずに位置だけ動かせる）。
+   見出し「ご存じですか？」の真下に頭が来る位置に合わせてある */
 .fv__art{
-  position:absolute; z-index:0; left:-2px; bottom:0;
+  position:absolute; z-index:0; left:-2px; bottom:36px;
   width:142px; height:218px; margin:0; overflow:hidden; pointer-events:none;
 }
 .fv__art .asset-img{
@@ -212,7 +214,10 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .fv__cta .btn-line__logo{ padding:2px 6px; font-size:10px; }
 
 .cta__sub{ margin:8px 0 0; font-size:12px; color:var(--muted); text-align:center; }
-.fv__operator{ margin:10px 0 0 128px; font-size:11.5px; line-height:1.75; color:var(--muted); text-align:left; }
+/* 金額の注記は人物の右側に逃がす。人物を上げると頭と重なるため。
+   ★この注記は消さないこと。「最大365万円」と同一視野に条件を置くのが
+     案件レギュレーションの要件（CLAUDE.md参照） */
+.fv__note{ margin-left:128px; }
 
 /* ============================================================
    LINEボタン（全CTA共通）
@@ -559,10 +564,12 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   .fv__amount .u-unit{ font-size:26px; }
   .fv__lead{ font-size:28px; }
   .btn-line__label{ font-size:19px; }
-  .fv__art{ width:104px; height:172px; }
+  /* 人物が小さくなるぶん bottom も詰めないと、頭が見出しから離れる */
+  .fv__art{ width:104px; height:172px; bottom:66px; }
   .fv__art .asset-img{ width:180px; }
   .fv__cta{ padding-left:98px; min-height:116px; }
-  .fv__operator{ margin-left:98px; }
+  /* 128pxのままだと注記が細くなりすぎて「限です。」が単独行に落ちる */
+  .fv__note{ margin-left:96px; font-size:10px; }
   .cta__badge{ font-size:13px; letter-spacing:-.05em; white-space:nowrap; }
   .fv__cta .btn-line__label{ font-size:15px; }
   /* 12pxだと「不要」「ます」が単独行に落ちる。幅196pxに18文字入る大きさにする */
@@ -595,7 +602,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
       <span class="fv__lead">受け取れる制度を<br>ご存じですか？</span>
     </h1>
 
-    <p class="fv__note" data-todo="copy">※ 月収30万円の場合。条件を満たしたときの、制度上の上限です。</p>
+    <p class="fv__note" data-todo="copy">※ 月収30万円の場合。<br>条件を満たしたときの制度上の上限です。</p>
 
     <div class="fv__cta">
       <p class="cta__badge" data-todo="copy">まずは、受け取れるかどうか</p>
@@ -613,9 +620,8 @@ ul,ol{ margin:0; padding:0; list-style:none; }
       </div>
     </div>
 
-    <p class="fv__operator" data-todo="copy">
-      運営：労働組合 新宿ユニオン（社労士・弁護士監修）<br>いつでもブロックできます
-    </p>
+    <!-- 運営表記はFVから削除（2026-08-01）。
+         運営者情報はフッターのリンクと免責ブロックに残っている -->
   </section>
 
   <!-- ============ ②スマホ画面＋信頼バッジ ============ -->
