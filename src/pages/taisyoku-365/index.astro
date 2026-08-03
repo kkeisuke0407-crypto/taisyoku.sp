@@ -1,0 +1,347 @@
+---
+// 広告用LP（PPC専用）。/taishoku-kyufukin/ と主題が近いので noindex のまま運用する。
+// 検索から拾わせると重複コンテンツになるため、外すときは棲み分けを決めてから。
+const pageTitle = "退職前に確認したい制度｜最大365万円の受給目安";
+const pageDescription = "休職中・退職予定の方へ。条件に合う制度の無料相談をご案内します。";
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/taisyoku-365/styles.css?v=20260801-webp" />
+
+    <!-- Google tag (gtag.js)：退職給付金サイト専用のGA4 + Google広告CV計測。
+         ★読み込むのは Googleタグ ID の GT-WB2N4H34。測定ID（G-DD332W5J8R）ではない。
+           gtag/js?id=G-DD332W5J8R は404を返す。config にもタグIDを使うこと。
+           買取と共用の GT-K55F94TT を使うと買取のデータが退職のGA4に混入する。 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-WB2N4H34"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date()); gtag('config', 'GT-WB2N4H34'); gtag('config', 'AW-18129603657');
+    </script>
+  </head>
+  <body class="benefit-body">
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-check" viewBox="0 0 64 64">
+        <path d="M17 33.5 27.5 44 48 21" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="7" />
+      </symbol>
+      <symbol id="icon-chat" viewBox="0 0 64 64">
+        <path d="M10 12h44v31c0 5-4 9-9 9H30L19 60v-8h-1c-5 0-8-4-8-9V12Z" fill="currentColor" />
+        <circle cx="24" cy="32" r="3" fill="var(--white)" />
+        <circle cx="32" cy="32" r="3" fill="var(--white)" />
+        <circle cx="40" cy="32" r="3" fill="var(--white)" />
+      </symbol>
+      <symbol id="icon-file" viewBox="0 0 64 64">
+        <path d="M17 7h23l10 10v40H17z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4.5" />
+        <path d="M39 7v12h11M25 30h17M25 39h17M25 48h12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4.5" />
+      </symbol>
+      <symbol id="icon-clipboard" viewBox="0 0 64 64">
+        <path d="M16 13h32v44H16z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4.5" />
+        <path d="M25 13v-3c0-3 3-5 7-5s7 2 7 5v3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4.5" />
+        <path d="m25 36 5 5 10-11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" />
+      </symbol>
+      <symbol id="icon-hand" viewBox="0 0 64 64">
+        <path d="M14 48c7-2 10-8 13-15l3-9c1-3 5-2 5 1l-2 7 5-12c1-3 5-1 5 2l-3 9 5-9c2-3 6 0 4 3l-4 9 4-5c2-2 5 1 3 3l-8 12c-4 6-11 9-18 9H14z" fill="currentColor" />
+        <path d="M34 17c0-6 5-10 10-10 6 0 10 5 10 10 0 7-8 13-10 15-3-2-10-8-10-15Z" fill="currentColor" />
+      </symbol>
+      <symbol id="icon-cash" viewBox="0 0 64 64">
+        <path d="m10 22 34-13 11 29-34 13zM9 34l34 13 11-28M18 32h27M18 41h17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.5" />
+        <circle cx="35" cy="25" r="6" fill="none" stroke="currentColor" stroke-width="4" />
+      </symbol>
+      <symbol id="icon-arrow" viewBox="0 0 64 64">
+        <path d="M7 32h44M35 14l18 18-18 18" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6" />
+      </symbol>
+      <symbol id="icon-warning" viewBox="0 0 64 64">
+        <path d="M32 7 59 56H5z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="5" />
+        <path d="M32 23v17M32 48v1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="6" />
+      </symbol>
+      <symbol id="icon-headset" viewBox="0 0 64 64">
+        <path d="M13 35v-4c0-11 8-20 19-20s19 9 19 20v4M13 35h9v15h-5c-3 0-4-2-4-5zM51 35h-9v15h5c3 0 4-2 4-5zM42 51c-2 4-6 6-11 6h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" />
+      </symbol>
+      <symbol id="icon-form" viewBox="0 0 64 64">
+        <path d="M12 7h30l10 10v40H12zM41 7v12h11M20 31h23M20 40h16M20 49h11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.5" />
+        <path d="m39 46 12-12 5 5-12 12-7 2z" fill="currentColor" />
+      </symbol>
+    </svg>
+
+    <main class="benefit-lp">
+      <section class="hero" aria-labelledby="hero-heading">
+        <img
+          class="hero-visual"
+          src="/taisyoku-365/images/hero-office-worker-blue.webp"
+          width="1086"
+          height="1448"
+          alt="夜の街を背景に考え込むスーツ姿の男性イラスト"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <div class="hero-scrim" aria-hidden="true"></div>
+        <img
+          class="hero-person"
+          src="/taisyoku-365/images/hero-office-worker-cutout-cropped.webp"
+          width="734"
+          height="1007"
+          alt=""
+          aria-hidden="true"
+          decoding="async"
+        />
+        <div class="hero-inner">
+          <p class="hero-label">退職予定の方へ</p>
+          <p class="pr-badge">PR</p>
+          <h1 id="hero-heading"><span>退職前に</span><span>確認したい制度</span></h1>
+          <div class="hero-rule" aria-hidden="true"></div>
+          <p class="benefit-number"><span class="benefit-prefix">最大</span><strong>365</strong><span class="benefit-unit">万円</span></p>
+          <p class="benefit-note">※条件を満たす場合の制度上の目安</p>
+          <a class="line-cta line-cta-hero kin-aff" href="#" data-cta="hero-line" data-track="hero_line"
+             target="_blank" rel="sponsored nofollow noopener noreferrer">
+            <svg aria-hidden="true"><use href="#icon-chat"></use></svg>
+            <span>LINEで無料相談</span>
+            <svg class="cta-arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+          </a>
+          <p class="cta-destination">退職リリーフの公式サイトへ移動します</p>
+        </div>
+      </section>
+
+      <section class="section-wrap eligibility-section" aria-labelledby="eligibility-heading">
+        <div class="paper-card eligibility-card">
+          <h2 id="eligibility-heading">あなたは対象になる？</h2>
+          <div class="eligibility-grid">
+            <div class="eligibility-item">
+              <span class="check-disc"><svg aria-hidden="true"><use href="#icon-check"></use></svg></span>
+              <p><strong>休職中・退職予定</strong></p>
+            </div>
+            <div class="eligibility-item">
+              <span class="check-disc"><svg aria-hidden="true"><use href="#icon-check"></use></svg></span>
+              <p><strong>健康保険</strong>に加入している</p>
+            </div>
+            <div class="eligibility-item">
+              <span class="check-disc"><svg aria-hidden="true"><use href="#icon-check"></use></svg></span>
+              <p>働くことが<strong>つらい</strong></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-wrap process-section" aria-labelledby="process-heading">
+        <h2 id="process-heading" class="lined-heading">受給までの一般的な流れ<span>（目安）</span></h2>
+        <img class="process-ai-strip" src="/taisyoku-365/images/benefit-process-five-stages.webp" width="1600" height="640" loading="lazy" decoding="async" alt="相談から受給開始までの5つの工程を示すイラスト" />
+        <ol class="process-list">
+          <li>
+            <span class="step-count">1</span>
+            <strong>LINEで相談<br />（無料）</strong>
+          </li>
+          <li>
+            <span class="step-count">2</span>
+            <strong>条件確認・<br />ヒアリング</strong>
+          </li>
+          <li>
+            <span class="step-count">3</span>
+            <strong>申請の準備<br />手続き開始</strong>
+          </li>
+          <li>
+            <span class="step-count">4</span>
+            <strong>審査・認定</strong>
+          </li>
+          <li class="process-final">
+            <span class="step-count">5</span>
+            <strong>受給開始<br /><em>（最大365万円）</em></strong>
+          </li>
+        </ol>
+        <p class="process-note">※申請するのは本人です。支給の可否・期間は審査により決まり、状況によって異なります</p>
+      </section>
+
+      <section class="section-wrap comparison-section" aria-labelledby="comparison-heading">
+        <div class="paper-card comparison-card">
+          <h2 id="comparison-heading">どちらで進めますか？</h2>
+          <div class="comparison-grid">
+            <article class="route route-self">
+              <h3>自分で申請する場合</h3>
+              <ul>
+                <li>手続きが複雑で時間がかかる</li>
+                <li>書類の不備で不認定のリスク</li>
+                <li>受給までに長期間かかることも</li>
+              </ul>
+            </article>
+            <article class="route route-support">
+              <h3>専門サポートを利用する場合</h3>
+              <ul>
+                <li>条件に合う制度を<strong>無料でご案内</strong></li>
+                <li>書類の準備と進め方を<strong>丁寧にサポート</strong></li>
+                <li>受け取る順番を一緒に組み立てられる</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <aside class="section-wrap caution-band" aria-label="制度に関する注意事項">
+        <svg aria-hidden="true"><use href="#icon-warning"></use></svg>
+        <div>
+          <h2>誰でも受け取れるわけではありません</h2>
+          <p>制度には条件や審査があります。まずはあなたが対象になるか、LINEで無料診断をご利用ください。</p>
+        </div>
+        <div class="caution-person" aria-hidden="true">
+          <img src="/taisyoku-365/images/caution-worried-office-worker.webp" width="650" height="853" loading="lazy" decoding="async" alt="" />
+        </div>
+      </aside>
+
+      <section class="section-wrap how-section" aria-labelledby="how-heading">
+        <div class="paper-card how-card">
+          <h2 id="how-heading">しくみはシンプル</h2>
+          <div class="how-grid">
+            <article>
+              <svg aria-hidden="true"><use href="#icon-form"></use></svg>
+              <p>条件を満たすと<br />給付が受けられる<br />制度があります</p>
+            </article>
+            <span class="how-arrow" aria-hidden="true"><svg><use href="#icon-arrow"></use></svg></span>
+            <article>
+              <svg aria-hidden="true"><use href="#icon-headset"></use></svg>
+              <p>専門スタッフが<br />あなたに合う制度を<br />ご案内</p>
+            </article>
+            <span class="how-arrow" aria-hidden="true"><svg><use href="#icon-arrow"></use></svg></span>
+            <article>
+              <svg aria-hidden="true"><use href="#icon-form"></use></svg>
+              <p>申請の準備を<br />サポート<br />手続き中も相談できます</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-wrap faq-section" aria-labelledby="faq-heading">
+        <h2 id="faq-heading">よくある質問 <span aria-hidden="true">？</span></h2>
+        <div class="faq-list">
+          <details>
+            <summary><strong>Q.</strong> いくらくらい受け取れますか？<span aria-hidden="true">⌄</span></summary>
+            <p>受給額は、加入期間や給与、休職・退職時の状況などにより異なります。最大365万円は条件を満たす場合の制度上の目安です。</p>
+          </details>
+          <details>
+            <summary><strong>Q.</strong> 会社に知られずに相談できますか？<span aria-hidden="true">⌄</span></summary>
+            <p>勤務先への連絡の有無を含め、進め方は制度や状況により異なります。ご不安な点は無料相談時にご確認ください。</p>
+          </details>
+          <details>
+            <summary><strong>Q.</strong> 本当に無料で相談できますか？<span aria-hidden="true">⌄</span></summary>
+            <p>無料相談では、条件に合う制度の確認や手続きの進め方をご案内します。詳しい内容は相談時にご確認ください。</p>
+          </details>
+          <details>
+            <summary><strong>Q.</strong> 申請は代わりにやってもらえますか？<span aria-hidden="true">⌄</span></summary>
+            <p>いいえ。申請するのは本人です。サービス側が行うのは、書類の準備や進め方の支援です。</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="bottom-cta" id="line-consultation" aria-label="LINEで無料相談">
+        <a class="line-cta kin-aff" href="#" data-cta="bottom-line" data-track="bottom_line"
+           target="_blank" rel="sponsored nofollow noopener noreferrer">
+          <svg aria-hidden="true"><use href="#icon-chat"></use></svg>
+          <span>LINEで無料相談</span>
+          <svg class="cta-arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+        </a>
+        <p class="cta-destination">退職リリーフの公式サイトへ移動します</p>
+      </section>
+
+      <!-- 免責。削らない。景表法・ステマ規制の対応をここに集約している -->
+      <section class="lp-disclaimer" aria-label="免責事項">
+        <ul>
+          <li>本ページはプロモーションを含みます</li>
+          <li>傷病手当金・失業保険は、法令に定める要件を満たした場合に、保険者（健康保険組合・協会けんぽ）またはハローワークの審査を経て支給されるものです。本ページで紹介するサービスは、受給を保証するものではありません</li>
+          <li>給付金の申請は本人が行うものです。本ページで紹介するサービスは、書類の準備や進め方の支援を行うものであり、申請の代行を行うものではありません</li>
+          <li>本ページに記載の金額は、いずれも制度上の計算例です。実際に受け取れる金額・期間は、標準報酬月額・被保険者期間・療養の状況により異なります</li>
+          <li>心身の不調がないにもかかわらず、受給を目的として受診や診断書の取得を行うことは、不正受給にあたるおそれがあります</li>
+          <li>掲載内容は<span id="lp-today"></span>時点の情報です。最新の条件は各公式サイトおよび公的機関でご確認ください</li>
+        </ul>
+      </section>
+
+      <footer class="lp-foot">
+        <nav>
+          <a href="/operator/">運営者情報</a>
+          <a href="/privacy/">プライバシーポリシー</a>
+          <a href="/disclosure/">広告掲載について</a>
+        </nav>
+        <p>© 退職給付金ガイド</p>
+      </footer>
+    </main>
+
+    <style is:inline>
+      /* 移植時に足したぶん。元の styles.css は触っていない */
+      .cta-destination{
+        margin:.6em 0 0; font-size:11.5px; line-height:1.6;
+        color:rgba(255,255,255,.82); text-align:center;
+      }
+      .bottom-cta .cta-destination{ color:#5f6672; }
+      .lp-disclaimer{ padding:20px 16px; background:#f2f4f7; }
+      .lp-disclaimer ul{ margin:0; padding:0; list-style:none; max-width:560px; margin-inline:auto; }
+      .lp-disclaimer li{ position:relative; padding-left:12px; font-size:10.5px; line-height:1.75; color:#6e7580; }
+      .lp-disclaimer li + li{ margin-top:5px; }
+      .lp-disclaimer li::before{ content:"・"; position:absolute; left:0; top:0; }
+      .lp-foot{ padding:16px 16px calc(20px + env(safe-area-inset-bottom,0px)); text-align:center; background:#fff; }
+      .lp-foot nav{ display:flex; flex-wrap:wrap; justify-content:center; gap:6px 16px; margin-bottom:8px; }
+      .lp-foot a{ font-size:12px; color:#6e7580; text-decoration:underline; }
+      .lp-foot p{ margin:0; font-size:11px; color:#9aa1ab; }
+    </style>
+
+    <script is:inline>
+      (function(){
+        /* CTAのリンク差し込み ＋ CV計測。
+           イベント名は /taishoku-kyufukin/ と同一。変えるとGoogle広告のCV設定と繋がらない */
+        // ▼TODO：SLVRbulletの実アフィリリンクに差し替える
+        var AFF = "https://taishoku-relief.com/";
+        var LANDING = "taisyoku_365";
+        var KEEP = /^(utm_|gclid|gbraid|wbraid|gad_|campaignid|keyword|matchtype|device|network|creative)$/i;
+
+        function fwd(raw){
+          try{
+            var u = new URL(raw, location.href);
+            new URLSearchParams(location.search).forEach(function(v,k){
+              if(KEEP.test(k) && !u.searchParams.has(k)) u.searchParams.set(k,v);
+            });
+            return u.toString();
+          }catch(_){ return raw; }
+        }
+        function track(name, params){
+          try{
+            if(window.dataLayer) window.dataLayer.push(Object.assign({event:name}, params||{}));
+            if(typeof gtag==="function") gtag("event", name, Object.assign({}, params||{}, { transport_type:"beacon" }));
+          }catch(_){}
+        }
+
+        var url = fwd(AFF);
+        Array.prototype.forEach.call(document.querySelectorAll('.kin-aff'), function(el){
+          el.setAttribute('href', url);
+          el.addEventListener('click', function(){
+            if(el.__busy) return;                    // 連打による二重CVを防止
+            el.__busy = true; setTimeout(function(){ el.__busy = false; }, 1200);
+            var params = {
+              affiliate_key:"relief",
+              track_name: el.getAttribute('data-track') || "",
+              cta_type:"line", landing_intent:LANDING, link_url:url
+            };
+            var cv = "taishoku_relief_line_click";
+            if(window.dataLayer) window.dataLayer.push(Object.assign({event:cv}, params));
+            if(typeof gtag==="function"){
+              gtag("event", cv, Object.assign({}, params, { transport_type:"beacon" }));
+              gtag("event", "taishoku_relief_cta_click",
+                   Object.assign({}, params, { send_to:"GT-WB2N4H34", transport_type:"beacon" }));
+            }
+          });
+        });
+
+        /* 免責の日付（JST） */
+        var jst = new Date(new Date().toLocaleString('en-US', { timeZone:'Asia/Tokyo' }));
+        var t = document.getElementById('lp-today');
+        if(t) t.textContent = jst.getFullYear() + '年' + (jst.getMonth()+1) + '月' + jst.getDate() + '日';
+
+        track("taishoku_relief_landing_intent", { landing_intent:LANDING });
+        track(LANDING + "_open", { landing_intent:LANDING });
+      })();
+    </script>
+  </body>
+</html>
