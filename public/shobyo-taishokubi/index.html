@@ -160,93 +160,44 @@
       <p class="comparison-note">調査基準日：2026年7月30日。料金・サポート範囲は変わるため、申込直前に各窓口の公式条件を再確認してください。給付金の支給可否は保険者の審査によります。</p>
     </section>
 
+    <section class="finder" aria-labelledby="finder-title">
+      <h2 id="finder-title">あなたに合う相談先を探す</h2>
+      <p class="finder__intro">絞り込みは掲載情報を見やすくするための機能です。受給の可否・審査結果を判定するものではありません。</p>
+      <div class="finder__controls" data-filter-controls>
+        <fieldset><legend>運営元</legend><button type="button" class="filter-chip is-selected" data-filter="none" aria-pressed="true">指定しない</button><button type="button" class="filter-chip" data-filter="labor">社労士の関与あり</button><button type="button" class="filter-chip" data-filter="lawyer">弁護士の関与あり</button></fieldset>
+        <fieldset><legend>相談方法</legend><button type="button" class="filter-chip is-selected" data-filter="none" aria-pressed="true">指定しない</button><button type="button" class="filter-chip" data-filter="line">LINE対応：あり</button><button type="button" class="filter-chip" data-filter="phone">電話相談：あり</button></fieldset>
+        <fieldset><legend>追加サポート</legend><button type="button" class="filter-chip is-selected" data-filter="none" aria-pressed="true">指定しない</button><button type="button" class="filter-chip" data-filter="career">転職相談あり</button><button type="button" class="filter-chip" data-filter="nationwide">全国対応：あり</button></fieldset>
+        <label class="sort-select">並び替え<select aria-label="掲載順の並び替え" data-sort><option>掲載基準順</option><option>料金が低い順</option><option>料金が高い順</option><option>指定しない</option></select></label>
+      </div>
+      <p class="filter-status" data-filter-status aria-live="polite">公式確認前のため、比較条件による絞り込み・並び替えはまだ行いません。</p>
+    </section>
+
     <section class="section ranking-section" id="ranking" aria-labelledby="ranking-title">
-      <h2 class="band-title" id="ranking-title">傷病手当金の相談先<span>4</span>社を比較</h2>
-      <p class="finder__intro">掲載順は、運営主体・支援範囲・料金の確認しやすさ・相談方法をもとに編集部が整理したものです。受給額や受給の確実性を示すものではありません。</p>
+      <h2 class="band-title" id="ranking-title">傷病手当金の相談窓口<span>5</span>社を比較</h2>
+      <!-- ★ここは掲載サービスをはめ込むための枠。[ ]はプレースホルダ。
+           勝手に別の内容へ差し替えないこと（2026-08-01に一度やって戻した）。
+           公式・ASPの情報が確定したら、この5枠に順位どおり流し込む。 -->
       <div class="service-list">
-        <article class="service-card service-card--top">
-          <div class="rank-medal"><strong>第1位</strong><span>比較枠</span></div>
-          <div class="service-card__main">
-            <h3>退職リリーフ <small>PR</small></h3>
-            <p class="service-card__summary">退職日を決める前から相談したい人向け。</p>
-            <ul>
-              <li>運営は労働組合の新宿ユニオン。社労士・弁護士の監修が入っています</li>
-              <li>LINEで24時間受付。声を出すのがしんどい日でも文字で送れます</li>
-              <li>受給の可能性の確認から、退職日の決め方、書類の準備と進め方まで</li>
-            </ul>
-          </div>
-          <div class="service-card__facts">
-            <p><b>料金と支払時期</b>相談は無料。依頼する場合の料金は無料相談後に個別提示（公式に料金表の記載なし）</p>
-            <p><b>本人が対応する手続き</b>申請するのは本人。サービス側は書類の準備と進め方を支援します</p>
-            <p><b>弱み</b>料金が事前に分からない／第三者メディアの口コミが確認できない／受給の保証はない</p>
-          </div>
-          <a class="service-cta kin-aff" href="#" data-track="card_relief" target="_blank" rel="sponsored nofollow noopener noreferrer">退職リリーフの公式サイトを見る<span aria-hidden="true">›</span></a>
+        <article class="service-card service-card--top" data-service-card>
+          <div class="rank-medal"><strong>第1位</strong><span>比較枠</span></div><div class="service-card__main"><h3>サービスA</h3><p class="service-card__summary">[どんな相談者が比較しやすいか]を重視する人向け。</p><ul><li>[公式に明記された運営・監修情報]</li><li>[公式に明記された相談方法または対応時間]</li><li>[公式に明記された支援の範囲]</li></ul></div><div class="service-card__facts"><p><b>料金と支払時期</b>[料金と支払時期]</p><p><b>本人が対応する手続き</b>[本人が対応する手続き]</p><p><b>キャンセル・返金・追加費用</b>[キャンセル・返金・追加費用]</p></div><button type="button" class="service-cta" data-service-cta="サービスA" aria-describedby="official-confirmation">サービスAの公式情報を確認する<span aria-hidden="true">›</span></button>
         </article>
-
-        <article class="service-card">
-          <div class="rank-medal"><strong>第2位</strong><span>比較枠</span></div>
-          <div class="service-card__main">
-            <h3>社労士の申請代行</h3>
-            <p class="service-card__summary">やることが「書類を正しく出す」に絞られている人向け。</p>
-            <ul>
-              <li>社会保険労務士（国家資格者）が書類の作成と提出を代行します</li>
-              <li>申請1回ごとの料金を公開している事務所が多く、総額が読めます</li>
-              <li>支給されてから支払う後払いに対応する事務所もあります</li>
-            </ul>
-          </div>
-          <div class="service-card__facts">
-            <p><b>料金と支払時期</b>初回27,500円／2回目以降8,800円〜11,000円といった公開例（事務所により異なります）</p>
-            <p><b>本人が対応する手続き</b>書類の記入内容の確認など。保険者とのやりとりは代行されます</p>
-            <p><b>弱み</b>会社との交渉はできない（業務範囲外）。退職日が未定だと相談内容が固まらない</p>
-          </div>
-          <a class="service-cta" href="https://shoubyou.cl-aid.com/" target="_blank" rel="nofollow noopener noreferrer">社労士の申請代行を見る<span aria-hidden="true">›</span></a>
+        <article class="service-card" data-service-card>
+          <div class="rank-medal"><strong>第2位</strong><span>比較枠</span></div><div class="service-card__main"><h3>サービスB</h3><p class="service-card__summary">[どんな相談者が比較しやすいか]を重視する人向け。</p><ul><li>[公式に明記された運営・監修情報]</li><li>[公式に明記された相談方法または対応時間]</li><li>[公式に明記された支援の範囲]</li></ul></div><div class="service-card__facts"><p><b>料金と支払時期</b>[料金と支払時期]</p><p><b>本人が対応する手続き</b>[本人が対応する手続き]</p><p><b>キャンセル・返金・追加費用</b>[キャンセル・返金・追加費用]</p></div><button type="button" class="service-cta" data-service-cta="サービスB" aria-describedby="official-confirmation">サービスBの公式情報を確認する<span aria-hidden="true">›</span></button>
         </article>
-
-        <article class="service-card">
-          <div class="rank-medal"><strong>第3位</strong><span>比較枠</span></div>
-          <div class="service-card__main">
-            <h3>自分で申請する</h3>
-            <p class="service-card__summary">条件が明確で、書類も自分で書ける人向け。</p>
-            <ul>
-              <li>費用は0円。窓口で申請書をもらって出せば済みます</li>
-              <li>制度の説明は協会けんぽ・健保組合・ハローワークで受けられます</li>
-              <li>条件を満たしていれば、受け取れる金額は依頼した場合と変わりません</li>
-            </ul>
-          </div>
-          <div class="service-card__facts">
-            <p><b>料金と支払時期</b>0円</p>
-            <p><b>本人が対応する手続き</b>すべて。申請書は4枚あり、本人・会社・医師で書く人が違います</p>
-            <p><b>弱み</b>退職日の決め方は誰も教えてくれない。出し忘れや不備は取り返せないことがある</p>
-          </div>
-          <a class="service-cta" href="https://www.kyoukaikenpo.or.jp/g6/cat620/r307/" target="_blank" rel="nofollow noopener noreferrer">協会けんぽの案内を見る<span aria-hidden="true">›</span></a>
+        <article class="service-card" data-service-card>
+          <div class="rank-medal"><strong>第3位</strong><span>比較枠</span></div><div class="service-card__main"><h3>サービスC</h3><p class="service-card__summary">[どんな相談者が比較しやすいか]を重視する人向け。</p><ul><li>[公式に明記された運営・監修情報]</li><li>[公式に明記された相談方法または対応時間]</li><li>[公式に明記された支援の範囲]</li></ul></div><div class="service-card__facts"><p><b>料金と支払時期</b>[料金と支払時期]</p><p><b>本人が対応する手続き</b>[本人が対応する手続き]</p><p><b>キャンセル・返金・追加費用</b>[キャンセル・返金・追加費用]</p></div><button type="button" class="service-cta" data-service-cta="サービスC" aria-describedby="official-confirmation">サービスCの公式情報を確認する<span aria-hidden="true">›</span></button>
         </article>
-
-        <article class="service-card">
-          <div class="rank-medal"><strong>第4位</strong><span>比較枠</span></div>
-          <div class="service-card__main">
-            <h3>一般の退職代行</h3>
-            <p class="service-card__summary">辞めること自体が目的の人向け。</p>
-            <ul>
-              <li>退職の意思を本人に代わって伝えます</li>
-              <li>運営主体は民間企業・労働組合・弁護士があり、できることが変わります</li>
-              <li>労働組合・弁護士の運営なら、会社と交渉できます</li>
-            </ul>
-          </div>
-          <div class="service-card__facts">
-            <p><b>料金と支払時期</b>2万〜5万円台が中心（運営主体・オプションで変動）</p>
-            <p><b>本人が対応する手続き</b>給付金の申請は本人。給付金を扱わない会社もあります</p>
-            <p><b>弱み</b>民間企業の運営だと交渉はできません。給付金まで見てくれるかは申込前に必ず確認</p>
-          </div>
+        <article class="service-card" data-service-card>
+          <div class="rank-medal"><strong>第4位</strong><span>比較枠</span></div><div class="service-card__main"><h3>サービスD</h3><p class="service-card__summary">[どんな相談者が比較しやすいか]を重視する人向け。</p><ul><li>[公式に明記された運営・監修情報]</li><li>[公式に明記された相談方法または対応時間]</li><li>[公式に明記された支援の範囲]</li></ul></div><div class="service-card__facts"><p><b>料金と支払時期</b>[料金と支払時期]</p><p><b>本人が対応する手続き</b>[本人が対応する手続き]</p><p><b>キャンセル・返金・追加費用</b>[キャンセル・返金・追加費用]</p></div><button type="button" class="service-cta" data-service-cta="サービスD" aria-describedby="official-confirmation">サービスDの公式情報を確認する<span aria-hidden="true">›</span></button>
+        </article>
+        <article class="service-card" data-service-card>
+          <div class="rank-medal"><strong>第5位</strong><span>比較枠</span></div><div class="service-card__main"><h3>サービスE</h3><p class="service-card__summary">[どんな相談者が比較しやすいか]を重視する人向け。</p><ul><li>[公式に明記された運営・監修情報]</li><li>[公式に明記された相談方法または対応時間]</li><li>[公式に明記された支援の範囲]</li></ul></div><div class="service-card__facts"><p><b>料金と支払時期</b>[料金と支払時期]</p><p><b>本人が対応する手続き</b>[本人が対応する手続き]</p><p><b>キャンセル・返金・追加費用</b>[キャンセル・返金・追加費用]</p></div><button type="button" class="service-cta" data-service-cta="サービスE" aria-describedby="official-confirmation">サービスEの公式情報を確認する<span aria-hidden="true">›</span></button>
         </article>
       </div>
 
       <aside class="advice-box" id="official-confirmation">
         <svg aria-hidden="true" viewBox="0 0 48 48"><path d="M24 4 45 42H3z"/><path d="M24 17v12M24 35v1"/></svg>
-        <div>
-          <h3>肩書きの立派さと、受け取れる額は別の話です</h3>
-          <p>社労士は国家資格で、書類のプロです。労働組合は交渉ができます。ただ受け取れる額を決めるのは、退職日と被保険者期間と医師の証明です。どちらに頼んでも、そこは変わりません。</p>
-          <p class="official-status">こんな窓口はその場で断ってOKです。「誰でももらえます」と言う／受診する病院や診断書の書き方を指定してくる／受け取れる金額を相談だけで断言する／総額を聞いても答えず契約を先に進めようとする。</p>
-        </div>
+        <div><h3>迷ったときは、まず「説明と費用」を確認する</h3><p>上位に掲載していることだけを理由に申込先を決める必要はありません。自分の退職予定日、健康保険の加入状況、相談したいことを伝え、説明の分かりやすさと契約条件を比べてから選びましょう。</p><p class="official-status" data-official-status aria-live="polite">サービス固有の情報と掲載URLは、公式・ASP情報の確認後に設定します。</p></div>
       </aside>
     </section>
 
@@ -344,6 +295,55 @@
             gtag("event", "taishoku_relief_cta_click",
                  Object.assign({}, params, { send_to:"GT-WB2N4H34", transport_type:"beacon" }));
           }
+        });
+      });
+
+      /* ---------- 絞り込み・並び替え ----------
+         公式確認が済むまでは実際の絞り込みを行わず、状態表示だけ更新する仕様 */
+      var finder = document.querySelector('[data-filter-controls]');
+      var filterStatus = document.querySelector('[data-filter-status]');
+      var serviceCards = [].slice.call(document.querySelectorAll('[data-service-card]'));
+      function updateStatus(){
+        var selected = [].slice.call(finder.querySelectorAll('.filter-chip[aria-pressed="true"]'))
+          .filter(function(b){ return b.dataset.filter !== 'none'; });
+        var sort = finder.querySelector('[data-sort]').value;
+        var hasRequest = selected.length || ['掲載基準順','指定しない'].indexOf(sort) === -1;
+        filterStatus.textContent = hasRequest
+          ? '公式確認前の項目があるため、選択した条件では絞り込み・並び替えを行いません。'
+          : '公式確認前のため、比較条件による絞り込み・並び替えはまだ行いません。';
+        serviceCards.forEach(function(card){ card.hidden = false; });
+      }
+      if(finder){
+        finder.addEventListener('click', function(event){
+          var button = event.target.closest('.filter-chip');
+          if(!button) return;
+          var group = button.closest('fieldset');
+          group.querySelectorAll('.filter-chip').forEach(function(chip){
+            var isSel = chip === button;
+            chip.classList.toggle('is-selected', isSel);
+            chip.setAttribute('aria-pressed', String(isSel));
+          });
+          updateStatus();
+        });
+        var sortEl = finder.querySelector('[data-sort]');
+        if(sortEl) sortEl.addEventListener('change', updateStatus);
+      }
+
+      /* ---------- 各サービスのCTA ----------
+         掲載URLが未確定のあいだは外部へ遷移させず、確認中である旨だけ出す。
+         ★URLが決まったら a要素に置き換え、class に kin-aff を付けること（＝CV計測に乗る） */
+      var officialStatus = document.querySelector('[data-official-status]');
+      document.querySelectorAll('[data-service-cta]').forEach(function(button){
+        button.addEventListener('click', function(){
+          if(officialStatus){
+            officialStatus.textContent = button.dataset.serviceCta
+              + 'の公式情報と掲載URLは確認中です。未確認の外部ページへは遷移しません。';
+          }
+          var target = document.getElementById('official-confirmation');
+          if(target) target.scrollIntoView({
+            behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+            block: 'center'
+          });
         });
       });
 
