@@ -80,64 +80,46 @@ body {
   transform: rotate(-11deg) translate(20px, -35px);
 }
 
-.hero-visual {
+.hero-person {
   position: absolute;
-  z-index: 0;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 67% 15%;
+  z-index: 2;
+  right: -17px;
+  bottom: -7px;
+  display: block;
+  width: auto;
+  height: 286px;
+  filter: drop-shadow(-5px 3px 7px rgba(0, 0, 0, 0.3));
 }
 
-.hero-person {
-  display: none;
+.hero-inner::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0 auto 0 0;
+  width: 80%;
+  content: "";
+  background: linear-gradient(90deg, rgba(0, 15, 41, 0.98) 0%, rgba(0, 15, 41, 0.96) 86%, rgba(0, 15, 41, 0) 100%);
+  pointer-events: none;
+}
+
+.hero-inner > * {
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 599px) {
-  .hero-visual {
-    display: none;
-  }
-
-  .hero-person {
-    position: absolute;
-    z-index: 2;
-    right: -17px;
-    bottom: -7px;
-    display: block;
-    width: auto;
-    height: 286px;
-    filter: drop-shadow(-5px 3px 7px rgba(0, 0, 0, 0.3));
-  }
-
   .hero-scrim {
     background:
       linear-gradient(90deg, var(--page-blue-deep) 0%, var(--page-blue-deep) 48%, var(--color-scrim-strong) 60%, var(--color-scrim-light) 76%, transparent 100%),
       linear-gradient(180deg, transparent 56%, var(--page-blue-deep) 100%);
   }
 
-  .hero-inner::before {
-    position: absolute;
-    z-index: 0;
-    inset: 0 auto 0 0;
-    width: 80%;
-    content: "";
-    background: linear-gradient(90deg, rgba(0, 15, 41, 0.98) 0%, rgba(0, 15, 41, 0.96) 86%, rgba(0, 15, 41, 0) 100%);
-    pointer-events: none;
-  }
-
-  .hero-inner > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero h1 {
+  .hero-inner > #hero-heading {
     width: 72%;
     font-size: clamp(2.2rem, 9.7vw, 3.05rem);
     letter-spacing: -0.075em;
   }
 
-  .hero h1 span:last-child {
+  .hero-inner > #hero-heading span:last-child {
     font-size: 0.88em;
   }
 }
@@ -868,6 +850,16 @@ body {
     padding-bottom: 42px;
   }
 
+  .hero-person {
+    right: -20px;
+    bottom: -12px;
+    height: 640px;
+  }
+
+  .hero-inner::before {
+    width: 63%;
+  }
+
   .hero-label {
     min-height: 58px;
     padding: 0 22px;
@@ -882,7 +874,7 @@ body {
   }
 
   .hero h1 {
-    width: 70%;
+    width: 62%;
     margin-top: 67px;
     font-size: clamp(3.5rem, 7.5vw, 4.85rem);
   }
