@@ -1171,7 +1171,10 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
   // ▼TODO：SLVRbulletの実アフィリリンクに差し替える
   var AFF = { relief: "https://tr.slvrbullet.com/cl/w0000694921/47768/40002/2" };
   var LANDING = "taishoku_kyufukin";
-  var KEEP = /^(utm_|gclid|gbraid|wbraid|gad_|campaignid|keyword|matchtype|device|network|creative)$/i;
+  // gclid / gbraid / wbraid は **意図的に外している**。
+  // クリック識別子の付与は SLVRbullet 公式タグ（pt.min.js）の担当。
+  // ここでも付けると ?gclid=X&compop=...&gclid=X と二重になる（実際に発生した）。
+  var KEEP = /^(utm_|gad_|campaignid|keyword|matchtype|device|network|creative)$/i;
 
   function track(name, params){
     try{
