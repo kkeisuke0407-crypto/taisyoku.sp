@@ -1262,6 +1262,12 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 })();
 </script>
 
+<!-- SLVRbullet 公式「パラメータ引き継ぎタグ」。
+     Google広告からの流入時、記事URLに付く gclid / wbraid / gbraid を
+     SLVRbullet広告リンクへ自動で引き継ぐ。成果連携の本体はこれ。
+     ※この下の offline-cv.js は、回遊でURLから識別子が消えた場合だけを補う。
+       URLに識別子があるときは動かないので、二重付与は起きない。 -->
+<script src="https://js.slvrbullet.com/pt.min.js"></script>
 <!-- オフラインCV用：GCLIDを90日保持し、アフィリリンクへ付け直す。
      成果地点（LINE追加）は広告主側で確定するため、Google広告へは
      オフラインCVとしてインポートする。その識別子を取りこぼさないための処理。 -->

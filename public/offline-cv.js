@@ -1,22 +1,28 @@
 /*!
- * offline-cv.js — オフラインコンバージョン用の GCLID 保持
+ * offline-cv.js — 公式タグの「取りこぼし」だけを補う
  * ---------------------------------------------------------------
- * 成果地点（LINE追加）は広告主側で確定するため、Google広告へは
- * オフラインCVとしてインポートする。そのために必要なのは、
- * 「広告クリックの識別子（GCLID）を取りこぼさず広告主へ渡すこと」。
+ * 成果連携の本体は SLVRbullet 公式の「パラメータ引き継ぎタグ」:
+ *     <script src="https://js.slvrbullet.com/pt.min.js"></script>
+ * 公式タグは「記事URLに gclid/wbraid/gbraid が含まれている場合」に
+ * SLVRbullet広告リンクへ引き継ぐ。広告からの直着地はこれで足りる。
  *
- * このスクリプトがやること:
- *   1. 着地時に gclid / gbraid / wbraid を URL から拾う
- *   2. Cookie（90日）と localStorage に保存する
- *      → 回遊やリロードでURLからパラメータが消えても失われない
- *   3. data-offline-cv-link を付けた送客リンクのクリック時に、保存済みの値を付け直す
- *   4. dataLayer に積む（GTM／デバッグ用）
+ * 足りないのは、着地後に回遊してURLからパラメータが消えた場合。
+ * 例：広告→LP→/operator/→戻ってCTA。このときURLに識別子が無いので
+ * 公式タグは何もできず、クリック識別子が失われる。
+ *
+ * そこでこのスクリプトは:
+ *   1. 着地時に gclid/wbraid/gbraid を Cookie（90日）と localStorage に保存
+ *   2. **URLに識別子が無いときだけ** 送客リンクへ保存済みの値を付け直す
+ *   3. dataLayer に積む（GTM／デバッグ用）
+ *
+ * ★ 2 の条件が肝。URLに識別子がある＝公式タグが処理する場面では
+ *   このスクリプトは一切リンクに触らない。役割が重ならないので
+ *   二重付与・パラメータ重複が起きない。
  *
  * 90日にしている理由：Google広告のオフラインCVインポートは、
- * クリックから最大90日以内のGCLIDのみ受け付ける。
+ * クリックから最大90日以内の識別子のみ受け付けるため。
  *
- * 使い方：</body> の前で読み込むだけ。
- *   <script src="/offline-cv.js" defer></script>
+ * 対象は data-offline-cv-link を付けたリンクのみ（出典等は汚さない）。
  */
 (function (w, d) {
   "use strict";
@@ -99,7 +105,11 @@
   }
   w.__OCV.decorate = decorate;
 
+  // 公式タグ（pt.min.js）が動く場面＝URLに識別子がある場合は、こちらは何もしない。
+  var urlHasClickId = KEYS.some(function (k) { return !!qs.get(k); });
+
   function apply() {
+    if (urlHasClickId) return;   // 公式タグに任せる
     var links = d.querySelectorAll('a[data-offline-cv-link][href^="http"]');
     Array.prototype.forEach.call(links, function (a) {
       var href = a.getAttribute("href");
@@ -113,6 +123,7 @@
   apply();
   d.addEventListener("DOMContentLoaded", apply);
   d.addEventListener("click", function (e) {
+    if (urlHasClickId) return;   // 公式タグに任せる
     var a = e.target && e.target.closest ? e.target.closest('a[data-offline-cv-link][href^="http"]') : null;
     if (!a) return;
     var href = a.getAttribute("href");
