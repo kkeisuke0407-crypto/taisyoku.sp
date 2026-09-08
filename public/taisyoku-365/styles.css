@@ -1142,3 +1142,15 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 @media (prefers-reduced-motion: reduce){
   a[data-offline-cv-link]::after{ animation:none; opacity:0; }
 }
+
+/* ---- CTA文言が長い場合の折り返し ----
+   「LINEで自分が対象か確認する」は1行に収まらない。光沢用の
+   overflow:hidden と重なると文字が切れるため、折り返しを許可する。
+   .line-cta は min-height 指定なのでボタン側は自然に伸びる。 */
+.line-cta > span{ white-space:normal; line-height:1.28; text-align:center; }
+
+/* 語の途中（「確／認する」）で割れないよう、意味の切れ目で分割する。
+   inline-block にすると、この2つの塊の間だけで折り返す。
+   幅が足りるボタンでは1行のままになる。 */
+.cta-seg{ display:inline-block; }
+

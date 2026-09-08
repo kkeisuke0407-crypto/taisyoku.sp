@@ -600,6 +600,19 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 @media (prefers-reduced-motion: reduce){
   a[data-offline-cv-link]::after{ animation:none; opacity:0; }
 }
+
+/* ---- CTA文言が長い場合の折り返し ----
+   「LINEで自分が対象か確認する」は1行に収まらない（FVは幅230pxに対し
+   ラベルだけで235px必要）。nowrap＋光沢用のoverflow:hiddenが重なると
+   文字が切り取られるため、折り返しを許可してボタン側を縦に伸ばす。
+   height指定は後勝ちで打ち消し、min-heightに寄せる。 */
+.btn-line{ height:auto; min-height:46px; padding-block:8px; }
+.btn-line__label{ white-space:normal; line-height:1.28; text-align:center; }
+
+/* 語の途中（「確／認する」）で割れないよう、意味の切れ目で分割する。
+   inline-block にすると、この2つの塊の間だけで折り返す。
+   幅が足りるボタンでは1行のままになる。 */
+.cta-seg{ display:inline-block; }
 </style>
 </head>
 <body class="no-js">
@@ -633,7 +646,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
           <a class="btn-line" href="#" data-todo="link" data-track="fv_line" data-offline-cv-link
              target="_blank" rel="sponsored nofollow noopener noreferrer">
             <span class="btn-line__logo">LINE</span>
-            <span class="btn-line__label" data-todo="copy">LINEで無料診断</span>
+            <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
           </a>
           <p class="cta__sub" data-todo="copy">友だち追加だけ・無料／電話番号は不要<br>退職リリーフの公式サイトへ移動します</p>
         </div>
@@ -886,7 +899,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       <a class="btn-line" href="#" data-todo="link" data-track="why_line" data-offline-cv-link
          target="_blank" rel="sponsored nofollow noopener noreferrer">
         <span class="btn-line__logo">LINE</span>
-        <span class="btn-line__label" data-todo="copy">LINEで無料診断</span>
+        <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
       </a>
     </div>
     <p class="note" style="margin-top:8px" data-todo="copy">※ ボタンをタップすると退職リリーフの公式サイトへ移動します。</p>
@@ -1070,7 +1083,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     <a class="btn-line" href="#" data-todo="link" data-track="final_line" data-offline-cv-link
        target="_blank" rel="sponsored nofollow noopener noreferrer">
       <span class="btn-line__logo">LINE</span>
-      <span class="btn-line__label" data-todo="copy">LINEで無料診断</span>
+      <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
     </a>
     <p class="final__note" data-todo="copy">
       ボタンをタップすると退職リリーフの公式サイトへ移動します。
@@ -1107,9 +1120,9 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 <div class="sticky-cta" data-sticky hidden>
   <a class="btn-line" href="#" data-todo="link" data-track="sticky_line" data-offline-cv-link
      target="_blank" rel="sponsored nofollow noopener noreferrer"
-     aria-label="退職リリーフにLINEで無料診断を申し込む">
+     aria-label="退職リリーフのLINEで自分が対象か確認する">
     <span class="btn-line__logo">LINE</span>
-    <span class="btn-line__label" data-todo="copy">LINEで無料診断</span>
+    <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
   </a>
   <p class="sticky-cta__note" data-todo="copy">退職リリーフの公式サイトへ移動します</p>
 </div>
