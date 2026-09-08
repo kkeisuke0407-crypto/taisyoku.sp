@@ -92,7 +92,7 @@ const pageDescription = "休職中・退職予定の方へ。条件に合う制�
           <div class="hero-rule" aria-hidden="true"></div>
           <p class="benefit-number"><span class="benefit-prefix">最大</span><strong>365</strong><span class="benefit-unit">万円</span></p>
           <p class="benefit-note">※条件を満たす場合の制度上の目安</p>
-          <a class="line-cta line-cta-hero kin-aff" href="#" data-cta="hero-line" data-track="hero_line"
+          <a class="line-cta line-cta-hero kin-aff" href="#" data-cta="hero-line" data-track="hero_line" data-offline-cv-link
              target="_blank" rel="sponsored nofollow noopener noreferrer">
             <svg aria-hidden="true"><use href="#icon-chat"></use></svg>
             <span>LINEで無料相談</span>
@@ -230,7 +230,7 @@ const pageDescription = "休職中・退職予定の方へ。条件に合う制�
       </section>
 
       <section class="bottom-cta" id="line-consultation" aria-label="LINEで無料相談">
-        <a class="line-cta kin-aff" href="#" data-cta="bottom-line" data-track="bottom_line"
+        <a class="line-cta kin-aff" href="#" data-cta="bottom-line" data-track="bottom_line" data-offline-cv-link
            target="_blank" rel="sponsored nofollow noopener noreferrer">
           <svg aria-hidden="true"><use href="#icon-chat"></use></svg>
           <span>LINEで無料相談</span>
@@ -334,5 +334,7 @@ const pageDescription = "休職中・退職予定の方へ。条件に合う制�
         track(LANDING + "_open", { landing_intent:LANDING });
       })();
     </script>
+    <!-- 送客CTAだけに、保存済みの広告クリック識別子を付与する。 -->
+    <script src="/offline-cv.js" defer></script>
   </body>
 </html>

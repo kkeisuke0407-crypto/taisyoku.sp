@@ -198,6 +198,26 @@
 
   <script>
     (() => {
+      // このページには未確認の外部送客リンクがない。以下はCVではなく、
+      // 記事内での比較・確認行動を把握するためのGA4イベントだけを送る。
+      const track = (name, params = {}) => {
+        const payload = { ...params, page_type: 'shobyo_taishokubi_article' };
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: name, ...payload });
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', name, { ...payload, send_to: 'GT-WB2N4H34' });
+        }
+      };
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', () => {
+          track('shobyo_article_navigation', {
+            destination: link.getAttribute('href'),
+            link_label: (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80)
+          });
+        });
+      });
+
       const finder = document.querySelector('[data-filter-controls]');
       const status = document.querySelector('[data-filter-status]');
       const cards = [...document.querySelectorAll('[data-service-card]')];
@@ -218,13 +238,21 @@
           chip.setAttribute('aria-pressed', String(selected));
         });
         updateStatus();
+        track('shobyo_comparison_filter_change', {
+          filter_group: group?.querySelector('legend')?.textContent?.trim() || '',
+          selected_filter: button.dataset.filter || ''
+        });
       });
-      finder?.querySelector('[data-sort]')?.addEventListener('change', updateStatus);
+      finder?.querySelector('[data-sort]')?.addEventListener('change', (event) => {
+        updateStatus();
+        track('shobyo_comparison_sort_change', { selected_sort: event.target.value || '' });
+      });
 
       const officialStatus = document.querySelector('[data-official-status]');
       document.querySelectorAll('[data-service-cta]').forEach((button) => {
         button.addEventListener('click', () => {
           officialStatus.textContent = button.dataset.serviceCta + 'の公式情報と掲載URLは確認中です。未確認の外部ページへは遷移しません。';
+          track('shobyo_official_info_request', { service: button.dataset.serviceCta || '' });
           document.getElementById('official-confirmation').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
         });
       });

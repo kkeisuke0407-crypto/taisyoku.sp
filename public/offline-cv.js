@@ -9,7 +9,7 @@
  *   1. 着地時に gclid / gbraid / wbraid を URL から拾う
  *   2. Cookie（90日）と localStorage に保存する
  *      → 回遊やリロードでURLからパラメータが消えても失われない
- *   3. アフィリリンクのクリック時に、保存済みの値を付け直す
+ *   3. data-offline-cv-link を付けた送客リンクのクリック時に、保存済みの値を付け直す
  *   4. dataLayer に積む（GTM／デバッグ用）
  *
  * 90日にしている理由：Google広告のオフラインCVインポートは、
@@ -83,9 +83,9 @@
     });
   }
 
-  // ---- 4) 外部リンクへ付け直す ----
-  // ページ内のCTAは data-aff / kin-aff / kin-phone 等で拾われるが、
-  // それらの独自スクリプトより後に走っても効くよう、クリック時に上書きする。
+  // ---- 4) 明示した送客リンクへ付け直す ----
+  // 全外部リンクを対象にすると、出典・運営者情報など無関係の遷移先にも
+  // クリック識別子を渡してしまう。送客先だけに data-offline-cv-link を付ける。
   function decorate(href) {
     if (!href || href.charAt(0) === "#" || /^(javascript|mailto|tel):/i.test(href)) return href;
     try {
@@ -100,7 +100,7 @@
   w.__OCV.decorate = decorate;
 
   function apply() {
-    var links = d.querySelectorAll('a[href^="http"]');
+    var links = d.querySelectorAll('a[data-offline-cv-link][href^="http"]');
     Array.prototype.forEach.call(links, function (a) {
       var href = a.getAttribute("href");
       var next = decorate(href);
@@ -113,7 +113,7 @@
   apply();
   d.addEventListener("DOMContentLoaded", apply);
   d.addEventListener("click", function (e) {
-    var a = e.target && e.target.closest ? e.target.closest('a[href^="http"]') : null;
+    var a = e.target && e.target.closest ? e.target.closest('a[data-offline-cv-link][href^="http"]') : null;
     if (!a) return;
     var href = a.getAttribute("href");
     var next = decorate(href);
