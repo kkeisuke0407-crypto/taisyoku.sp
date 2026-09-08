@@ -578,6 +578,28 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   .cmp__list li{ font-size:11px; }
   .cta-bar{ grid-template-columns:1fr; }
 }
+
+/* ============ CTAの光沢（キラン）============
+   3.6秒ごとに1回だけ、斜めのハイライトが左から右へ走る。
+   点滅ではなく一往復にしているのは、読者が療養中で、
+   強い明滅は離脱・不快感につながるため。
+   対象はクラスではなく data-offline-cv-link（＝送客CTAの定義そのもの）。
+   クラス名が変わっても外れない。 */
+a[data-offline-cv-link]{ position:relative; overflow:hidden; isolation:isolate; }
+a[data-offline-cv-link]::after{
+  content:""; position:absolute; top:-60%; left:-75%; width:45%; height:220%;
+  pointer-events:none; z-index:1;
+  background:linear-gradient(100deg,
+    rgba(255,255,255,0) 0%, rgba(255,255,255,.28) 45%, rgba(255,255,255,.55) 50%,
+    rgba(255,255,255,.28) 55%, rgba(255,255,255,0) 100%);
+  transform:skewX(-18deg);
+  animation:cta-shine 3.6s ease-in-out infinite;
+}
+@keyframes cta-shine{ 0%{ left:-75%; } 18%,100%{ left:130%; } }
+a[data-offline-cv-link] > *{ position:relative; z-index:2; }
+@media (prefers-reduced-motion: reduce){
+  a[data-offline-cv-link]::after{ animation:none; opacity:0; }
+}
 </style>
 </head>
 <body class="no-js">
@@ -1147,7 +1169,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   /* ---------- CTAのリンク差し込み ＋ CV計測 ----------
      旧版と同じイベント体系。名前を変えるとGoogle広告側のCV設定と繋がらなくなる。 */
   // ▼TODO：SLVRbulletの実アフィリリンクに差し替える
-  var AFF = { relief: "https://taishoku-relief.com/" };
+  var AFF = { relief: "https://tr.slvrbullet.com/cl/w0000694921/47768/40002/2" };
   var LANDING = "taishoku_kyufukin";
   var KEEP = /^(utm_|gclid|gbraid|wbraid|gad_|campaignid|keyword|matchtype|device|network|creative)$/i;
 
