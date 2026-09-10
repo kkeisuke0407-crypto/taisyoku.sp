@@ -343,7 +343,11 @@ const pageDescription = "休職中・退職予定の方へ。条件に合う制�
      SLVRbullet広告リンクへ自動で引き継ぐ。成果連携の本体はこれ。
      ※この下の offline-cv.js は、回遊でURLから識別子が消えた場合だけを補う。
        URLに識別子があるときは動かないので、二重付与は起きない。 -->
-<script src="https://js.slvrbullet.com/pt.min.js"></script>
+<!-- ★ is:inline は必須。外すと Astro が ESモジュール化し、
+     import"https://js.slvrbullet.com/pt.min.js" に変換される。
+     モジュールimportはCORSを要求するため読み込みが失敗し、
+     公式タグが一度も実行されなくなる（実際に9/9〜これで停止した）。 -->
+<script is:inline src="https://js.slvrbullet.com/pt.min.js"></script>
 <script src="/offline-cv.js" defer></script>
   </body>
 </html>

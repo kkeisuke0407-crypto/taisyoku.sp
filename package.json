@@ -5,10 +5,11 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/check-tags.mjs",
     "preview": "astro preview",
     "check": "astro check",
-    "new-hikaku": "node scripts/new-hikaku.mjs"
+    "new-hikaku": "node scripts/new-hikaku.mjs",
+    "check-tags": "node scripts/check-tags.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",

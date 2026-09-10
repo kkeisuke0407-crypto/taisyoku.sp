@@ -15,9 +15,9 @@
  *   2. **URLに識別子が無いときだけ** 送客リンクへ保存済みの値を付け直す
  *   3. dataLayer に積む（GTM／デバッグ用）
  *
- * ★ 2 の条件が肝。URLに識別子がある＝公式タグが処理する場面では
- *   このスクリプトは一切リンクに触らない。役割が重ならないので
- *   二重付与・パラメータ重複が起きない。
+ * ★ 判定は「URLの状態」ではなく「リンクの実際の状態」で行う。
+ *   公式タグが付けていれば何もせず、付いていなければ補う。
+ *   公式タグが読み込まれなかった場合も識別子が失われない。
  *
  * 90日にしている理由：Google広告のオフラインCVインポートは、
  * クリックから最大90日以内の識別子のみ受け付けるため。
@@ -105,11 +105,22 @@
   }
   w.__OCV.decorate = decorate;
 
-  // 公式タグ（pt.min.js）が動く場面＝URLに識別子がある場合は、こちらは何もしない。
-  var urlHasClickId = KEYS.some(function (k) { return !!qs.get(k); });
-
-  function apply() {
-    if (urlHasClickId) return;   // 公式タグに任せる
+  // ---- 4) 公式タグが取りこぼした場合だけ補う（フェイルセーフ）----
+  //
+  // 以前は「URLに識別子があれば公式タグに任せる」という条件で止めていたが、
+  // 公式タグが読み込まれなかった場合（Astroによるモジュール化・CORS失敗・
+  // 広告ブロッカー・ネットワークエラー）に識別子が丸ごと失われた。実際に
+  // LP③でこれが起き、9/9〜Google側のオフラインCVが0になった。
+  //
+  // そこで判定を「URLの状態」から「リンクの実際の状態」に変えた:
+  //   ・リンクに既に識別子が付いている → 公式タグが働いた。何もしない
+  //   ・付いていない                   → 公式タグが動いていない。補う
+  // decorate() は欠けているパラメータしか足さないので、二重付与にならない。
+  //
+  // 実行タイミングが重要。公式タグはページ読み込み時にリンクを書き換えるため、
+  // こちらが先に足すと公式タグが後から重ねて二重になる。だから
+  // 「load後に十分待ってから」と「クリック直前」の2点だけで走らせる。
+  function fill() {
     var links = d.querySelectorAll('a[data-offline-cv-link][href^="http"]');
     Array.prototype.forEach.call(links, function (a) {
       var href = a.getAttribute("href");
@@ -118,16 +129,14 @@
     });
   }
 
-  // 他スクリプトが href を書き換えたあとに実行されるよう、
-  // 読み込み直後・DOMContentLoaded・クリック直前の3段で当てる。
-  apply();
-  d.addEventListener("DOMContentLoaded", apply);
+  w.addEventListener("load", function () { setTimeout(fill, 2000); });
+
   d.addEventListener("click", function (e) {
-    if (urlHasClickId) return;   // 公式タグに任せる
     var a = e.target && e.target.closest ? e.target.closest('a[data-offline-cv-link][href^="http"]') : null;
     if (!a) return;
     var href = a.getAttribute("href");
     var next = decorate(href);
     if (next !== href) a.setAttribute("href", next);
-  }, true);   // capture。他のクリックハンドラより先に走らせる
+  }, true);   // capture。遷移が始まる前に確実に当てる
+
 }(window, document));
