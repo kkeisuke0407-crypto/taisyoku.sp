@@ -215,7 +215,13 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .fv__cta .btn-line__label{ font-size:17px; }
 .fv__cta .btn-line__logo{ padding:2px 6px; font-size:10px; }
 
-.cta__sub{ margin:8px 0 0; font-size:12px; color:var(--muted); text-align:center; }
+/* ▼2026-09-15 修正：人物イラストを避けるため .fv__cta に padding-left:128px が
+   入っており、この注記の実効幅は375pxで215pxしかない。1行ぶんの文字数を
+   超えて「不要」の「要」だけが次行に落ちていたので、2文を別ブロックにして
+   それぞれ均等に折り返させる。 */
+.cta__sub{ margin:8px 0 0; font-size:11.5px; line-height:1.65;
+           color:var(--muted); text-align:center; }
+.cta__sub span{ display:block; text-wrap:balance; }
 
 /* ============================================================
    LINEボタン（全CTA共通）
@@ -410,13 +416,19 @@ ul,ol{ margin:0; padding:0; list-style:none; }
    枠を長方形にするとセルが歪む。小さくするのは可。 */
 .why__art{ width:64px; height:64px; margin:8px auto 0; border-radius:6px; background-color:var(--panel-2); }
 
-/* 黄色いCTA帯 */
+/* 黄色いCTA帯
+   ▼2026-09-15 修正：2カラム（1fr auto）をやめて縦積みにした。
+   ボタンの文言が「LINEで自分が対象か確認する」に伸びたぶん auto 列が
+   280px超を取り、左の 1fr が27pxまで潰れて「つまずく前に、確認しておく。」が
+   1文字ずつ縦に並んでいた（375/390px で実測）。
+   横並びに戻したい場合は、先にボタンの文言を短くすること。 */
 .cta-bar{
-  display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center;
-  margin-top:16px; padding:11px 12px;
+  display:grid; grid-template-columns:1fr; gap:9px;
+  margin-top:16px; padding:12px;
   background:var(--amber-bg); border-radius:12px;
 }
-.cta-bar__txt{ font-size:13.5px; font-weight:800; color:var(--navy); line-height:1.6; }
+.cta-bar__txt{ font-size:14px; font-weight:800; color:var(--navy); line-height:1.6;
+               text-align:center; text-wrap:balance; }
 .cta-bar .btn-line{ height:46px; }
 .cta-bar .btn-line__label{ font-size:16px; }
 
@@ -576,7 +588,6 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   .why{ grid-template-columns:repeat(2,1fr); margin-inline:-8px; gap:6px; }
   .why__ttl{ font-size:10px; line-height:1.45; }
   .cmp__list li{ font-size:11px; }
-  .cta-bar{ grid-template-columns:1fr; }
 }
 
 /* ============ CTAの光沢（キラン）============
@@ -634,6 +645,33 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 .inst__note{ margin-top:12px; padding-top:10px; border-top:1px dashed var(--line);
              font-size:12px; line-height:1.8; color:var(--muted); }
 
+/* ▼2026-09-15 追加：日本語の折り返しを整える
+   ・見出し・短いラベル＝ text-wrap:balance（行の長さをそろえる）
+     320〜390pxでは「…ですか？」の2文字だけが次行に落ちる箇所が多く、
+     見出しほど目立つ。balance は4行以下のブロックにだけ効く。
+   ・本文・文になっている箇条書き＝ text-wrap:pretty（最終行に1文字だけ残るのを避ける）
+     箇条書きに balance を掛けると語の途中で折れることがあったので、こちら側に置く。
+   ・word-break:auto-phrase ＝ 日本語を文節で切る。これが無いと
+     「または退／職して」「働／き続ける」のように語の真ん中で折れる。
+   いずれも未対応ブラウザでは無視されるだけで、レイアウトは崩れない。 */
+.lp, .foot{ word-break:auto-phrase; }
+
+.h2, .h3, .inst__h, .inst__lead, .warn__ttl, .reason__ttl, .why__ttl,
+.step__ttl, .stat__lede, .sum__ttl, .final__ttl, .faq__q,
+.cmp__head, .trust__item, .cta__badge, .cta__headline{
+  text-wrap:balance;
+}
+/* 「退職リリーフとは？[PR]」は balance するとバッジだけが2行目に落ちる。
+   1行で収まる長さなので、この見出しだけ通常の折り返しに戻す。 */
+.h2:has(.pr-badge){ text-wrap:wrap; }
+
+.lead, .inst__sum, .inst__note, .inst__list li, .reason__txt, .step__txt,
+.warn__txt, .note, .disc li, .faq__a-inner, .sum__lead, .final__note,
+.stat__tail, .stat__src, .cmp__list li, .check li, .reject__list li,
+.callout__txt, .brand__txt{
+  text-wrap:pretty;
+}
+
 /* アンカーで飛んだとき、見出しが画面上端に貼り付かないようにする */
 #benefits, #unemployment, #sickness, #check, #flow, #faq{ scroll-margin-top:16px; }
 /* scroll-behavior:smooth は入れない。
@@ -674,7 +712,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
             <span class="btn-line__logo">LINE</span>
             <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
           </a>
-          <p class="cta__sub" data-todo="copy">友だち追加だけ・無料／電話番号は不要<br>退職リリーフの公式サイトへ移動します</p>
+          <p class="cta__sub" data-todo="copy"><span>友だち追加だけ・無料／電話番号は不要</span><span>退職リリーフの公式サイトへ移動します</span></p>
         </div>
       </div>
     </div>
@@ -949,13 +987,13 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">9</span>
-          <p class="why__ttl" data-todo="copy">不支給でも<br>理由を見て出し直せる</p></div>
+          <p class="why__ttl" data-todo="copy">不支給でも<br>理由を見て再申請</p></div>
         <span class="why__art" style="--icon-x:100%;--icon-y:100%" aria-hidden="true"></span>
       </li>
     </ol>
 
     <div class="cta-bar">
-      <p class="cta-bar__txt" data-todo="copy">つまずく前に、<br>確認しておく。</p>
+      <p class="cta-bar__txt" data-todo="copy">つまずく前に、確認しておく。</p>
       <a class="btn-line" href="#" data-todo="link" data-track="why_line" data-offline-cv-link
          target="_blank" rel="sponsored nofollow noopener noreferrer">
         <span class="btn-line__logo">LINE</span>
