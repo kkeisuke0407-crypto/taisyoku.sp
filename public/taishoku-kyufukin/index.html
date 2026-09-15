@@ -215,7 +215,13 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .fv__cta .btn-line__label{ font-size:17px; }
 .fv__cta .btn-line__logo{ padding:2px 6px; font-size:10px; }
 
-.cta__sub{ margin:8px 0 0; font-size:12px; color:var(--muted); text-align:center; }
+/* ▼2026-09-15 修正：人物イラストを避けるため .fv__cta に padding-left:128px が
+   入っており、この注記の実効幅は375pxで215pxしかない。1行ぶんの文字数を
+   超えて「不要」の「要」だけが次行に落ちていたので、2文を別ブロックにして
+   それぞれ均等に折り返させる。 */
+.cta__sub{ margin:8px 0 0; font-size:11.5px; line-height:1.65;
+           color:var(--muted); text-align:center; }
+.cta__sub span{ display:block; text-wrap:balance; }
 
 /* ============================================================
    LINEボタン（全CTA共通）
@@ -337,7 +343,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   margin-top:14px; padding:13px 14px;
   background:var(--amber-bg); border-left:4px solid var(--amber); border-radius:0 10px 10px 0;
 }
-.warn__ttl{ font-size:14.5px; font-weight:800; color:var(--navy); line-height:1.6; }
+.warn__ttl{ margin:0; font-size:14.5px; font-weight:800; color:var(--navy); line-height:1.6; }
 .warn__txt{ margin-top:5px; font-size:12.5px; line-height:1.8; color:var(--ink); }
 
 /* ============================================================
@@ -410,13 +416,19 @@ ul,ol{ margin:0; padding:0; list-style:none; }
    枠を長方形にするとセルが歪む。小さくするのは可。 */
 .why__art{ width:64px; height:64px; margin:8px auto 0; border-radius:6px; background-color:var(--panel-2); }
 
-/* 黄色いCTA帯 */
+/* 黄色いCTA帯
+   ▼2026-09-15 修正：2カラム（1fr auto）をやめて縦積みにした。
+   ボタンの文言が「LINEで自分が対象か確認する」に伸びたぶん auto 列が
+   280px超を取り、左の 1fr が27pxまで潰れて「つまずく前に、確認しておく。」が
+   1文字ずつ縦に並んでいた（375/390px で実測）。
+   横並びに戻したい場合は、先にボタンの文言を短くすること。 */
 .cta-bar{
-  display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center;
-  margin-top:16px; padding:11px 12px;
+  display:grid; grid-template-columns:1fr; gap:9px;
+  margin-top:16px; padding:12px;
   background:var(--amber-bg); border-radius:12px;
 }
-.cta-bar__txt{ font-size:13.5px; font-weight:800; color:var(--navy); line-height:1.6; }
+.cta-bar__txt{ font-size:14px; font-weight:800; color:var(--navy); line-height:1.6;
+               text-align:center; text-wrap:balance; }
 .cta-bar .btn-line{ height:46px; }
 .cta-bar .btn-line__label{ font-size:16px; }
 
@@ -505,7 +517,14 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 /* ============================================================
    ⑫まとめ
    ============================================================ */
-.sum{ display:grid; grid-template-columns:132px 1fr; gap:12px; align-items:start; margin-top:12px; }
+/* ▼2026-09-15 修正：132px + 1fr の2カラムをやめて縦積みにした。
+   ・左の黄色い箱が132px固定なので、中の「受け取れるはずのお金は、申請しなければ
+     消えます」が4行に割れ、2行目が「お金は、」だけになっていた
+   ・右の本文は320pxで150pxしか幅が無く、7行のギザギザな短冊になっていた
+   ・箱(142px)と右カラム(220px)の高さが違うぶん、左下に大きな空白ができ、
+     イラストだけが右下に取り残されていた
+   縦積みにして箱を全幅にし、イラストは本文に回り込ませている。 */
+.sum{ margin-top:12px; }
 .sum__box{
   padding:12px 11px; background:var(--amber-bg);
   border:2px solid var(--amber); border-radius:10px;
@@ -513,7 +532,11 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .sum__ttl{ font-size:15px; font-weight:800; color:var(--navy); line-height:1.5; }
 .sum__lead{ margin-top:6px; font-size:12.5px; font-weight:700; color:var(--navy); line-height:1.7; }
 .sum__side{ font-size:12.5px; line-height:1.85; color:var(--ink); }
-.sum__art{ width:84px; aspect-ratio:84/96; margin:8px 0 0 auto; overflow:hidden; border-radius:10px; background:var(--panel); }
+.sum__side{ margin-top:12px; }
+/* 本文の右に回り込ませる。320pxでも本文側に約200px残る */
+.sum__art{ float:right; width:84px; aspect-ratio:84/96; margin:0 0 8px 12px;
+           overflow:hidden; border-radius:10px; background:var(--panel); }
+.sum__side::after{ content:""; display:block; clear:both; }
 .sum__art .asset-img{ object-position:62% 62%; }
 
 /* ============================================================
@@ -576,7 +599,6 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   .why{ grid-template-columns:repeat(2,1fr); margin-inline:-8px; gap:6px; }
   .why__ttl{ font-size:10px; line-height:1.45; }
   .cmp__list li{ font-size:11px; }
-  .cta-bar{ grid-template-columns:1fr; }
 }
 
 /* ============ CTAの光沢（キラン）============
@@ -613,6 +635,59 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
    inline-block にすると、この2つの塊の間だけで折り返す。
    幅が足りるボタンでは1行のままになる。 */
 .cta-seg{ display:inline-block; }
+
+/* ▼2026-09-15 追加：制度セクション（#sickness / #unemployment）
+   375pxで読めるよう縦積み。既存の .duo（2カラム）は使わない。 */
+.h3{ margin:0 0 8px; font-size:17px; font-weight:800; color:var(--navy); line-height:1.5; }
+.inst__lead{ margin-top:22px; padding-left:10px; border-left:4px solid var(--gold); }
+.inst{ margin-top:10px; padding:14px 13px; background:var(--panel-2);
+       border:1px solid var(--line); border-radius:10px; }
+.inst__sum{ font-size:14px; line-height:1.9; color:var(--ink); }
+.inst__h{ margin:12px 0 0; font-size:13px; font-weight:800; color:var(--navy); line-height:1.6; }
+.inst__list{ margin:6px 0 0; padding-left:0; }
+.inst__list li{ position:relative; padding-left:14px; font-size:13.5px; line-height:1.85;
+                color:var(--ink); margin-bottom:5px; }
+/* ul,ol に list-style:none のリセットが効いているので、
+   既存の .cmp__list と同じ丸ポチを自前で描く。 */
+.inst__list li::before{ content:""; position:absolute; left:0; top:.72em;
+                        width:5px; height:5px; border-radius:50%; background:var(--gold); }
+.inst__list b{ color:var(--navy); }
+.inst__sub{ font-size:12px; color:var(--muted); }
+.inst__note{ margin-top:12px; padding-top:10px; border-top:1px dashed var(--line);
+             font-size:12px; line-height:1.8; color:var(--muted); }
+
+/* ▼2026-09-15 追加：日本語の折り返しを整える
+   ・見出し・短いラベル＝ text-wrap:balance（行の長さをそろえる）
+     320〜390pxでは「…ですか？」の2文字だけが次行に落ちる箇所が多く、
+     見出しほど目立つ。balance は4行以下のブロックにだけ効く。
+   ・本文・文になっている箇条書き＝ text-wrap:pretty（最終行に1文字だけ残るのを避ける）
+     箇条書きに balance を掛けると語の途中で折れることがあったので、こちら側に置く。
+   ・word-break:auto-phrase ＝ 日本語を文節で切る。これが無いと
+     「または退／職して」「働／き続ける」のように語の真ん中で折れる。
+   いずれも未対応ブラウザでは無視されるだけで、レイアウトは崩れない。 */
+.lp, .foot{ word-break:auto-phrase; }
+
+.h2, .h3, .inst__h, .inst__lead, .warn__ttl, .reason__ttl, .why__ttl,
+.step__ttl, .stat__lede, .sum__ttl, .final__ttl, .faq__q,
+.cmp__head, .trust__item, .cta__badge, .cta__headline{
+  text-wrap:balance;
+}
+/* 「退職リリーフとは？[PR]」は balance するとバッジだけが2行目に落ちる。
+   1行で収まる長さなので、この見出しだけ通常の折り返しに戻す。 */
+.h2:has(.pr-badge){ text-wrap:wrap; }
+
+.lead, .inst__sum, .inst__note, .inst__list li, .reason__txt, .step__txt,
+.warn__txt, .note, .disc li, .faq__a-inner, .sum__lead, .final__note,
+.stat__tail, .stat__src, .cmp__list li, .check li, .reject__list li, .sum__side p,
+.callout__txt, .brand__txt{
+  text-wrap:pretty;
+}
+
+/* アンカーで飛んだとき、見出しが画面上端に貼り付かないようにする */
+#benefits, #unemployment, #sickness, #check, #flow, #faq{ scroll-margin-top:16px; }
+/* scroll-behavior:smooth は入れない。
+   初回のハッシュ遷移中に遅延読み込み画像が入ると、
+   スムーススクロールが追従できず着地位置がずれる（実測で#flow/#sicknessが外れた）。 */
 </style>
 </head>
 <body class="no-js">
@@ -648,7 +723,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
             <span class="btn-line__logo">LINE</span>
             <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
           </a>
-          <p class="cta__sub" data-todo="copy">友だち追加だけ・無料／電話番号は不要<br>退職リリーフの公式サイトへ移動します</p>
+          <p class="cta__sub" data-todo="copy"><span>友だち追加だけ・無料／電話番号は不要</span><span>退職リリーフの公式サイトへ移動します</span></p>
         </div>
       </div>
     </div>
@@ -693,7 +768,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
   </div>
 
   <!-- ============ ③LINEで3ステップ ============ -->
-  <section class="sec sec--panel">
+  <section class="sec sec--panel" id="flow">
     <h2 class="h2" data-todo="copy">無料診断は、LINEで3ステップ</h2>
     <p class="lead" data-todo="copy">答えるのは、かんたんな質問だけです。ここまでは無料で、途中でやめても構いません。</p>
 
@@ -722,12 +797,16 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
   </section>
 
   <!-- ============ ④受け取れるお金は1つじゃない ============ -->
-  <section class="sec">
+  <section class="sec" id="benefits">
     <h2 class="h2" data-todo="copy">退職後に受け取れるお金は、1つじゃない</h2>
     <p class="lead" data-todo="copy">
       病気やケガで働けない状態にある場合、失業保険とは別のお金を受け取れる制度があります。
       在職中から始められますが、申請した人しか受け取れません。会社から案内されることは、ほとんどありません。
     </p>
+
+    <!-- ▼2026-09-15 追加：検索語句「社会保険給付金 / 退職給付金」との一致を強化 -->
+    <h3 class="h3 inst__lead">社会保険給付金（退職給付金）とは？</h3>
+    <p class="inst__sum">退職の前後に受け取れる公的な給付をまとめた呼び方で、法律上の制度名ではありません。主なものが、健康保険の<b>傷病手当金</b>と、雇用保険の<b>失業保険（基本手当）</b>です。どちらも申請して初めて受け取れます。</p>
 
     <div class="stat">
       <div class="stat__head">
@@ -747,20 +826,50 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       <p class="stat__src">出典：<a href="https://www.kyoukaikenpo.or.jp/disclosure/statistics/statistical_survey/beneficiary_status_survey/r05/" target="_blank" rel="noopener noreferrer">全国健康保険協会「現金給付受給者状況調査」令和5年度</a></p>
     </div>
 
-    <div class="duo">
-      <div class="duo__card">
-        <p class="duo__ttl" data-todo="copy">傷病手当金</p>
-        <p class="duo__txt" data-todo="copy">病気やケガで働けない期間の生活を支える制度。給与のおよそ3分の2を、通算1年6か月まで。</p>
-      </div>
-      <div class="duo__card">
-        <p class="duo__ttl" data-todo="copy">失業保険（基本手当）</p>
-        <p class="duo__txt" data-todo="copy">働ける状態になってから、仕事を探しながら受け取ります。療養中は対象になりません。</p>
-      </div>
+    <!-- ▼2026-09-15 追加：制度ごとの詳細。
+         旧「.duo」2カラムは375pxで1枚170px程度しか幅が無く、
+         制度の概要・条件・確認点を入れると読めなくなるため、
+         縦積みのカードに置き換えた。CTA・計測には触れていない。 -->
+    <h3 class="h3 inst__lead" id="sickness">退職後の傷病手当金｜受け取れる条件</h3>
+    <div class="inst">
+      <p class="inst__sum">病気やケガで働けない期間の生活を支える制度です。給与のおよそ3分の2を、通算1年6か月まで受け取れます。</p>
+      <h4 class="inst__h">対象になり得る条件</h4>
+      <ul class="inst__list">
+        <li>業務外の病気・ケガで、療養のため働けない状態にあること</li>
+        <li>連続する3日間を含み、4日以上仕事を休んでいること</li>
+        <li>休んだ期間に給与の支払いがない（または傷病手当金より少ない）こと</li>
+      </ul>
+      <h4 class="inst__h">退職前／退職後で確認すること</h4>
+      <ul class="inst__list">
+        <li><b>退職前</b>：健康保険の加入期間が継続して1年以上あるか</li>
+        <li><b>退職日</b>：出勤していないか（出勤すると退職後の継続受給ができなくなることがあります）</li>
+        <li><b>退職後</b>：退職日の時点で受給しているか、受けられる状態にあったか</li>
+      </ul>
+      <p class="inst__note">最終的な支給の可否は、加入していた健康保険の保険者（協会けんぽ・健康保険組合）が、医師の証明などをもとに判断します。</p>
+    </div>
+
+    <h3 class="h3 inst__lead" id="unemployment">失業保険・失業手当の受給条件</h3>
+    <div class="inst">
+      <p class="inst__sum">働ける状態になってから、次の仕事を探しながら受け取る制度です。療養中は対象になりません。傷病手当金とは同時に受け取れず、順番に切り替えます。</p>
+      <h4 class="inst__h">対象になり得る条件</h4>
+      <ul class="inst__list">
+        <li>離職前の2年間に、雇用保険の被保険者期間が通算12か月以上あること<br><span class="inst__sub">（会社都合などの場合は1年間に通算6か月以上）</span></li>
+        <li>働く意思と能力があり、求職活動をしていること</li>
+        <li>ハローワークで求職の申し込みをしていること</li>
+      </ul>
+      <h4 class="inst__h">失業給付はいつから・どのくらい？</h4>
+      <ul class="inst__list">
+        <li>手続き後に<b>7日間の待期</b>。自己都合退職はそのあと<b>原則1か月の給付制限</b></li>
+        <li>受け取れる日数は、離職理由・年齢・被保険者期間によって決まります</li>
+        <li>療養ですぐ働けない場合は、<b>受給期間の延長</b>を申請しておくと、回復後に受け取れます</li>
+      </ul>
+      <p class="inst__note">最終的な支給の可否・日数・金額は、ハローワークが離職理由や被保険者期間を確認したうえで決定します。</p>
     </div>
 
     <div class="warn">
-      <p class="warn__ttl" data-todo="copy">自己都合で辞めると、失業保険はすぐには出ません</p>
+      <h3 class="warn__ttl" data-todo="copy">自己都合退職でも対象になる？ ただし、すぐには出ません</h3>
       <p class="warn__txt" data-todo="copy">
+        <b>自己都合でも、条件を満たせば対象になります。</b>ただし受け取れる時期が遅れます。
         手続きのあと7日間の待期があり、そのあと、自己都合退職には原則1か月の給付制限がかかります。
         つまり辞めてすぐは、収入が空きます。ここを埋められるかどうかが、退職後のいちばん苦しい時期を左右します。
       </p>
@@ -889,13 +998,13 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       </li>
       <li class="why__card">
         <div class="why__head"><span class="why__no">9</span>
-          <p class="why__ttl" data-todo="copy">不支給でも<br>理由を見て出し直せる</p></div>
+          <p class="why__ttl" data-todo="copy">不支給でも<br>理由を見て再申請</p></div>
         <span class="why__art" style="--icon-x:100%;--icon-y:100%" aria-hidden="true"></span>
       </li>
     </ol>
 
     <div class="cta-bar">
-      <p class="cta-bar__txt" data-todo="copy">つまずく前に、<br>確認しておく。</p>
+      <p class="cta-bar__txt" data-todo="copy">つまずく前に、確認しておく。</p>
       <a class="btn-line" href="#" data-todo="link" data-track="why_line" data-offline-cv-link
          target="_blank" rel="sponsored nofollow noopener noreferrer">
         <span class="btn-line__logo">LINE</span>
@@ -906,7 +1015,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
   </section>
 
   <!-- ============ ⑧セルフチェック ============ -->
-  <section class="sec">
+  <section class="sec" id="check">
     <h2 class="h2" data-todo="copy">あなたは、対象になりそうですか？</h2>
 
     <div class="check-wrap">
@@ -975,10 +1084,10 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
   </section>
 
   <!-- ============ ⑪FAQ ============ -->
-  <section class="sec sec--panel">
+  <section class="sec sec--panel" id="faq">
     <h2 class="h2" data-todo="copy">よくある質問</h2>
 
-    <div class="faq" id="faq" data-todo="copy">
+    <div class="faq" data-todo="copy">
       <div class="faq__item">
         <button class="faq__q" type="button" aria-expanded="false">
           <span><span class="u-q">Q.</span>傷病手当金は、いくらもらえますか？</span>
@@ -1066,13 +1175,16 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     <div class="sum">
       <div class="sum__box">
         <p class="sum__ttl" data-todo="copy">まとめ</p>
-        <p class="sum__lead" data-todo="copy">受け取れるはずのお金は、<br>申請しなければ消えます</p>
+        <p class="sum__lead" data-todo="copy">受け取れるはずのお金は、申請しなければ消えます</p>
       </div>
       <div class="sum__side">
-        <p data-todo="copy">いま決めなくて、いいんです。ただ、退職日が過ぎてからでは動かせない条件があります。自分が対象かどうかだけは、今日たしかめられます。</p>
+        <!-- ▼2026-09-15 修正：イラストを本文より前に置いた。
+             後ろに置くと float が本文のあとから始まるため回り込まず、
+             イラストだけが右下に取り残されて左側が大きく空いていた。 -->
         <figure class="sum__art">
           <img class="asset-img" src="./assets/summary-pointing-woman.webp" width="467" height="700" loading="lazy" decoding="async" alt="相談前に確認しておきたいことを案内する女性のイメージ">
         </figure>
+        <p data-todo="copy">いま決めなくて、いいんです。ただ、退職日が過ぎてからでは動かせない条件があります。自分が対象かどうかだけは、今日たしかめられます。</p>
       </div>
     </div>
   </section>
