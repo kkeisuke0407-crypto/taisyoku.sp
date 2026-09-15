@@ -1,0 +1,16 @@
+{
+  "updated": "2026-07-22",
+  "genre": "editorial",
+  "theme": "studied-DNA (source: mtmt.site/tinderjissen_a53)",
+  "macrostructure": "Stat-Led",
+  "variation": {
+    "hero": "H4 split stat with conditional qualifier",
+    "navigation": "N6 newspaper masthead",
+    "footer": "Ft1 mast-headed",
+    "sectionHeading": "S2 hanging rule"
+  },
+  "audience": "retirement-considering worker",
+  "action": "LINE eligibility check",
+  "previousMacrostructure": "Long Document",
+  "slopTest": "pass"
+}
