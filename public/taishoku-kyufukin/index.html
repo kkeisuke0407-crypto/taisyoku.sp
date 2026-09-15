@@ -517,7 +517,14 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 /* ============================================================
    ⑫まとめ
    ============================================================ */
-.sum{ display:grid; grid-template-columns:132px 1fr; gap:12px; align-items:start; margin-top:12px; }
+/* ▼2026-09-15 修正：132px + 1fr の2カラムをやめて縦積みにした。
+   ・左の黄色い箱が132px固定なので、中の「受け取れるはずのお金は、申請しなければ
+     消えます」が4行に割れ、2行目が「お金は、」だけになっていた
+   ・右の本文は320pxで150pxしか幅が無く、7行のギザギザな短冊になっていた
+   ・箱(142px)と右カラム(220px)の高さが違うぶん、左下に大きな空白ができ、
+     イラストだけが右下に取り残されていた
+   縦積みにして箱を全幅にし、イラストは本文に回り込ませている。 */
+.sum{ margin-top:12px; }
 .sum__box{
   padding:12px 11px; background:var(--amber-bg);
   border:2px solid var(--amber); border-radius:10px;
@@ -525,7 +532,11 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .sum__ttl{ font-size:15px; font-weight:800; color:var(--navy); line-height:1.5; }
 .sum__lead{ margin-top:6px; font-size:12.5px; font-weight:700; color:var(--navy); line-height:1.7; }
 .sum__side{ font-size:12.5px; line-height:1.85; color:var(--ink); }
-.sum__art{ width:84px; aspect-ratio:84/96; margin:8px 0 0 auto; overflow:hidden; border-radius:10px; background:var(--panel); }
+.sum__side{ margin-top:12px; }
+/* 本文の右に回り込ませる。320pxでも本文側に約200px残る */
+.sum__art{ float:right; width:84px; aspect-ratio:84/96; margin:0 0 8px 12px;
+           overflow:hidden; border-radius:10px; background:var(--panel); }
+.sum__side::after{ content:""; display:block; clear:both; }
 .sum__art .asset-img{ object-position:62% 62%; }
 
 /* ============================================================
@@ -667,7 +678,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 
 .lead, .inst__sum, .inst__note, .inst__list li, .reason__txt, .step__txt,
 .warn__txt, .note, .disc li, .faq__a-inner, .sum__lead, .final__note,
-.stat__tail, .stat__src, .cmp__list li, .check li, .reject__list li,
+.stat__tail, .stat__src, .cmp__list li, .check li, .reject__list li, .sum__side p,
 .callout__txt, .brand__txt{
   text-wrap:pretty;
 }
@@ -1164,13 +1175,16 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     <div class="sum">
       <div class="sum__box">
         <p class="sum__ttl" data-todo="copy">まとめ</p>
-        <p class="sum__lead" data-todo="copy">受け取れるはずのお金は、<br>申請しなければ消えます</p>
+        <p class="sum__lead" data-todo="copy">受け取れるはずのお金は、申請しなければ消えます</p>
       </div>
       <div class="sum__side">
-        <p data-todo="copy">いま決めなくて、いいんです。ただ、退職日が過ぎてからでは動かせない条件があります。自分が対象かどうかだけは、今日たしかめられます。</p>
+        <!-- ▼2026-09-15 修正：イラストを本文より前に置いた。
+             後ろに置くと float が本文のあとから始まるため回り込まず、
+             イラストだけが右下に取り残されて左側が大きく空いていた。 -->
         <figure class="sum__art">
           <img class="asset-img" src="./assets/summary-pointing-woman.webp" width="467" height="700" loading="lazy" decoding="async" alt="相談前に確認しておきたいことを案内する女性のイメージ">
         </figure>
+        <p data-todo="copy">いま決めなくて、いいんです。ただ、退職日が過ぎてからでは動かせない条件があります。自分が対象かどうかだけは、今日たしかめられます。</p>
       </div>
     </div>
   </section>
