@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>【確認用】退職後にもらえるお金、失業保険だけじゃありません｜最大365万円の傷病手当金</title>
+<meta name="description" content="病気やケガで働けず退職する場合、失業保険とは別に傷病手当金を受け取れる制度があります。給与の約3分の2を通算1年6か月まで。条件・申請の流れ・ひとりでやるとつまずく9つのポイントを解説します。">
+<!-- ★このページはASPの記事確認用のコピー。本番は /taishoku-kyufukin/。
+     本番と重複する内容なので、検索結果に出さない。ここを外さないこと。 -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://taisyoku.hakobu-family.com/taishoku-kyufukin-preview/">
+<!-- 計測タグ（gtag / SLVRbullet / offline-cv.js）は意図的に入れていない。
+     確認の閲覧を本番のGA4・広告・成果の数字に混ぜないため。
+     送客リンクの行き先は本番と同じ。 -->
+<style>
+
+/* ============================================================
+   トークン
+   ============================================================ */
+:root{
+  --navy:   #2c3a4b;
+  --ink:    #2b3440;
+  --muted:  #6e7580;
+  --gold:   #dfa03a;
+  --green:  #06c755;
+  --green-dk:#05a948;
+  --blue:   #4c7fd0;   /* 比較表・ひとりでやる側 */
+  --rose:   #e07a86;   /* 比較表・伴走側 */
+  --red:    #d5525f;   /* 統計の強調 */
+  --amber:  #f0a92c;   /* 番号バッジ・注意 */
+
+  --bg:        #ffffff;
+  --panel:     #eff2f6;  /* 薄いグレー面 */
+  --panel-2:   #f7f9fb;
+  --amber-bg:  #fdf7e7;
+  --pink-bg:   #fdf1f2;
+  --line:      #dfe4ea;
+
+  --pad: 16px;
+  --sans: "Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",
+          "BIZ UDPGothic",Meiryo,system-ui,sans-serif;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; overflow-x:clip; }
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--sans); font-size:15px; line-height:1.75;
+  -webkit-text-size-adjust:100%;
+}
+img,svg{ max-width:100%; height:auto; display:block; }
+a{ color:inherit; }
+p{ margin:0; }
+ul,ol{ margin:0; padding:0; list-style:none; }
+
+.lp{ max-width:440px; margin-inline:auto; }
+.sec{ padding:26px var(--pad); }
+.sec--panel{ background:var(--panel-2); }
+
+/* 素材待ちの枠。比率だけ先に確定させる */
+.ph{
+  border:1px dashed #c9cdd4; border-radius:6px; background:#fafbfc;
+  display:grid; place-items:center; text-align:center;
+  color:#a7adb6; font-size:9.5px; line-height:1.5;
+}
+.asset-img{ display:block; width:100%; height:100%; object-fit:cover; }
+
+/* 生成イラストは、説明文より目立ちすぎないよう小さな枠で使う */
+.trust__icon,.reason__icon,.why__art{
+  display:block;
+  background-image:url("/taishoku-kyufukin/assets/procedure-icon-grid.webp");
+  background-repeat:no-repeat;
+  background-size:300% 300%;
+  background-position:var(--icon-x, 0%) var(--icon-y, 0%);
+}
+
+/* 見出し */
+.h2{
+  margin:0 0 14px; font-size:21px; font-weight:800;
+  color:var(--navy); line-height:1.45; letter-spacing:.01em;
+}
+.lead{ font-size:14px; line-height:1.85; color:var(--ink); }
+.note{ font-size:11.5px; line-height:1.7; color:var(--muted); }
+
+/* ============================================================
+   FV
+   高さ予算：390×844 の実効可視は約638px。
+   CTAボタン上端を画面上から400px以内に収める（本番LPと同じ実測ルール）
+   ============================================================ */
+.fv{ position:relative; isolation:isolate; overflow:hidden; padding:0 var(--pad) 14px; }
+.fv > :not(.fv__art):not(.fv__pr){ position:relative; z-index:1; }
+
+/* 右上のPR表記（ステマ規制対応）。左上のタブと対になる位置に置く */
+.fv__pr{
+  position:absolute; z-index:2; top:9px; right:var(--pad);
+  padding:1px 7px; background:#fff;
+  border:1px solid var(--muted); border-radius:4px;
+  font-size:10px; font-weight:700; letter-spacing:.06em;
+  line-height:1.7; color:var(--muted);
+}
+
+/* 人物は枠の下端に合わせて配置している。画像を大きくすると、下端が固定なぶん
+   頭の位置が上がる。枠の高さも一緒に上げないと頭が切れるので、必ずセットで変える。
+   （原寸467x700、頭は y=310〜425） */
+/* bottom で人物ごと上下に動く（サイズは変えずに位置だけ動かせる）。
+   見出し「ご存じですか？」の真下に頭が来る位置に合わせてある。
+   金額注記を消してFVが縮んだぶん、負の値まで下げないと頭が見出しに食い込む。
+   足元が数px切れるが、元絵の下端（脚のふち）なので支障はない。
+   ★FV内の要素を増減したら、ここの値も測り直すこと */
+.fv__art{
+  position:absolute; z-index:0; left:-2px; bottom:-8px;
+  width:142px; height:218px; margin:0; overflow:hidden; pointer-events:none;
+}
+.fv__art .asset-img{
+  position:absolute; left:0; bottom:0; width:236px; max-width:none; height:auto;
+  object-fit:contain;
+}
+
+.fv__tab{
+  display:inline-block;
+  margin:0 0 14px calc(var(--pad) * -1);
+  padding:5px 14px 5px 16px;
+  background:var(--navy); color:#fff;
+  font-size:13px; font-weight:700; letter-spacing:.02em; line-height:1.6;
+  border-radius:0 6px 6px 0;
+}
+.fv__h1{ margin:0; font-weight:800; color:var(--navy); letter-spacing:.01em; line-height:1.28; }
+.fv__amount{ display:block; font-size:33px; line-height:1.05; white-space:nowrap; }
+.fv__amount em{
+  font-style:normal; font-size:66px; color:var(--gold);
+  letter-spacing:-.02em; font-variant-numeric:tabular-nums; padding:0 2px;
+}
+.fv__amount .u-unit{ font-size:29px; }
+.fv__lead{ display:block; margin-top:0; font-size:32px; line-height:1.2; }
+
+/* 左の余白は人物枠(142px)を避けるぶん。人物を大きくしたらここも一緒に広げる */
+.fv__cta{ margin-top:12px; padding-left:128px; min-height:132px; }
+.cta__badge{ margin:0; font-size:16px; font-weight:700; color:var(--navy); text-align:center; }
+.cta__headline{
+  margin:1px 0 6px; font-size:22px; font-weight:800;
+  color:var(--navy); text-align:center; line-height:1.35;
+}
+.cta__headline .u-line{ color:var(--green); }
+
+.cta__row{ position:relative; }
+.cta__main{ min-width:0; }
+.fv__cta .btn-line{ gap:6px; padding-inline:8px; }
+.fv__cta .btn-line__label{ font-size:17px; }
+.fv__cta .btn-line__logo{ padding:2px 6px; font-size:10px; }
+
+/* ▼2026-09-15 修正：人物イラストを避けるため .fv__cta に padding-left:128px が
+   入っており、この注記の実効幅は375pxで215pxしかない。1行ぶんの文字数を
+   超えて「不要」の「要」だけが次行に落ちていたので、2文を別ブロックにして
+   それぞれ均等に折り返させる。 */
+.cta__sub{ margin:8px 0 0; font-size:11.5px; line-height:1.65;
+           color:var(--muted); text-align:center; }
+.cta__sub span{ display:block; text-wrap:balance; }
+
+/* ============================================================
+   LINEボタン（全CTA共通）
+   ============================================================ */
+.btn-line{
+  display:flex; align-items:center; justify-content:center; gap:9px;
+  height:54px; padding:0 10px;
+  background:var(--green); border-radius:10px;
+  box-shadow:0 3px 0 var(--green-dk), 0 5px 12px rgba(6,199,85,.28);
+  text-decoration:none; color:#fff;
+}
+.btn-line:active{
+  transform:translateY(2px);
+  box-shadow:0 1px 0 var(--green-dk), 0 3px 8px rgba(6,199,85,.24);
+}
+/* 公式ロゴ画像が来たらこの中身を差し替える */
+.btn-line__logo{
+  flex:0 0 auto; padding:3px 7px; background:#fff; color:var(--green);
+  border-radius:6px; font-size:11px; font-weight:800; letter-spacing:.04em; line-height:1.4;
+}
+.btn-line__label{
+  font-size:21px; font-weight:800; letter-spacing:.01em;
+  white-space:nowrap;   /* 折り返して「受け／る」になるのを防ぐ */
+}
+.btn-line--sm{ height:46px; }
+.btn-line--sm .btn-line__label{ font-size:17px; }
+
+/* ============================================================
+   ②スマホ画面 ＋ 信頼バッジ
+   ============================================================ */
+.trust{ display:grid; grid-template-columns:minmax(0,1fr) 110px; gap:10px; align-items:stretch; padding:0 var(--pad) 24px; }
+/* ノッチは「端末の枠」に置く。画面(.chat-phone)の中に入れると、
+   上部の青いバーに重なって「退職リリーフ」の文字が潰れる */
+.trust__phone{
+  position:relative;
+  display:flex; margin:0; padding:15px 5px 0; overflow:hidden;
+  border:3px solid #13243a; border-bottom:0; border-radius:22px 22px 0 0;
+  background:#13243a; box-shadow:0 5px 15px rgba(11,35,65,.2);
+}
+.chat-phone{ flex:1; min-height:0; overflow:hidden; border-radius:15px 15px 0 0; background:#e9f0f5; }
+.chat-phone__notch{ position:absolute; z-index:2; top:5px; left:50%; width:34%; height:5px; border-radius:999px; transform:translateX(-50%); background:#0b1626; }
+.chat-phone__bar{
+  display:flex; align-items:center; justify-content:space-between; gap:4px;
+  height:29px; padding:0 8px; background:#1f527f; color:#fff;
+  font-size:clamp(8px,2.4vw,10px); font-weight:700;
+}
+.chat-phone__brand{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.chat-phone__body{ display:flex; flex-direction:column; gap:8px; padding:10px 7px; }
+.chat{ display:flex; align-items:flex-start; gap:4px; }
+.chat--sent{ justify-content:flex-end; }
+.chat__avatar{
+  display:grid; flex:0 0 auto; place-items:center; width:16px; height:16px;
+  border-radius:50%; background:#fff; color:#1f527f; font-size:8px; font-weight:800;
+}
+.chat__bubble{
+  max-width:calc(100% - 22px); margin:0; padding:6px 7px;
+  border-radius:8px; background:#fff; color:var(--ink);
+  font-size:clamp(8.5px,2.45vw,10.5px); font-weight:700; line-height:1.52;
+  box-shadow:0 1px 2px rgba(27,52,79,.08);
+}
+.chat--sent .chat__bubble{ max-width:82%; background:#a9df8a; }
+.trust__list{ display:flex; flex-direction:column; gap:8px; }
+.trust__item{
+  background:var(--panel); border-radius:10px; padding:12px 8px;
+  min-width:0; text-align:center; font-size:12px; font-weight:700; line-height:1.55; color:var(--navy);
+}
+.trust__icon{ width:38px; height:38px; margin:0 auto 6px; border-radius:50%; background-color:#fff; }
+
+/* ============================================================
+   ③LINEで3ステップ
+   ============================================================ */
+.steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:14px; }
+.step{ background:var(--panel-2); border:1px solid var(--line); border-radius:10px; padding:10px 8px; }
+.step__no{
+  display:grid; place-items:center; width:24px; height:24px; margin:0 auto 6px;
+  background:var(--green); color:#fff; border-radius:50%;
+  font-size:13px; font-weight:800; line-height:1;
+}
+.step__ttl{ font-size:12.5px; font-weight:800; color:var(--navy); text-align:center; line-height:1.5; }
+.step__ph{ display:grid; place-items:center; aspect-ratio:1/.92; overflow:hidden; border:1px solid var(--line); border-radius:6px; background:#eef4f6; margin:7px 0; }
+.mini-phone{ position:relative; display:grid; place-items:center; width:43px; height:65px; padding:7px 3px 3px; border:2px solid #1a2b40; border-radius:8px; background:#142238; }
+.mini-phone::before{ content:""; position:absolute; top:3px; left:50%; width:14px; height:2px; border-radius:999px; transform:translateX(-50%); background:#fff; }
+.mini-phone__screen{ display:grid; place-items:center; width:100%; height:100%; padding:3px; border-radius:3px; background:#e6eef2; color:#173153; text-align:center; font-size:7px; font-weight:800; line-height:1.25; }
+.mini-phone__screen--add{ background:#e6f7ea; color:#087c35; }
+.mini-phone__screen--result{ background:#edf7ef; color:#087c35; }
+.step__txt{ font-size:11px; line-height:1.65; color:var(--muted); }
+.punch{
+  margin-top:14px; font-size:14px; font-weight:700; line-height:1.8;
+  color:var(--navy); text-align:center;
+}
+
+/* ============================================================
+   ④受け取れるお金は1つじゃない
+   ============================================================ */
+.stat{ margin-top:16px; padding:14px; background:var(--pink-bg); border-radius:12px; }
+.stat__head{ display:grid; grid-template-columns:1fr 108px; gap:10px; align-items:center; }
+.stat__lede{ font-size:13px; font-weight:700; color:var(--red); line-height:1.6; }
+.stat__big{ font-size:22px; font-weight:800; color:var(--red); line-height:1.5; }
+.stat__big b{ font-size:30px; }
+.stat__tail{ font-size:14px; font-weight:700; color:var(--navy); line-height:1.6; }
+/* 円グラフはCSSだけで描く（画像素材に依存させない） */
+.stat__donut{
+  width:108px; height:108px; border-radius:50%;
+  background:conic-gradient(var(--red) 0 35.2%, #eaa8ae 35.2% 48.77%, #e6e8ec 48.77% 100%);
+  display:grid; place-items:center; position:relative;
+}
+.stat__donut::after{ content:""; width:44px; height:44px; background:var(--pink-bg); border-radius:50%; }
+.stat__legend{ margin-top:10px; font-size:11.5px; line-height:1.8; color:var(--ink); }
+.stat__legend b{ color:var(--red); }
+.stat__src{ margin-top:6px; font-size:10px; line-height:1.6; color:var(--muted); }
+.stat__src a{ color:var(--muted); }
+
+.duo{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px; }
+.duo__card{ background:var(--panel-2); border:1px solid var(--line); border-radius:10px; padding:12px 10px; }
+.duo__ttl{ font-size:13.5px; font-weight:800; color:var(--navy); line-height:1.5; margin-bottom:4px; }
+.duo__txt{ font-size:11.5px; line-height:1.7; color:var(--muted); }
+
+.warn{
+  margin-top:14px; padding:13px 14px;
+  background:var(--amber-bg); border-left:4px solid var(--amber); border-radius:0 10px 10px 0;
+}
+.warn__ttl{ margin:0; font-size:14.5px; font-weight:800; color:var(--navy); line-height:1.6; }
+.warn__txt{ margin-top:5px; font-size:12.5px; line-height:1.8; color:var(--ink); }
+
+/* ============================================================
+   ⑤なぜ知られていないのか
+   ============================================================ */
+.reasons{ display:flex; flex-direction:column; gap:12px; }
+.reason{ display:grid; grid-template-columns:44px 1fr; gap:10px; align-items:start; }
+.reason__icon{ width:44px; height:44px; border-radius:10px; background-color:#fff; }
+.reason__ttl{ font-size:15px; font-weight:800; color:var(--navy); line-height:1.5; }
+.reason__txt{ font-size:12px; line-height:1.75; color:var(--muted); }
+
+/* ============================================================
+   ⑥ひとりでやる？伴走してもらう？
+   ============================================================ */
+.cmp{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:14px; }
+.cmp__col{ border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff; }
+.cmp__head{
+  padding:7px 6px; text-align:center; color:#fff;
+  font-size:13px; font-weight:800; line-height:1.5;
+}
+.cmp__col--solo .cmp__head{ background:var(--blue); }
+.cmp__col--with .cmp__head{ background:var(--rose); }
+.cmp__list{ padding:9px 9px 11px; }
+.cmp__list li{
+  position:relative; padding-left:12px; font-size:11.5px; line-height:1.7; color:var(--ink);
+}
+.cmp__list li + li{ margin-top:6px; }
+.cmp__list li::before{
+  content:""; position:absolute; left:0; top:.62em;
+  width:5px; height:5px; border-radius:50%;
+}
+.cmp__col--solo .cmp__list li::before{ background:var(--blue); }
+.cmp__col--with .cmp__list li::before{ background:var(--rose); }
+.cmp__list b{ font-weight:800; }
+
+.callout{ display:grid; grid-template-columns:104px 1fr; gap:10px; align-items:center; margin-top:14px; }
+.callout__art{ width:104px; aspect-ratio:104/74; margin:0; overflow:hidden; border-radius:10px; background:var(--panel); }
+/* support-advisors.webp は 467x700 で、2人の頭が原寸 y=185〜330 にある。
+   68% だと y=250 から下しか出ず頭が切れるので 38%（y=140〜472）にした。
+   この画像を別の枠で使うときも、頭より上を必ず残すこと */
+.callout__art .asset-img{ object-position:50% 38%; }
+.callout__txt{ font-size:12.5px; line-height:1.8; color:var(--ink); }
+
+/* ============================================================
+   ⑦つまずく9つ
+   ============================================================ */
+/* 3列のまま横幅を稼ぐ。見出しが4行以上に折れると見本より縦に伸びる */
+.why{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:6px;
+  margin:14px -6px 0;
+}
+.why__card{
+  background:#fff; border:1px solid var(--line); border-radius:10px;
+  padding:8px 7px; display:flex; flex-direction:column;
+}
+/* 番号は見出しの上に置く。横に並べると見出し欄が80px＝1行7文字しか使えず、
+   結論を書ききれない。上に逃がすと全幅105px＝1行10文字使える */
+.why__head{ display:block; }
+.why__no{
+  display:grid; place-items:center; width:18px; height:18px; margin:0 auto 5px;
+  background:var(--amber); color:#fff; border-radius:50%;
+  font-size:10px; font-weight:800; line-height:1;
+}
+/* 見出しは「何の話か」ではなく「で、どうなるか」を書く。1カード1メッセージ */
+.why__ttl{
+  font-size:10.5px; font-weight:700; color:var(--navy);
+  line-height:1.5; letter-spacing:-.02em; text-align:center;
+}
+/* アイコンは正方形を保つこと。スプライトを background-size:300% で切っているので、
+   枠を長方形にするとセルが歪む。小さくするのは可。 */
+.why__art{ width:64px; height:64px; margin:8px auto 0; border-radius:6px; background-color:var(--panel-2); }
+
+/* 黄色いCTA帯
+   ▼2026-09-15 修正：2カラム（1fr auto）をやめて縦積みにした。
+   ボタンの文言が「LINEで自分が対象か確認する」に伸びたぶん auto 列が
+   280px超を取り、左の 1fr が27pxまで潰れて「つまずく前に、確認しておく。」が
+   1文字ずつ縦に並んでいた（375/390px で実測）。
+   横並びに戻したい場合は、先にボタンの文言を短くすること。 */
+.cta-bar{
+  display:grid; grid-template-columns:1fr; gap:9px;
+  margin-top:16px; padding:12px;
+  background:var(--amber-bg); border-radius:12px;
+}
+.cta-bar__txt{ font-size:14px; font-weight:800; color:var(--navy); line-height:1.6;
+               text-align:center; text-wrap:balance; }
+.cta-bar .btn-line{ height:46px; }
+.cta-bar .btn-line__label{ font-size:16px; }
+
+/* ============================================================
+   ⑧セルフチェック
+   ============================================================ */
+.check-wrap{ display:grid; grid-template-columns:1fr 96px; gap:10px; align-items:end; margin-top:12px; }
+.check li{ position:relative; padding-left:26px; font-size:13px; line-height:1.7; color:var(--ink); }
+.check li + li{ margin-top:9px; }
+.check li::before{
+  content:""; position:absolute; left:0; top:.22em;
+  width:17px; height:17px; border-radius:4px;
+  background:var(--green);
+}
+.check li::after{
+  content:""; position:absolute; left:5px; top:.44em;
+  width:5px; height:9px; border:solid #fff; border-width:0 2px 2px 0;
+  transform:rotate(45deg);
+}
+.check__art{ width:96px; aspect-ratio:96/124; margin:0; overflow:hidden; border-radius:10px; background:var(--panel); }
+.check__art .asset-img{ object-position:67% 47%; }
+
+/* ============================================================
+   ⑨サービス紹介
+   ============================================================ */
+.brand{ display:grid; grid-template-columns:1fr 108px; gap:10px; align-items:center; }
+.brand__art{ width:108px; aspect-ratio:108/86; margin:0; overflow:hidden; border-radius:10px; background:var(--panel); }
+/* 同上。68% だと y=223 からで頭が切れる。40%（y=131〜503）で頭が入る */
+.brand__art .asset-img{ object-position:50% 40%; }
+.brand__txt{ font-size:12.5px; line-height:1.85; color:var(--ink); }
+.pr-badge{
+  display:inline-block; margin-left:6px; padding:1px 6px;
+  border:1px solid var(--muted); border-radius:4px;
+  font-size:10px; font-weight:700; color:var(--muted); vertical-align:middle; line-height:1.6;
+}
+
+/* ============================================================
+   ⑩断ってOK
+   ============================================================ */
+.reject{ margin-top:12px; padding:14px; background:var(--amber-bg); border-radius:12px; }
+.reject__grid{ display:grid; grid-template-columns:1fr 92px; gap:10px; align-items:center; }
+.reject__list li{ position:relative; padding-left:14px; font-size:12.5px; line-height:1.75; }
+.reject__list li + li{ margin-top:7px; }
+.reject__list li::before{
+  content:""; position:absolute; left:0; top:.62em;
+  width:6px; height:6px; border-radius:50%; background:var(--amber);
+}
+.reject__list li:nth-child(even)::before{ background:#7fb069; }
+.reject__art{ width:92px; aspect-ratio:92/84; margin:0; overflow:hidden; border-radius:10px; background:#fff; }
+.reject__art .asset-img{ object-position:50% 68%; }
+
+/* ============================================================
+   ⑪FAQ（アコーディオン）
+   ============================================================ */
+.faq{ display:flex; flex-direction:column; gap:8px; margin-top:12px; }
+.faq__item{ border:1px solid var(--line); border-radius:10px; background:#fff; overflow:hidden; }
+.faq__q{
+  display:grid; grid-template-columns:1fr 22px; gap:8px; align-items:center;
+  width:100%; margin:0; padding:12px 13px;
+  background:none; border:0; font:inherit; text-align:left; cursor:pointer;
+  font-size:13px; font-weight:700; color:var(--navy); line-height:1.6;
+}
+.faq__q::-moz-focus-inner{ border:0; }
+.faq__q:focus-visible{ outline:2px solid var(--green); outline-offset:-2px; }
+.faq__q .u-q{ color:var(--muted); margin-right:4px; font-weight:800; }
+.faq__mark{
+  width:22px; height:22px; position:relative; justify-self:end;
+  transition:transform .22s ease;
+}
+.faq__mark::before,.faq__mark::after{
+  content:""; position:absolute; left:5px; top:10px; width:12px; height:2px;
+  background:var(--muted); border-radius:1px;
+}
+.faq__mark::after{ transform:rotate(90deg); }
+.faq__item.is-open .faq__mark{ transform:rotate(45deg); }
+.faq__a{
+  overflow:hidden; height:0;
+  transition:height .24s ease;
+}
+.faq__a-inner{ padding:0 13px 13px; font-size:12.5px; line-height:1.85; color:var(--ink); }
+
+/* JS無効時はすべて開いた状態で読める（広告LPで内容が読めないのは致命的） */
+.no-js .faq__a{ height:auto; }
+.no-js .faq__mark{ display:none; }
+
+/* ============================================================
+   ⑫まとめ
+   ============================================================ */
+.sum{ display:grid; grid-template-columns:132px 1fr; gap:12px; align-items:start; margin-top:12px; }
+.sum__box{
+  padding:12px 11px; background:var(--amber-bg);
+  border:2px solid var(--amber); border-radius:10px;
+}
+.sum__ttl{ font-size:15px; font-weight:800; color:var(--navy); line-height:1.5; }
+.sum__lead{ margin-top:6px; font-size:12.5px; font-weight:700; color:var(--navy); line-height:1.7; }
+.sum__side{ font-size:12.5px; line-height:1.85; color:var(--ink); }
+.sum__art{ width:84px; aspect-ratio:84/96; margin:8px 0 0 auto; overflow:hidden; border-radius:10px; background:var(--panel); }
+.sum__art .asset-img{ object-position:62% 62%; }
+
+/* ============================================================
+   最終CTA・免責・フッター
+   ============================================================ */
+.final{ padding:22px var(--pad) 26px; background:var(--panel-2); text-align:center; }
+.final__ttl{ font-size:17px; font-weight:800; color:var(--navy); line-height:1.6; margin-bottom:12px; }
+.final .btn-line{ height:58px; }
+.final .btn-line__label{ font-size:22px; }
+.final__note{ margin-top:10px; font-size:11.5px; line-height:1.75; color:var(--muted); text-align:left; }
+
+.disc{ padding:18px var(--pad); background:#f2f4f7; }
+.disc li{ position:relative; padding-left:12px; font-size:10.5px; line-height:1.75; color:var(--muted); }
+.disc li + li{ margin-top:5px; }
+.disc li::before{ content:"・"; position:absolute; left:0; top:0; }
+
+/* 固定CTAのぶんだけ足元を空ける */
+.foot{ padding:16px var(--pad) calc(112px + env(safe-area-inset-bottom,0px)); text-align:center; }
+.foot nav{ display:flex; flex-wrap:wrap; justify-content:center; gap:6px 16px; margin-bottom:8px; }
+.foot a{ font-size:12px; color:var(--muted); text-decoration:underline; }
+.foot p{ font-size:11px; color:#9aa1ab; }
+
+/* ============================================================
+   固定CTAバー
+   FVのCTAが画面内にある間は出さない（CLAUDE.mdのFV設計ルール6）
+   ============================================================ */
+.sticky-cta{
+  position:fixed; left:0; right:0; bottom:0; z-index:50;
+  padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));
+  background:rgba(255,255,255,.96);
+  border-top:1px solid var(--line);
+  box-shadow:0 -4px 14px rgba(0,0,0,.09);
+}
+.sticky-cta[hidden]{ display:none !important; }
+.sticky-cta .btn-line{ max-width:412px; margin-inline:auto; height:50px; }
+.sticky-cta .btn-line__label{ font-size:18px; }
+.sticky-cta__note{ margin-top:4px; font-size:10px; line-height:1.5; color:var(--muted); text-align:center; }
+
+/* ============================================================
+   狭い端末（320〜359px）
+   ============================================================ */
+@media (max-width:359px){
+  :root{ --pad:13px; }
+  .fv__amount{ font-size:30px; }
+  .fv__amount em{ font-size:56px; }
+  .fv__amount .u-unit{ font-size:26px; }
+  .fv__lead{ font-size:28px; }
+  .btn-line__label{ font-size:19px; }
+  /* 人物が小さくなるぶん bottom も詰めないと、頭が見出しから離れる */
+  .fv__art{ width:104px; height:172px; bottom:26px; }
+  .fv__art .asset-img{ width:180px; }
+  .fv__cta{ padding-left:98px; min-height:116px; }
+  .cta__badge{ font-size:13px; letter-spacing:-.05em; white-space:nowrap; }
+  .fv__cta .btn-line__label{ font-size:15px; }
+  /* 12pxだと「不要」「ます」が単独行に落ちる。幅196pxに18文字入る大きさにする */
+  .cta__sub{ font-size:10px; letter-spacing:-.02em; }
+  .h2{ font-size:19px; }
+  /* 320pxで3列にすると1枚100pxしかなく、一言が1〜2文字だけ折り返して読めない。
+     この幅だけ2列にする（見本は390px前提の設計なので、崩すのはここだけ） */
+  .why{ grid-template-columns:repeat(2,1fr); margin-inline:-8px; gap:6px; }
+  .why__ttl{ font-size:10px; line-height:1.45; }
+  .cmp__list li{ font-size:11px; }
+}
+
+/* ============ CTAの光沢（キラン）============
+   3.6秒ごとに1回だけ、斜めのハイライトが左から右へ走る。
+   点滅ではなく一往復にしているのは、読者が療養中で、
+   強い明滅は離脱・不快感につながるため。
+   対象はクラスではなく data-offline-cv-link（＝送客CTAの定義そのもの）。
+   クラス名が変わっても外れない。 */
+a[data-offline-cv-link]{ position:relative; overflow:hidden; isolation:isolate; }
+a[data-offline-cv-link]::after{
+  content:""; position:absolute; top:-60%; left:-75%; width:45%; height:220%;
+  pointer-events:none; z-index:1;
+  background:linear-gradient(100deg,
+    rgba(255,255,255,0) 0%, rgba(255,255,255,.28) 45%, rgba(255,255,255,.55) 50%,
+    rgba(255,255,255,.28) 55%, rgba(255,255,255,0) 100%);
+  transform:skewX(-18deg);
+  animation:cta-shine 3.6s ease-in-out infinite;
+}
+@keyframes cta-shine{ 0%{ left:-75%; } 18%,100%{ left:130%; } }
+a[data-offline-cv-link] > *{ position:relative; z-index:2; }
+@media (prefers-reduced-motion: reduce){
+  a[data-offline-cv-link]::after{ animation:none; opacity:0; }
+}
+
+/* ---- CTA文言が長い場合の折り返し ----
+   「LINEで自分が対象か確認する」は1行に収まらない（FVは幅230pxに対し
+   ラベルだけで235px必要）。nowrap＋光沢用のoverflow:hiddenが重なると
+   文字が切り取られるため、折り返しを許可してボタン側を縦に伸ばす。
+   height指定は後勝ちで打ち消し、min-heightに寄せる。 */
+.btn-line{ height:auto; min-height:46px; padding-block:8px; }
+.btn-line__label{ white-space:normal; line-height:1.28; text-align:center; }
+
+/* 語の途中（「確／認する」）で割れないよう、意味の切れ目で分割する。
+   inline-block にすると、この2つの塊の間だけで折り返す。
+   幅が足りるボタンでは1行のままになる。 */
+.cta-seg{ display:inline-block; }
+
+/* ▼2026-09-15 追加：制度セクション（#sickness / #unemployment）
+   375pxで読めるよう縦積み。既存の .duo（2カラム）は使わない。 */
+.h3{ margin:0 0 8px; font-size:17px; font-weight:800; color:var(--navy); line-height:1.5; }
+.inst__lead{ margin-top:22px; padding-left:10px; border-left:4px solid var(--gold); }
+.inst{ margin-top:10px; padding:14px 13px; background:var(--panel-2);
+       border:1px solid var(--line); border-radius:10px; }
+.inst__sum{ font-size:14px; line-height:1.9; color:var(--ink); }
+.inst__h{ margin:12px 0 0; font-size:13px; font-weight:800; color:var(--navy); line-height:1.6; }
+.inst__list{ margin:6px 0 0; padding-left:0; }
+.inst__list li{ position:relative; padding-left:14px; font-size:13.5px; line-height:1.85;
+                color:var(--ink); margin-bottom:5px; }
+/* ul,ol に list-style:none のリセットが効いているので、
+   既存の .cmp__list と同じ丸ポチを自前で描く。 */
+.inst__list li::before{ content:""; position:absolute; left:0; top:.72em;
+                        width:5px; height:5px; border-radius:50%; background:var(--gold); }
+.inst__list b{ color:var(--navy); }
+.inst__sub{ font-size:12px; color:var(--muted); }
+.inst__note{ margin-top:12px; padding-top:10px; border-top:1px dashed var(--line);
+             font-size:12px; line-height:1.8; color:var(--muted); }
+
+/* ▼2026-09-15 追加：日本語の折り返しを整える
+   ・見出し・短いラベル＝ text-wrap:balance（行の長さをそろえる）
+     320〜390pxでは「…ですか？」の2文字だけが次行に落ちる箇所が多く、
+     見出しほど目立つ。balance は4行以下のブロックにだけ効く。
+   ・本文・文になっている箇条書き＝ text-wrap:pretty（最終行に1文字だけ残るのを避ける）
+     箇条書きに balance を掛けると語の途中で折れることがあったので、こちら側に置く。
+   ・word-break:auto-phrase ＝ 日本語を文節で切る。これが無いと
+     「または退／職して」「働／き続ける」のように語の真ん中で折れる。
+   いずれも未対応ブラウザでは無視されるだけで、レイアウトは崩れない。 */
+.lp, .foot{ word-break:auto-phrase; }
+
+.h2, .h3, .inst__h, .inst__lead, .warn__ttl, .reason__ttl, .why__ttl,
+.step__ttl, .stat__lede, .sum__ttl, .final__ttl, .faq__q,
+.cmp__head, .trust__item, .cta__badge, .cta__headline{
+  text-wrap:balance;
+}
+/* 「退職リリーフとは？[PR]」は balance するとバッジだけが2行目に落ちる。
+   1行で収まる長さなので、この見出しだけ通常の折り返しに戻す。 */
+.h2:has(.pr-badge){ text-wrap:wrap; }
+
+.lead, .inst__sum, .inst__note, .inst__list li, .reason__txt, .step__txt,
+.warn__txt, .note, .disc li, .faq__a-inner, .sum__lead, .final__note,
+.stat__tail, .stat__src, .cmp__list li, .check li, .reject__list li,
+.callout__txt, .brand__txt{
+  text-wrap:pretty;
+}
+
+/* アンカーで飛んだとき、見出しが画面上端に貼り付かないようにする */
+#benefits, #unemployment, #sickness, #check, #flow, #faq{ scroll-margin-top:16px; }
+/* scroll-behavior:smooth は入れない。
+   初回のハッシュ遷移中に遅延読み込み画像が入ると、
+   スムーススクロールが追従できず着地位置がずれる（実測で#flow/#sicknessが外れた）。 */
+
+/* ============================================================
+   記事確認用の表示。本番 /taishoku-kyufukin/ には入っていません。
+   ============================================================ */
+:root{
+  --rv-bg:#14202b; --rv-surf:#1e2b38; --rv-surf2:#26343f;
+  --rv-line:#33444f; --rv-ink:#e9eff6; --rv-mut:#8ba0b6;
+  --rv-dx:#a06bff; --rv-dx-soft:rgba(160,107,255,.14);
+  --rv-bar:56px;
+}
+.rv-page{ background:var(--bg); padding-top:calc(var(--rv-bar) + env(safe-area-inset-top, 0px)); }
+.rv-page #benefits,.rv-page #unemployment,.rv-page #sickness,
+.rv-page #check,.rv-page #flow,.rv-page #faq{
+  scroll-margin-top:calc(var(--rv-bar) + env(safe-area-inset-top, 0px) + 16px);
+}
+.rv-bar{
+  position:fixed; inset:0 0 auto 0; z-index:9999;
+  padding:0 12px; padding-top:env(safe-area-inset-top, 0px);
+  height:calc(var(--rv-bar) + env(safe-area-inset-top, 0px));
+  display:flex; align-items:center; gap:10px;
+  background:rgba(20,32,43,.95); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rv-line);
+  font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic",system-ui,sans-serif;
+  color:var(--rv-ink);
+}
+.rv-bar__id{ min-width:0; flex:1; }
+.rv-bar__k{ display:block; font-size:10px; letter-spacing:.1em; color:var(--rv-mut); }
+.rv-bar__t{ display:block; font-size:12.5px; font-weight:700; white-space:nowrap;
+            overflow:hidden; text-overflow:ellipsis; }
+.rv-btn{
+  flex:none; display:inline-flex; align-items:center; gap:6px;
+  height:34px; padding:0 12px; border-radius:999px; cursor:pointer;
+  border:1px solid var(--rv-line); background:var(--rv-surf); color:var(--rv-ink);
+  font:inherit; font-size:12px; font-weight:700;
+}
+.rv-btn:hover{ background:var(--rv-surf2); }
+.rv-btn:focus-visible{ outline:2px solid var(--rv-dx); outline-offset:2px; }
+.rv-btn[aria-pressed="true"], .rv-btn[aria-expanded="true"]{
+  background:var(--rv-dx); border-color:var(--rv-dx); color:#150c26;
+}
+.rv-dot{ width:8px; height:8px; border-radius:50%; background:var(--rv-dx); flex:none; }
+.rv-btn[aria-pressed="true"] .rv-dot{ background:#150c26; }
+
+.rv-list{
+  position:fixed; z-index:9998; left:0; right:0;
+  top:calc(var(--rv-bar) + env(safe-area-inset-top, 0px));
+  max-height:min(70vh,600px); overflow:auto;
+  background:var(--rv-bg); border-bottom:1px solid var(--rv-line);
+  font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic",system-ui,sans-serif;
+  padding:15px 16px 20px;
+}
+.rv-list h2{ margin:0 0 3px; font-size:14px; font-weight:800; color:var(--rv-ink); }
+.rv-sub{ margin:0 0 15px; font-size:11.5px; line-height:1.75; color:var(--rv-mut); }
+.rv-grp{ margin:17px 0 8px; font-size:10px; font-weight:800; letter-spacing:.1em; color:var(--rv-mut); }
+.rv-grp:first-of-type{ margin-top:0; }
+.rv-items{ display:grid; gap:8px; }
+.rv-item{
+  display:grid; grid-template-columns:26px 1fr; gap:10px; align-items:start;
+  padding:10px 11px; border-radius:9px; text-decoration:none;
+  background:var(--rv-surf); border:1px solid var(--rv-line);
+}
+.rv-item:hover{ background:var(--rv-surf2); }
+.rv-item:focus-visible{ outline:2px solid var(--rv-dx); outline-offset:2px; }
+.rv-item > span:last-child{ min-width:0; }
+.rv-n{
+  width:26px; height:26px; border-radius:7px; display:grid; place-items:center;
+  background:var(--rv-dx-soft); color:var(--rv-dx);
+  font-size:12px; font-weight:800; font-variant-numeric:tabular-nums;
+}
+.rv-h{ display:block; font-size:12.5px; font-weight:700; color:var(--rv-ink); line-height:1.55; }
+.rv-d{ display:block; margin-top:4px; font-size:11px; line-height:1.8; color:var(--rv-mut); }
+.rv-note{
+  margin-top:17px; padding:11px 12px; border-radius:9px;
+  background:var(--rv-surf); border:1px solid var(--rv-line);
+  font-size:11px; line-height:1.9; color:var(--rv-mut);
+}
+.rv-note b{ color:var(--rv-ink); }
+.rv-note ul{ margin:6px 0 0; padding:0; list-style:none; }
+.rv-note li{ position:relative; padding-left:13px; }
+.rv-note li::before{ content:""; position:absolute; left:0; top:.78em;
+  width:4px; height:4px; border-radius:50%; background:var(--rv-dx); }
+
+/* ---- 修正箇所の印 ---- */
+.dx{ position:relative; }
+body.rv-on .dx{
+  box-shadow:inset 3px 0 0 var(--rv-dx);
+  background-image:linear-gradient(var(--rv-dx-soft),var(--rv-dx-soft));
+  border-radius:0 8px 8px 0; margin-top:28px;
+}
+body.rv-on .dx::before{
+  content:attr(data-dx) "　" attr(data-dxl);
+  position:absolute; top:-21px; left:0; z-index:50; max-width:calc(100% - 8px);
+  padding:3px 9px; border-radius:999px;
+  background:var(--rv-dx); color:#150c26;
+  font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic",system-ui,sans-serif;
+  font-size:10px; font-weight:800; line-height:1.5;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  box-shadow:0 2px 8px rgba(0,0,0,.28);
+}
+body.rv-on .dx--id{ background-image:none; margin-top:0; }
+body.rv-on .dx--id::before{ top:6px; left:10px; }
+body.rv-on .dx--tight{ margin-top:0; }
+body.rv-on .dx--tight::before{ display:none; }
+@media (prefers-reduced-motion:reduce){ *{ scroll-behavior:auto !important; } }
+
+
+</style>
+</head>
+<body>
+<header class="rv-bar">
+  <span class="rv-bar__id">
+    <span class="rv-bar__k">記事確認用（公開前）／退職リリーフ</span>
+    <span class="rv-bar__t">taisyoku.hakobu-family.com/taishoku-kyufukin/</span>
+  </span>
+  <button class="rv-btn" id="rv-toggle" type="button" aria-pressed="true"><span class="rv-dot"></span>修正箇所</button>
+  <button class="rv-btn" id="rv-open" type="button" aria-expanded="false" aria-controls="rv-list">一覧</button>
+</header>
+
+<section class="rv-list" id="rv-list" hidden>
+  <h2>今回の修正は8件です</h2>
+  <p class="rv-sub">紫の帯が付いている箇所が修正部分です。「修正箇所」ボタンで印を消すと、公開後と同じ表示になります。番号をタップするとその箇所へ移動します。</p>
+
+  <p class="rv-grp">本文の追記・書き換え</p>
+  <div class="rv-items">
+      <a class="rv-item" href="#flow" data-jump><span class="rv-n">1</span><span><span class="rv-h">ページ内アンカーを6か所追加</span><span class="rv-d"><code>#benefits</code> <code>#unemployment</code> <code>#sickness</code> <code>#check</code> <code>#flow</code> <code>#faq</code>。Google広告のサイトリンク用です。既存の見出しに移動先を設定したもので、本文は変更していません。</span></span></a>
+      <a class="rv-item" href="#benefits" data-jump><span class="rv-n">2</span><span><span class="rv-h">見出しを追加：社会保険給付金（退職給付金）とは？</span><span class="rv-d">法律上の制度名ではなく、退職の前後に受け取れる公的給付の総称である旨を明記しています。</span></span></a>
+      <a class="rv-item" href="#sickness" data-jump><span class="rv-n">3</span><span><span class="rv-h">追記：傷病手当金の条件と確認点</span><span class="rv-d">制度の概要、対象になり得る条件、退職前・退職日・退職後に確認すべき点を追加。支給の可否を決めるのは保険者（協会けんぽ・健康保険組合）である旨を末尾に明記しています。</span></span></a>
+      <a class="rv-item" href="#unemployment" data-jump><span class="rv-n">4</span><span><span class="rv-h">追記：失業保険の条件と時期</span><span class="rv-d">受給条件、待期7日間と自己都合の給付制限、受給期間の延長を追加。支給の可否・日数・金額を決めるのはハローワークである旨を末尾に明記しています。</span></span></a>
+      <a class="rv-item" href="#unemployment" data-jump><span class="rv-n">5</span><span><span class="rv-h">書き換え：自己都合退職の扱い</span><span class="rv-d">従来は「すぐには出ません」のみで対象外と読める恐れがあったため、条件を満たせば対象になることを先に記載し、そのうえで受給時期が遅れる説明に続けています。</span></span></a>
+  </div>
+
+  <p class="rv-grp">表示の調整</p>
+  <div class="rv-items">
+      <a class="rv-item" href="#faq" data-jump><span class="rv-n">6</span><span><span class="rv-h">CTA帯の表示調整</span><span class="rv-d">スマートフォンで文字が縦一列に並んでいたため、配置を縦積みに変更しました。文言・リンク先の変更はありません。</span></span></a>
+      <div class="rv-item"><span class="rv-n">7</span><span><span class="rv-h">ファーストビュー注記の表示調整</span><span class="rv-d">折り返し位置のみの調整です。文言・リンク先の変更はありません。</span></span></div>
+      <a class="rv-item" href="#faq" data-jump><span class="rv-n">8</span><span><span class="rv-h">文言変更：1か所</span><span class="rv-d">「不支給でも 理由を見て出し直せる」→「不支給でも 理由を見て再申請」。表示幅に収めるための短縮で、意味は変えていません。</span></span></a>
+  </div>
+
+  <div class="rv-note">
+    <b>表現について</b>
+    <ul>
+      <li>受給を保証する表現は使用していません。支給を決定するのは保険者またはハローワークである旨を各セクションに明記しています。</li>
+      <li>「申請代行」とは記載していません。申請はご本人が行い、サービスは受給条件の確認から申請手続きまでのサポートである、という記載です。</li>
+      <li>「誰でも」「必ず」「最短◯日」等の表現は使用していません。</li>
+      <li>PR表記をファーストビュー右上に常時表示しています。</li>
+      <li>フッターの運営者情報・プライバシーポリシー・広告掲載についても、このページから開けます。</li>
+    </ul>
+    <br>
+    ※ 公開前のコピーのため、アクセス解析タグは外してあります。リンク先は公開後と同じです。
+  </div>
+</section>
+<div class="rv-page">
+
+
+<main class="lp">
+
+  <!-- ============ ①FV ============ -->
+  <section class="fv">
+    <figure class="fv__art" aria-hidden="true">
+      <img class="asset-img" src="/taishoku-kyufukin/assets/hero-office-worker.webp" width="467" height="700"
+           fetchpriority="high" decoding="async" alt="">
+    </figure>
+    <span class="fv__pr" aria-label="広告を含む記事です">PR</span>
+    <p class="fv__tab" data-todo="copy">退職予定の方へ</p>
+
+    <h1 class="fv__h1" data-todo="copy">
+      <span class="fv__amount">最大<em>365</em><span class="u-unit">万円</span></span>
+      <span class="fv__lead">受け取れる制度を<br>ご存じですか？</span>
+    </h1>
+
+    <!-- 金額の注記はFVから削除（2026-08-01・指示による）。
+         「制度上の計算例であること」は免責ブロックに残している。
+         ASPのCR確認で条件表記を同一視野に求められた場合は、ここに戻すのが早い。 -->
+
+    <div class="fv__cta">
+      <p class="cta__badge" data-todo="copy">まずは、受け取れるかどうか</p>
+      <p class="cta__headline" data-todo="copy"><span class="u-line">LINE</span>で無料診断</p>
+
+      <div class="cta__row">
+        <div class="cta__main">
+          <a class="btn-line" href="#" data-todo="link" data-track="fv_line" data-offline-cv-link
+             target="_blank" rel="sponsored nofollow noopener noreferrer">
+            <span class="btn-line__logo">LINE</span>
+            <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
+          </a>
+          <div class="dx" data-dx="7" data-dxl="表示調整（文言の変更なし）"><p class="cta__sub" data-todo="copy"><span>友だち追加だけ・無料／電話番号は不要</span><span>退職リリーフの公式サイトへ移動します</span></p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 運営表記はFVから削除（2026-08-01）。
+         運営者情報はフッターのリンクと免責ブロックに残っている -->
+  </section>
+
+  <!-- ============ ②スマホ画面＋信頼バッジ ============ -->
+  <div class="trust">
+    <figure class="trust__phone" aria-label="LINEで相談する画面のイメージ">
+      <span class="chat-phone__notch" aria-hidden="true"></span>
+      <div class="chat-phone" aria-hidden="true">
+        <div class="chat-phone__bar"><span>‹</span><span class="chat-phone__brand">退職リリーフ</span><span>•••</span></div>
+        <div class="chat-phone__body">
+          <div class="chat">
+            <span class="chat__avatar">相</span>
+            <p class="chat__bubble">はじめまして！<br>退職リリーフです。<br>受け取れる可能性を確認できます。</p>
+          </div>
+          <div class="chat chat--sent"><p class="chat__bubble">お願いします！</p></div>
+          <div class="chat">
+            <span class="chat__avatar">相</span>
+            <p class="chat__bubble">いくつか質問します。<br>選ぶだけで進めます。</p>
+          </div>
+        </div>
+      </div>
+    </figure>
+    <div class="trust__list">
+      <div class="trust__item" data-todo="copy">
+        <span class="trust__icon" style="--icon-x:100%;--icon-y:0%" aria-hidden="true"></span>
+        社労士・弁護士<br>監修で安心
+      </div>
+      <div class="trust__item" data-todo="copy">
+        <span class="trust__icon" style="--icon-x:50%;--icon-y:50%" aria-hidden="true"></span>
+        申請まで<br>伴走サポート
+      </div>
+      <div class="trust__item" data-todo="copy">
+        <span class="trust__icon" style="--icon-x:0%;--icon-y:100%" aria-hidden="true"></span>
+        相談は無料<br>ブロックOK
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ③LINEで3ステップ ============ -->
+  <section class="sec sec--panel dx dx--id" id="flow" data-dx="1" data-dxl="アンカー追加｜#flow（本文の変更なし）">
+    <h2 class="h2" data-todo="copy">無料診断は、LINEで3ステップ</h2>
+    <p class="lead" data-todo="copy">答えるのは、かんたんな質問だけです。ここまでは無料で、途中でやめても構いません。</p>
+
+    <ol class="steps">
+      <li class="step">
+        <p class="step__no">1</p>
+        <p class="step__ttl" data-todo="copy">LINEで<br>友だち追加</p>
+        <div class="step__ph" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen mini-phone__screen--add">友だち<br>追加</span></span></div>
+        <p class="step__txt" data-todo="copy">ボタンを押すとLINEが開きます。登録に費用はかかりません。</p>
+      </li>
+      <li class="step">
+        <p class="step__no">2</p>
+        <p class="step__ttl" data-todo="copy">質問に<br>答える</p>
+        <div class="step__ph" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen">質問に<br>答える</span></span></div>
+        <p class="step__txt" data-todo="copy">年齢・退職の予定・健康保険に入っていた期間など。選ぶだけで進みます。</p>
+      </li>
+      <li class="step">
+        <p class="step__no">3</p>
+        <p class="step__ttl" data-todo="copy">結果が<br>届く</p>
+        <div class="step__ph" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen mini-phone__screen--result">確認<br>完了</span></span></div>
+        <p class="step__txt" data-todo="copy">対象になりそうかどうかと、金額の目安が届きます。</p>
+      </li>
+    </ol>
+
+    <p class="punch" data-todo="copy">ここまで、およそ1分。<br>やりとりはLINEだけ。</p>
+  </section>
+
+  <!-- ============ ④受け取れるお金は1つじゃない ============ -->
+  <section class="sec dx dx--id" id="benefits" data-dx="1" data-dxl="アンカー追加｜#benefits（本文の変更なし）">
+    <h2 class="h2" data-todo="copy">退職後に受け取れるお金は、1つじゃない</h2>
+    <p class="lead" data-todo="copy">
+      病気やケガで働けない状態にある場合、失業保険とは別のお金を受け取れる制度があります。
+      在職中から始められますが、申請した人しか受け取れません。会社から案内されることは、ほとんどありません。
+    </p>
+
+    <!-- ▼2026-09-15 追加：検索語句「社会保険給付金 / 退職給付金」との一致を強化 -->
+    <div class="dx" data-dx="2" data-dxl="見出しを追加"><h3 class="h3 inst__lead">社会保険給付金（退職給付金）とは？</h3>
+    <p class="inst__sum">退職の前後に受け取れる公的な給付をまとめた呼び方で、法律上の制度名ではありません。主なものが、健康保険の<b>傷病手当金</b>と、雇用保険の<b>失業保険（基本手当）</b>です。どちらも申請して初めて受け取れます。</p></div>
+
+    <div class="stat">
+      <div class="stat__head">
+        <div>
+          <p class="stat__lede" data-todo="copy">傷病手当金を受け取った人の</p>
+          <p class="stat__big" data-todo="copy"><b>3</b>人に<b>1</b>人以上は、</p>
+          <p class="stat__tail" data-todo="copy">心の不調が理由です。</p>
+        </div>
+        <div class="stat__donut" role="img"
+             aria-label="精神及び行動の障害が35.20%、がんが13.57%、その他が51.23%">
+        </div>
+      </div>
+      <p class="stat__legend" data-todo="copy">
+        精神及び行動の障害が <b>35.20%</b> で最も多く、がん（13.57%）の約2.6倍。<br>
+        平均の支給期間は <b>158日</b>（約5か月）。
+      </p>
+      <p class="stat__src">出典：<a href="https://www.kyoukaikenpo.or.jp/disclosure/statistics/statistical_survey/beneficiary_status_survey/r05/" target="_blank" rel="noopener noreferrer">全国健康保険協会「現金給付受給者状況調査」令和5年度</a></p>
+    </div>
+
+    <!-- ▼2026-09-15 追加：制度ごとの詳細。
+         旧「.duo」2カラムは375pxで1枚170px程度しか幅が無く、
+         制度の概要・条件・確認点を入れると読めなくなるため、
+         縦積みのカードに置き換えた。CTA・計測には触れていない。 -->
+    <div class="dx" data-dx="3" data-dxl="追記｜傷病手当金の条件と確認点"><h3 class="h3 inst__lead" id="sickness">退職後の傷病手当金｜受け取れる条件</h3>
+    <div class="inst">
+      <p class="inst__sum">病気やケガで働けない期間の生活を支える制度です。給与のおよそ3分の2を、通算1年6か月まで受け取れます。</p>
+      <h4 class="inst__h">対象になり得る条件</h4>
+      <ul class="inst__list">
+        <li>業務外の病気・ケガで、療養のため働けない状態にあること</li>
+        <li>連続する3日間を含み、4日以上仕事を休んでいること</li>
+        <li>休んだ期間に給与の支払いがない（または傷病手当金より少ない）こと</li>
+      </ul>
+      <h4 class="inst__h">退職前／退職後で確認すること</h4>
+      <ul class="inst__list">
+        <li><b>退職前</b>：健康保険の加入期間が継続して1年以上あるか</li>
+        <li><b>退職日</b>：出勤していないか（出勤すると退職後の継続受給ができなくなることがあります）</li>
+        <li><b>退職後</b>：退職日の時点で受給しているか、受けられる状態にあったか</li>
+      </ul>
+      <p class="inst__note">最終的な支給の可否は、加入していた健康保険の保険者（協会けんぽ・健康保険組合）が、医師の証明などをもとに判断します。</p>
+    </div></div>
+
+    <div class="dx" data-dx="4" data-dxl="追記｜失業保険の条件と時期"><h3 class="h3 inst__lead" id="unemployment">失業保険・失業手当の受給条件</h3>
+    <div class="inst">
+      <p class="inst__sum">働ける状態になってから、次の仕事を探しながら受け取る制度です。療養中は対象になりません。傷病手当金とは同時に受け取れず、順番に切り替えます。</p>
+      <h4 class="inst__h">対象になり得る条件</h4>
+      <ul class="inst__list">
+        <li>離職前の2年間に、雇用保険の被保険者期間が通算12か月以上あること<br><span class="inst__sub">（会社都合などの場合は1年間に通算6か月以上）</span></li>
+        <li>働く意思と能力があり、求職活動をしていること</li>
+        <li>ハローワークで求職の申し込みをしていること</li>
+      </ul>
+      <h4 class="inst__h">失業給付はいつから・どのくらい？</h4>
+      <ul class="inst__list">
+        <li>手続き後に<b>7日間の待期</b>。自己都合退職はそのあと<b>原則1か月の給付制限</b></li>
+        <li>受け取れる日数は、離職理由・年齢・被保険者期間によって決まります</li>
+        <li>療養ですぐ働けない場合は、<b>受給期間の延長</b>を申請しておくと、回復後に受け取れます</li>
+      </ul>
+      <p class="inst__note">最終的な支給の可否・日数・金額は、ハローワークが離職理由や被保険者期間を確認したうえで決定します。</p>
+    </div></div>
+
+    <div class="dx" data-dx="5" data-dxl="書き換え｜自己都合退職の扱い"><div class="warn">
+      <h3 class="warn__ttl" data-todo="copy">自己都合退職でも対象になる？ ただし、すぐには出ません</h3>
+      <p class="warn__txt" data-todo="copy">
+        <b>自己都合でも、条件を満たせば対象になります。</b>ただし受け取れる時期が遅れます。
+        手続きのあと7日間の待期があり、そのあと、自己都合退職には原則1か月の給付制限がかかります。
+        つまり辞めてすぐは、収入が空きます。ここを埋められるかどうかが、退職後のいちばん苦しい時期を左右します。
+      </p>
+    </div></div>
+  </section>
+
+  <!-- ============ ⑤なぜ知られていないのか ============ -->
+  <section class="sec sec--panel">
+    <h2 class="h2" data-todo="copy">なぜ、多くの人が知らないのか</h2>
+
+    <div class="reasons">
+      <div class="reason">
+        <span class="reason__icon" style="--icon-x:0%;--icon-y:50%" aria-hidden="true"></span>
+        <div>
+          <p class="reason__ttl" data-todo="copy">会社は教えてくれない</p>
+          <p class="reason__txt" data-todo="copy">会社に案内する義務はなく、人事の担当者自身が知らないことも珍しくありません。</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="reason__icon" style="--icon-x:100%;--icon-y:0%" aria-hidden="true"></span>
+        <div>
+          <p class="reason__ttl" data-todo="copy">役所は聞かれたことにしか答えない</p>
+          <p class="reason__txt" data-todo="copy">窓口では制度を説明してくれますが、「あなたはどうすべきか」までは踏み込みません。</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="reason__icon" style="--icon-x:0%;--icon-y:100%" aria-hidden="true"></span>
+        <div>
+          <p class="reason__ttl" data-todo="copy">申請した人だけが受け取れる</p>
+          <p class="reason__txt" data-todo="copy">制度そのものは何十年も前からあります。裏技でも抜け道でもありません。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ⑥ひとりでやる？伴走してもらう？ ============ -->
+  <section class="sec">
+    <h2 class="h2" data-todo="copy">ひとりでやる？　伴走してもらう？</h2>
+
+    <div class="cmp">
+      <div class="cmp__col cmp__col--solo">
+        <p class="cmp__head" data-todo="copy">ひとりでやる</p>
+        <ul class="cmp__list" data-todo="copy">
+          <li>かかるお金：<b>0円</b></li>
+          <li>退職日の決め方：誰も教えてくれない</li>
+          <li>受け取る順番：自分で調べる</li>
+          <li>書類の準備：何を書くかも自分で調べる</li>
+          <li>毎月の手続き：体調が悪い日も自分で判断</li>
+          <li>出し忘れ・不備：取り返せないことがある</li>
+          <li>退職の意思表示：自分で伝える</li>
+        </ul>
+      </div>
+      <div class="cmp__col cmp__col--with">
+        <p class="cmp__head" data-todo="copy">伴走してもらう</p>
+        <ul class="cmp__list" data-todo="copy">
+          <li>有料（相談は無料）</li>
+          <li>決める前に相談できる</li>
+          <li>一緒に組み立てる</li>
+          <li>準備と進め方を支援してもらえる</li>
+          <li>受給後まで相談できる</li>
+          <li>先回りで防げる</li>
+          <li>退職代行のオプションあり</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <figure class="callout__art">
+        <img class="asset-img" src="/taishoku-kyufukin/assets/support-advisors.webp" width="560" height="700" loading="lazy" decoding="async" alt="">
+      </figure>
+      <p class="callout__txt" data-todo="copy">
+        給付金の申請そのものは、どちらの場合も本人が行います。
+        変わるのは「何を、いつ、どう出すか」を自分ひとりで判断するかどうかです。
+      </p>
+    </div>
+    <p class="note" style="margin-top:10px" data-todo="copy">
+      ※ 一般的な比較です。サポート内容・費用は事業者により異なります。支給可否は保険者（ハローワーク・健康保険の保険者）の審査によります。
+    </p>
+  </section>
+
+  <!-- ============ ⑦つまずく9つ ============ -->
+  <section class="sec sec--panel">
+    <h2 class="h2" data-todo="copy">ひとりでやる場合、つまずくのはここです</h2>
+    <p class="lead" data-todo="copy">費用0円は魅力です。ただ、実際にひとりでやるとこの9つを全部、自分で判断することになります。</p>
+
+    <ol class="why">
+      <li class="why__card">
+        <div class="why__head"><span class="why__no">1</span>
+          <p class="why__ttl" data-todo="copy">退職日に半日でも<br>出社したら対象外</p></div>
+        <span class="why__art" style="--icon-x:0%;--icon-y:0%" aria-hidden="true"></span>
+      </li>
+      <li class="why__card">
+        <div class="why__head"><span class="why__no">2</span>
+          <p class="why__ttl" data-todo="copy">健康保険が1年ないと<br>対象外</p></div>
+        <span class="why__art" style="--icon-x:50%;--icon-y:0%" aria-hidden="true"></span>
+      </li>
+      <li class="why__card">
+        <div class="why__head"><span class="why__no">3</span>
+          <p class="why__ttl" data-todo="copy">医師の証明は<br>診断書とは別物</p></div>
+        <span class="why__art" style="--icon-x:100%;--icon-y:0%" aria-hidden="true"></span>
+      </li>
+      <li class="why__card">
+        <div class="why__head"><span class="why__no">4</span>
+          <p class="why__ttl" data-todo="copy">申請書は4枚<br>1枚欠けても不可</p></div>
+        <span class="why__art" style="--icon-x:0%;--icon-y:50%" aria-hidden="true"></span>
+      </li>
+      <li class="why__card">
+        <div class="why__head"><span class="why__no">5</span>
+          <p class="why__ttl" data-todo="copy">申請も医師の証明も<br>毎月必要</p></div>
+        <span class="why__art" style="--icon-x:50%;--icon-y:50%" aria-hidden="true"></span>
+      </li>
+      <li class="why__card">
+        <div class="why__head"><span class="why__no">6</span>
+          <p class="why__ttl" data-todo="copy">失業保険の延長を<br>忘れると消える</p></div>
+        <span class="why__art" style="--icon-x:100%;--icon-y:50%" aria-hidden="true"></span>
+      </li>
+      <li class="why__card">
+        <div class="why__head"><span class="why__no">7</span>
+          <p class="why__ttl" data-todo="copy">任意継続か国保か<br>20日以内に決める</p></div>
+        <span class="why__art" style="--icon-x:0%;--icon-y:100%" aria-hidden="true"></span>
+      </li>
+      <li class="why__card">
+        <div class="why__head"><span class="why__no">8</span>
+          <p class="why__ttl" data-todo="copy">切り替えが早くても<br>遅くても損</p></div>
+        <span class="why__art" style="--icon-x:50%;--icon-y:100%" aria-hidden="true"></span>
+      </li>
+      <li class="why__card">
+        <div class="why__head"><span class="why__no">9</span>
+          <p class="why__ttl dx dx--tight" data-dx="8" data-dxl="文言変更" data-todo="copy">不支給でも<br>理由を見て再申請</p></div>
+        <span class="why__art" style="--icon-x:100%;--icon-y:100%" aria-hidden="true"></span>
+      </li>
+    </ol>
+
+    <div class="dx" data-dx="6" data-dxl="表示調整（文言の変更なし）"><div class="cta-bar">
+      <p class="cta-bar__txt" data-todo="copy">つまずく前に、確認しておく。</p>
+      <a class="btn-line" href="#" data-todo="link" data-track="why_line" data-offline-cv-link
+         target="_blank" rel="sponsored nofollow noopener noreferrer">
+        <span class="btn-line__logo">LINE</span>
+        <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
+      </a>
+    </div></div>
+    <p class="note" style="margin-top:8px" data-todo="copy">※ ボタンをタップすると退職リリーフの公式サイトへ移動します。</p>
+  </section>
+
+  <!-- ============ ⑧セルフチェック ============ -->
+  <section class="sec dx dx--id" id="check" data-dx="1" data-dxl="アンカー追加｜#check（本文の変更なし）">
+    <h2 class="h2" data-todo="copy">あなたは、対象になりそうですか？</h2>
+
+    <div class="check-wrap">
+      <ul class="check" data-todo="copy">
+        <li>いま在職中、または退職してから間もない</li>
+        <!-- 傷病手当金の継続給付の要件は「健康保険」の被保険者期間。雇用保険ではない -->
+        <li>勤務先の健康保険に1年以上加入している（または加入していた）</li>
+        <li>心身の不調があり、働き続けるのがつらい</li>
+        <li>次の就職先は、まだ決まっていない</li>
+        <li>辞めたあとの生活費に不安がある</li>
+        <li>会社に退職を言い出せずにいる</li>
+      </ul>
+      <figure class="check__art">
+        <img class="asset-img" src="/taishoku-kyufukin/assets/selfcheck-woman.webp" width="560" height="700" loading="lazy" decoding="async" alt="スマートフォンを見ながら確認する女性のイメージ">
+      </figure>
+    </div>
+
+    <p class="note" style="margin-top:12px" data-todo="copy">
+      3つ以上当てはまるなら、一度確認しておく価値があります。当てはまらない項目があっても、対象外とはかぎりません。
+      判断するのは、あなたではなくハローワークと健康保険の保険者です。
+    </p>
+  </section>
+
+  <!-- ============ ⑨サービス紹介 ============ -->
+  <section class="sec sec--panel">
+    <h2 class="h2" data-todo="copy">退職リリーフとは？<span class="pr-badge">PR</span></h2>
+
+    <div class="brand">
+      <p class="brand__txt" data-todo="copy">
+        運営は労働組合の新宿ユニオンで、社労士・弁護士の監修が入っています。
+        受け取れる可能性の確認から、退職日の決め方、書類の準備と進め方まで相談できます。
+        相談は無料。LINEで完結し、いつでもブロックできます。
+      </p>
+      <figure class="brand__art">
+        <img class="asset-img" src="/taishoku-kyufukin/assets/support-advisors.webp" width="560" height="700" loading="lazy" decoding="async" alt="相談を支えるスタッフのイメージ">
+      </figure>
+    </div>
+
+    <p class="note" style="margin-top:12px" data-todo="copy">
+      ※ 申請するのは本人です。書類の準備や進め方を支援するもので、申請の代行は行いません。
+      受給を保証するものでも、受給額を増やすものでもありません。
+    </p>
+  </section>
+
+  <!-- ============ ⑩断ってOK ============ -->
+  <section class="sec">
+    <h2 class="h2" data-todo="copy">こんな窓口は、その場で断ってOKです</h2>
+
+    <div class="reject">
+      <div class="reject__grid">
+        <ul class="reject__list" data-todo="copy">
+          <li>「条件を満たしていなくても大丈夫」「誰でももらえます」と言う</li>
+          <li>受診する病院や、診断書の書き方を指定してくる</li>
+          <li>受け取れる金額を、診断の時点で断言する</li>
+          <li>総額を聞いても答えず、契約を先に進めようとする</li>
+        </ul>
+        <figure class="reject__art">
+          <img class="asset-img" src="/taishoku-kyufukin/assets/caution-buildings.webp" width="467" height="700" loading="lazy" decoding="async" alt="">
+        </figure>
+      </div>
+    </div>
+
+    <p class="note" style="margin-top:12px" data-todo="copy">
+      給付金を決めるのはハローワークと健康保険の保険者です。民間のサービスが増やすことはできません。
+    </p>
+  </section>
+
+  <!-- ============ ⑪FAQ ============ -->
+  <section class="sec sec--panel dx dx--id" id="faq" data-dx="1" data-dxl="アンカー追加｜#faq（本文の変更なし）">
+    <h2 class="h2" data-todo="copy">よくある質問</h2>
+
+    <div class="faq" data-todo="copy">
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span><span class="u-q">Q.</span>傷病手当金は、いくらもらえますか？</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">
+          給与のおよそ3分の2が目安です。正確には、支給開始日以前12か月の標準報酬月額の平均を30で割り、その3分の2が1日あたりの金額になります。支給される期間は通算して1年6か月までです。
+        </div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span><span class="u-q">Q.</span>誰でも受け取れますか？</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">
+          いいえ。病気やケガで働けない状態にあることが前提で、医師の証明と保険者の審査が必要です。単に退職するだけでは対象になりません。
+        </div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span><span class="u-q">Q.</span>退職後も受け取るための条件は？</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">
+          3つあります。①退職日の前日まで健康保険の被保険者期間が継続して1年以上あること ②退職日の時点で受け取っている、または受け取れる状態であること ③退職日に働いていないこと。ひとつでも欠けると対象外です。
+        </div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span><span class="u-q">Q.</span>傷病手当金と失業保険は、両方もらえますか？</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">
+          同時には受け取れません。先に傷病手当金を受け取り、働ける状態になってから失業保険に切り替えます。その際、失業保険の受給期間延長の手続きが必要です。
+        </div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span><span class="u-q">Q.</span>うつ病や適応障害でも対象になりますか？</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">
+          病名で決まるものではなく、働けない状態にあると医師が証明できるかで判断されます。心の不調も対象になり得ます。
+        </div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span><span class="u-q">Q.</span>自分で申請しても同じ金額ですか？</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">
+          はい。条件を満たしていれば、自分で申請しても受け取れる金額は変わりません。サポートを使う価値は、手続きの失敗を防ぐことと、退職日や受け取る順番を組み立てられることにあります。
+        </div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span><span class="u-q">Q.</span>在職中でも相談できますか？</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">
+          できます。退職日が決まる前のほうが、選べる手は多く残っています。
+        </div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span><span class="u-q">Q.</span>会社に知られませんか？</span>
+          <span class="faq__mark" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">
+          退職後の申請では、前の会社に通知される仕組みはありません。退職前の期間について申請する場合は、会社の記入欄が必要になることがあります。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ⑫まとめ ============ -->
+  <section class="sec">
+    <div class="sum">
+      <div class="sum__box">
+        <p class="sum__ttl" data-todo="copy">まとめ</p>
+        <p class="sum__lead" data-todo="copy">受け取れるはずのお金は、<br>申請しなければ消えます</p>
+      </div>
+      <div class="sum__side">
+        <p data-todo="copy">いま決めなくて、いいんです。ただ、退職日が過ぎてからでは動かせない条件があります。自分が対象かどうかだけは、今日たしかめられます。</p>
+        <figure class="sum__art">
+          <img class="asset-img" src="/taishoku-kyufukin/assets/summary-pointing-woman.webp" width="467" height="700" loading="lazy" decoding="async" alt="相談前に確認しておきたいことを案内する女性のイメージ">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 最終CTA ============ -->
+  <section class="final">
+    <p class="final__ttl" data-todo="copy">まずは、対象かどうか確認してみる</p>
+    <a class="btn-line" href="#" data-todo="link" data-track="final_line" data-offline-cv-link
+       target="_blank" rel="sponsored nofollow noopener noreferrer">
+      <span class="btn-line__logo">LINE</span>
+      <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
+    </a>
+    <p class="final__note" data-todo="copy">
+      ボタンをタップすると退職リリーフの公式サイトへ移動します。
+      診断は1分ほど。相談した時点で契約になることはありません。料金とサポート範囲は、契約前に必ず文字で確認してください。
+    </p>
+  </section>
+
+  <!-- ============ 免責（削らない。景表法・ステマ規制の対応をここに集約） ============ -->
+  <div class="disc">
+    <ul>
+      <li>本ページはプロモーションを含みます</li>
+      <li>本ページは、公開されている情報をもとに編集部が作成した紹介記事です</li>
+      <li>傷病手当金・失業保険は、法令に定める要件を満たした場合に、保険者（健康保険組合・協会けんぽ）またはハローワークの審査を経て支給されるものです。本ページで紹介するサービスは、受給を保証するものではありません</li>
+      <li>給付金の申請は本人が行うものです。本ページで紹介するサービスは、書類の準備や進め方の支援を行うものであり、申請の代行を行うものではありません</li>
+      <li>本ページに記載の金額は、いずれも制度上の計算例です。実際に受け取れる金額・期間は、標準報酬月額・被保険者期間・療養の状況により異なります</li>
+      <li>心身の不調がないにもかかわらず、受給を目的として受診や診断書の取得を行うことは、不正受給にあたるおそれがあります</li>
+      <li>掲載内容は<span id="today"></span>時点の情報です。最新の条件は各公式サイトおよび公的機関でご確認ください</li>
+    </ul>
+  </div>
+
+  <footer class="foot">
+    <nav>
+      <a href="/operator/">運営者情報</a>
+      <a href="/privacy/">プライバシーポリシー</a>
+      <a href="/disclosure/">広告掲載について</a>
+    </nav>
+    <p>© 退職給付金ガイド</p>
+  </footer>
+
+</main>
+
+<!-- ============ 固定CTA ============
+     成果地点はLINE追加の1本のみ。表示制御はJS側。初期状態は hidden -->
+<div class="sticky-cta" data-sticky hidden>
+  <a class="btn-line" href="#" data-todo="link" data-track="sticky_line" data-offline-cv-link
+     target="_blank" rel="sponsored nofollow noopener noreferrer"
+     aria-label="退職リリーフのLINEで自分が対象か確認する">
+    <span class="btn-line__logo">LINE</span>
+    <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
+  </a>
+  <p class="sticky-cta__note" data-todo="copy">退職リリーフの公式サイトへ移動します</p>
+</div>
+
+<script>
+(function(){
+  document.body.classList.remove('no-js');
+
+  /* ---------- FAQアコーディオン ----------
+     height:auto はアニメーションできないので、実測値を入れてから0に戻す。
+     複数開けてよい仕様（1つ開くと他が閉じる作りは、比較したい読者の邪魔になる）。
+
+     transitionend だけに頼らないこと。バックグラウンドタブや描画が走らない環境では
+     トランジションが進まずイベントが発火せず、開いたのに高さが0のままになる。
+     タイマーのフォールバックを必ず併走させる。 */
+  var DUR = 240;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var items = document.querySelectorAll('.faq__item');
+  Array.prototype.forEach.call(items, function(item){
+    var btn  = item.querySelector('.faq__q');
+    var body = item.querySelector('.faq__a');
+    var timer = null;
+
+    function settle(){
+      if(timer){ clearTimeout(timer); timer = null; }
+      if(item.classList.contains('is-open')) body.style.height = 'auto';
+    }
+
+    btn.addEventListener('click', function(){
+      var open = item.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+      if(reduce){                                   // アニメーションを望まない設定は即座に切り替える
+        body.style.height = open ? 'auto' : '0px';
+        return;
+      }
+
+      if(open){
+        body.style.height = body.scrollHeight + 'px';
+        if(timer) clearTimeout(timer);
+        timer = setTimeout(settle, DUR + 60);       // ← 描画が走らなくても必ず開ききる
+        body.addEventListener('transitionend', function once(e){
+          if(e.propertyName !== 'height') return;
+          body.removeEventListener('transitionend', once);
+          settle();
+        });
+      } else {
+        if(timer){ clearTimeout(timer); timer = null; }
+        body.style.height = body.scrollHeight + 'px';   // auto → 実測値に戻してから
+        void body.offsetHeight;                         // 再描画を挟まないと閉じない
+        body.style.height = '0px';
+      }
+    });
+  });
+
+  /* ---------- CTAのリンク差し込み ＋ CV計測 ----------
+     旧版と同じイベント体系。名前を変えるとGoogle広告側のCV設定と繋がらなくなる。 */
+  // ▼TODO：SLVRbulletの実アフィリリンクに差し替える
+  var AFF = { relief: "https://tr.slvrbullet.com/cl/w0000694921/47768/40002/2" };
+  var LANDING = "taishoku_kyufukin";
+  // gclid / gbraid / wbraid は **意図的に外している**。
+  // クリック識別子の付与は SLVRbullet 公式タグ（pt.min.js）の担当。
+  // ここでも付けると ?gclid=X&compop=...&gclid=X と二重になる（実際に発生した）。
+  var KEEP = /^(utm_|gad_|campaignid|keyword|matchtype|device|network|creative)$/i;
+
+  function track(name, params){
+    try{
+      if(window.dataLayer) window.dataLayer.push(Object.assign({event:name}, params||{}));
+      if(typeof gtag==="function") gtag("event", name, Object.assign({}, params||{}, { transport_type:"beacon" }));
+    }catch(_){}
+  }
+  // 着地URLのクエリ（utm_/gclid 等）をCTAへ転送し、タグ発火の取りこぼしを減らす
+  function fwd(raw){
+    if(!raw || raw === "#") return raw;
+    try{
+      var u = new URL(raw, location.href);
+      new URLSearchParams(location.search).forEach(function(v,k){
+        if(KEEP.test(k) && !u.searchParams.has(k)) u.searchParams.set(k,v);
+      });
+      return u.toString();
+    }catch(_){ return raw; }
+  }
+
+  // ★CTAを増やしたら、必ずここの対象に入るclassを付ける（付け忘れ＝CV計測漏れ）
+  Array.prototype.forEach.call(document.querySelectorAll('.btn-line'), function(el){
+    var url = fwd(AFF.relief);
+    if(url) el.setAttribute("href", url);
+
+    el.addEventListener("click", function(){
+      if(el.__busy) return;                       // 連打による二重CVを防止
+      el.__busy = true; setTimeout(function(){ el.__busy = false; }, 1200);
+
+      var params = {
+        affiliate_key: "relief",
+        track_name: el.getAttribute("data-track") || "",
+        cta_type: "line",
+        landing_intent: LANDING,
+        link_url: url
+      };
+      // 成果CV＝LINE追加。イベント名は金買取（gold_kaitori_*）と分けている
+      var cv = "taishoku_relief_line_click";
+      if(window.dataLayer) window.dataLayer.push(Object.assign({event:cv}, params));
+      if(typeof gtag==="function"){
+        gtag("event", cv, Object.assign({}, params, { transport_type:"beacon" }));
+        // send_to もタグIDで指定する。測定IDだと宛先として解決できないことがある。
+        // GT-WB2N4H34 の宛先は G-DD332W5J8R だけなので、これでGA4限定になる
+        gtag("event", "taishoku_relief_cta_click",
+             Object.assign({}, params, { send_to:"GT-WB2N4H34", transport_type:"beacon" }));
+      }
+    });
+  });
+
+  /* ---------- 固定CTA ----------
+     IntersectionObserver だけに頼らないこと。コールバックは描画のタイミングに
+     紐づくため、描画が走らない状況では一度も発火せず固定CTAが永久に出ない。
+     ただしフォールバックを requestAnimationFrame で間引くのも不可。rAFも同じ理由で
+     コールバックが来ず、「実行待ち」フラグが立ちっぱなしになって以降のスクロールが
+     全部無視される。読むのは矩形1つなので時刻での間引きで足りる。 */
+  var sticky = document.querySelector('[data-sticky]');
+  var fvCta  = document.querySelector('.fv__cta');
+
+  if(sticky && fvCta){
+    function update(){
+      var r = fvCta.getBoundingClientRect();
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      sticky.hidden = (r.bottom > 0 && r.top < vh);   // FVのCTAが画面内なら隠す
+    }
+    var last = 0;
+    function onScroll(){
+      var now = Date.now();
+      if(now - last < 80) return;
+      last = now;
+      update();
+    }
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        entries.forEach(function(en){ sticky.hidden = en.isIntersecting; });
+      }, { threshold:0 }).observe(fvCta);
+    }
+    window.addEventListener('scroll', onScroll, { passive:true });
+    window.addEventListener('resize', onScroll, { passive:true });
+    update();
+  }
+
+  /* ---------- 免責の日付（JST） ---------- */
+  var jst = new Date(new Date().toLocaleString('en-US', { timeZone:'Asia/Tokyo' }));
+  var t = document.getElementById('today');
+  if(t) t.textContent = jst.getFullYear() + '年' + (jst.getMonth()+1) + '月' + jst.getDate() + '日';
+
+  track("taishoku_relief_landing_intent", { landing_intent:LANDING });
+  track(LANDING + "_open", { landing_intent:LANDING });
+})();
+</script>
+
+<!-- SLVRbullet 公式「パラメータ引き継ぎタグ」。
+     Google広告からの流入時、記事URLに付く gclid / wbraid / gbraid を
+     SLVRbullet広告リンクへ自動で引き継ぐ。成果連携の本体はこれ。
+     ※この下の offline-cv.js は、回遊でURLから識別子が消えた場合だけを補う。
+       URLに識別子があるときは動かないので、二重付与は起きない。 -->
+
+<!-- オフラインCV用：GCLIDを90日保持し、アフィリリンクへ付け直す。
+     成果地点（LINE追加）は広告主側で確定するため、Google広告へは
+     オフラインCVとしてインポートする。その識別子を取りこぼさないための処理。 -->
+
+
+</div>
+<script>
+(function(){
+  var b=document.body, t=document.getElementById("rv-toggle"),
+      o=document.getElementById("rv-open"), l=document.getElementById("rv-list");
+  b.classList.add("rv-on");
+  t.addEventListener("click",function(){
+    t.setAttribute("aria-pressed",String(b.classList.toggle("rv-on")));
+  });
+  function close(){ l.hidden=true; o.setAttribute("aria-expanded","false"); }
+  o.addEventListener("click",function(){
+    if(l.hidden){ l.hidden=false; o.setAttribute("aria-expanded","true"); } else close();
+  });
+  l.addEventListener("click",function(e){ if(e.target.closest("[data-jump]")) close(); });
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape") close(); });
+})();
+</script>
+</body>
+</html>
