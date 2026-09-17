@@ -100,6 +100,8 @@
   --panel:     #eff2f6;  /* 薄いグレー面 */
   --panel-2:   #f7f9fb;
   --amber-bg:  #fdf7e7;
+  --mark:      #fce7b0;  /* ▼2026-09-17 ハイライト。--amber-bg は薄すぎて印にならない */
+  --red-tx:    #c43f4d;  /* 本文用の赤。--red(#d5525f) は白地で4.04:1しか無くAA未満 */
   --pink-bg:   #fdf1f2;
   --line:      #dfe4ea;
 
@@ -656,20 +658,54 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 .inst__note{ margin-top:12px; padding-top:10px; border-top:1px dashed var(--line);
              font-size:12px; line-height:1.8; color:var(--muted); }
 
+/* ▼2026-09-17 追加：強調の使い分け
+   .em-mark … その節でいちばん効く一文。ハイライト。1セクション1〜2個まで。
+              増やすとどれも目立たなくなる。
+   .em-key  … 事実として押さえてほしい語句。金の下線。
+   .em-red  … 否定・リスク・「できません」。
+   素の b / strong … 地の強調。
+   色はどれも白地・パネル地・黄色地のいずれでもAA(4.5:1)以上になるものを選んでいる。 */
+.em-mark{
+  background:linear-gradient(transparent 56%, var(--mark) 56%);
+  font-weight:800; color:var(--navy);
+}
+.em-key{
+  font-weight:800; color:var(--navy);
+  text-decoration:underline; text-decoration-color:var(--gold);
+  text-decoration-thickness:2px; text-underline-offset:4px;
+  text-decoration-skip-ink:auto;
+}
+.em-red{ font-weight:800; color:var(--red-tx); }
+
 /* ▼2026-09-15 追加：日本語の折り返しを整える
    ・見出し・短いラベル＝ text-wrap:balance（行の長さをそろえる）
      320〜390pxでは「…ですか？」の2文字だけが次行に落ちる箇所が多く、
      見出しほど目立つ。balance は4行以下のブロックにだけ効く。
    ・本文・文になっている箇条書き＝ text-wrap:pretty（最終行に1文字だけ残るのを避ける）
      箇条書きに balance を掛けると語の途中で折れることがあったので、こちら側に置く。
-   ・word-break:auto-phrase ＝ 日本語を文節で切る。これが無いと
-     「または退／職して」「働／き続ける」のように語の真ん中で折れる。
-   いずれも未対応ブラウザでは無視されるだけで、レイアウトは崩れない。 */
-.lp, .foot{ word-break:auto-phrase; }
+   ・word-break:auto-phrase ＝ 日本語を文節で切る。
+   いずれも未対応ブラウザでは無視されるだけで、レイアウトは崩れない。
+
+   ▼2026-09-17 修正：auto-phrase を .lp 全体に掛けていたのをやめ、
+   見出しと短いラベルだけに限定した。
+   文節の途中で折らない指定なので、本文に掛けると入りきらない文節が
+   まるごと次行へ送られ、前の行が短いまま残る。実測（375px）で
+     .step__txt  12行/行の充填率88%  → 15行/70%
+     .warn__txt   6行/92%            →  7行/79%
+     .inst__sum  11行/85%            → 12行/78%
+   と、どれも行数が増えてガタガタになっていた。
+   見出しでは逆に効く（「対象にな／る？」→「対象になる？／」、
+   「つ／まずく」→「つまずく／」）ので、そちらだけ残す。 */
+.h2, .h3, .inst__lead, .inst__h, .warn__ttl, .why__ttl, .step__ttl,
+.sum__ttl, .final__ttl, .faq__q, .cta-bar__txt, .cta__badge,
+.cta__headline, .stat__lede, .reason__ttl, .cmp__head, .trust__item,
+.fv__h1, .duo__ttl, .sum__lead{
+  word-break:auto-phrase;
+}
 
 .h2, .h3, .inst__h, .inst__lead, .warn__ttl, .reason__ttl, .why__ttl,
 .step__ttl, .stat__lede, .sum__ttl, .final__ttl, .faq__q,
-.cmp__head, .trust__item, .cta__badge, .cta__headline{
+.cmp__head, .trust__item, .cta__badge, .cta__headline, .sum__lead{
   text-wrap:balance;
 }
 /* 「退職リリーフとは？[PR]」は balance するとバッジだけが2行目に落ちる。
@@ -770,7 +806,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
   <!-- ============ ③LINEで3ステップ ============ -->
   <section class="sec sec--panel" id="flow">
     <h2 class="h2" data-todo="copy">無料診断は、LINEで3ステップ</h2>
-    <p class="lead" data-todo="copy">答えるのは、かんたんな質問だけです。ここまでは無料で、途中でやめても構いません。</p>
+    <p class="lead" data-todo="copy">答えるのは、かんたんな質問だけです。<span class="em-mark">ここまでは無料で、途中でやめても構いません。</span></p>
 
     <ol class="steps">
       <li class="step">
@@ -801,7 +837,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     <h2 class="h2" data-todo="copy">退職後に受け取れるお金は、1つじゃない</h2>
     <p class="lead" data-todo="copy">
       病気やケガで働けない状態にある場合、失業保険とは別のお金を受け取れる制度があります。
-      在職中から始められますが、申請した人しか受け取れません。会社から案内されることは、ほとんどありません。
+      在職中から始められますが、<span class="em-mark">申請した人しか受け取れません。</span>会社から案内されることは、ほとんどありません。
     </p>
 
     <!-- ▼2026-09-15 追加：検索語句「社会保険給付金 / 退職給付金」との一致を強化 -->
@@ -832,7 +868,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
          縦積みのカードに置き換えた。CTA・計測には触れていない。 -->
     <h3 class="h3 inst__lead" id="sickness">退職後の傷病手当金｜受け取れる条件</h3>
     <div class="inst">
-      <p class="inst__sum">病気やケガで働けない期間の生活を支える制度です。給与のおよそ3分の2を、通算1年6か月まで受け取れます。</p>
+      <p class="inst__sum">病気やケガで働けない期間の生活を支える制度です。<span class="em-key">給与のおよそ3分の2</span>を、<span class="em-key">通算1年6か月</span>まで受け取れます。</p>
       <h4 class="inst__h">対象になり得る条件</h4>
       <ul class="inst__list">
         <li>業務外の病気・ケガで、療養のため働けない状態にあること</li>
@@ -845,12 +881,12 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
         <li><b>退職日</b>：出勤していないか（出勤すると退職後の継続受給ができなくなることがあります）</li>
         <li><b>退職後</b>：退職日の時点で受給しているか、受けられる状態にあったか</li>
       </ul>
-      <p class="inst__note">最終的な支給の可否は、加入していた健康保険の保険者（協会けんぽ・健康保険組合）が、医師の証明などをもとに判断します。</p>
+      <p class="inst__note">最終的な支給の可否は、<span class="em-key">加入していた健康保険の保険者（協会けんぽ・健康保険組合）</span>が、医師の証明などをもとに判断します。</p>
     </div>
 
     <h3 class="h3 inst__lead" id="unemployment">失業保険・失業手当の受給条件</h3>
     <div class="inst">
-      <p class="inst__sum">働ける状態になってから、次の仕事を探しながら受け取る制度です。療養中は対象になりません。傷病手当金とは同時に受け取れず、順番に切り替えます。</p>
+      <p class="inst__sum">働ける状態になってから、次の仕事を探しながら受け取る制度です。<span class="em-red">療養中は対象になりません。</span>傷病手当金とは同時に受け取れず、順番に切り替えます。</p>
       <h4 class="inst__h">対象になり得る条件</h4>
       <ul class="inst__list">
         <li>離職前の2年間に、雇用保険の被保険者期間が通算12か月以上あること<br><span class="inst__sub">（会社都合などの場合は1年間に通算6か月以上）</span></li>
@@ -863,13 +899,13 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
         <li>受け取れる日数は、離職理由・年齢・被保険者期間によって決まります</li>
         <li>療養ですぐ働けない場合は、<b>受給期間の延長</b>を申請しておくと、回復後に受け取れます</li>
       </ul>
-      <p class="inst__note">最終的な支給の可否・日数・金額は、ハローワークが離職理由や被保険者期間を確認したうえで決定します。</p>
+      <p class="inst__note">最終的な支給の可否・日数・金額は、<span class="em-key">ハローワーク</span>が離職理由や被保険者期間を確認したうえで決定します。</p>
     </div>
 
     <div class="warn">
       <h3 class="warn__ttl" data-todo="copy">自己都合退職でも対象になる？ ただし、すぐには出ません</h3>
       <p class="warn__txt" data-todo="copy">
-        <b>自己都合でも、条件を満たせば対象になります。</b>ただし受け取れる時期が遅れます。
+        <span class="em-mark">自己都合でも、条件を満たせば対象になります。</span>ただし受け取れる時期が遅れます。
         手続きのあと7日間の待期があり、そのあと、自己都合退職には原則1か月の給付制限がかかります。
         つまり辞めてすぐは、収入が空きます。ここを埋められるかどうかが、退職後のいちばん苦しい時期を左右します。
       </p>
@@ -899,7 +935,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
         <span class="reason__icon" style="--icon-x:0%;--icon-y:100%" aria-hidden="true"></span>
         <div>
           <p class="reason__ttl" data-todo="copy">申請した人だけが受け取れる</p>
-          <p class="reason__txt" data-todo="copy">制度そのものは何十年も前からあります。裏技でも抜け道でもありません。</p>
+          <p class="reason__txt" data-todo="copy">制度そのものは何十年も前からあります。<span class="em-mark">裏技でも抜け道でもありません。</span></p>
         </div>
       </div>
     </div>
@@ -941,7 +977,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
         <img class="asset-img" src="./assets/support-advisors.webp" width="560" height="700" loading="lazy" decoding="async" alt="">
       </figure>
       <p class="callout__txt" data-todo="copy">
-        給付金の申請そのものは、どちらの場合も本人が行います。
+        <span class="em-mark">給付金の申請そのものは、どちらの場合も本人が行います。</span>
         変わるのは「何を、いつ、どう出すか」を自分ひとりで判断するかどうかです。
       </p>
     </div>
@@ -953,7 +989,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
   <!-- ============ ⑦つまずく9つ ============ -->
   <section class="sec sec--panel">
     <h2 class="h2" data-todo="copy">ひとりでやる場合、つまずくのはここです</h2>
-    <p class="lead" data-todo="copy">費用0円は魅力です。ただ、実際にひとりでやるとこの9つを全部、自分で判断することになります。</p>
+    <p class="lead" data-todo="copy">費用0円は魅力です。ただ、実際にひとりでやると<span class="em-mark">この9つを全部、自分で判断することになります。</span></p>
 
     <ol class="why">
       <li class="why__card">
@@ -1034,8 +1070,8 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </div>
 
     <p class="note" style="margin-top:12px" data-todo="copy">
-      3つ以上当てはまるなら、一度確認しておく価値があります。当てはまらない項目があっても、対象外とはかぎりません。
-      判断するのは、あなたではなくハローワークと健康保険の保険者です。
+      <span class="em-mark">3つ以上当てはまるなら、一度確認しておく価値があります。</span>当てはまらない項目があっても、対象外とはかぎりません。
+      <span class="em-key">判断するのは、あなたではなくハローワークと健康保険の保険者です。</span>
     </p>
   </section>
 
@@ -1055,8 +1091,8 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </div>
 
     <p class="note" style="margin-top:12px" data-todo="copy">
-      ※ 申請するのは本人です。書類の準備や進め方を支援するもので、申請の代行は行いません。
-      受給を保証するものでも、受給額を増やすものでもありません。
+      ※ 申請するのは本人です。書類の準備や進め方を支援するもので、<span class="em-red">申請の代行は行いません。</span>
+      <span class="em-red">受給を保証するものでも、受給額を増やすものでもありません。</span>
     </p>
   </section>
 
@@ -1079,7 +1115,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </div>
 
     <p class="note" style="margin-top:12px" data-todo="copy">
-      給付金を決めるのはハローワークと健康保険の保険者です。民間のサービスが増やすことはできません。
+      <span class="em-key">給付金を決めるのはハローワークと健康保険の保険者です。</span><span class="em-red">民間のサービスが増やすことはできません。</span>
     </p>
   </section>
 
@@ -1184,7 +1220,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
         <figure class="sum__art">
           <img class="asset-img" src="./assets/summary-pointing-woman.webp" width="467" height="700" loading="lazy" decoding="async" alt="相談前に確認しておきたいことを案内する女性のイメージ">
         </figure>
-        <p data-todo="copy">いま決めなくて、いいんです。ただ、退職日が過ぎてからでは動かせない条件があります。自分が対象かどうかだけは、今日たしかめられます。</p>
+        <p data-todo="copy">いま決めなくて、いいんです。ただ、退職日が過ぎてからでは動かせない条件があります。<span class="em-mark">自分が対象かどうかだけは、今日たしかめられます。</span></p>
       </div>
     </div>
   </section>

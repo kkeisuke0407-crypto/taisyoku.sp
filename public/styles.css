@@ -18,11 +18,15 @@ body{
   margin:0; background:var(--bg); color:var(--body);
   font-family:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;
   font-size:15px; line-height:1.95;
-  /* ★日本語の改行位置。これが無いと「公開情／報」「ハロー／ワーク」のように
-     語の真ん中で折れる。ブラウザが文節を解析して切ってくれる指定で、
-     未対応ブラウザ（Safari等）では無視されるだけ。 */
-  word-break:auto-phrase;
 }
+
+/* ★日本語の改行位置を文節で切る指定。
+   ▼2026-09-17 修正：body 全体に掛けていたのをやめ、見出しだけに限定した。
+   文節の途中で折らない指定なので、本文に掛けると入りきらない文節が
+   まるごと次行に送られ、前の行が短いまま残ってガタガタになる。
+   見出しでは「対象にな／る？」のような割れ方を防げるので、そちらだけ残す。
+   未対応ブラウザ（Safari等）では無視されるだけ。 */
+h1,h2,h3,dt,.callout__ttl{ word-break:auto-phrase; }
 
 /* 見出し・短い行は行の長さをそろえる。本文は最終行に1文字だけ残らないようにする。
    どちらも未対応ブラウザでは無視されるだけで、レイアウトは崩れない。 */
