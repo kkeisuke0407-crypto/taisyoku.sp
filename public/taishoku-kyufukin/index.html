@@ -309,7 +309,14 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .mini-phone__screen{ display:grid; place-items:center; width:100%; height:100%; padding:3px; border-radius:3px; background:#e6eef2; color:#173153; text-align:center; font-size:7px; font-weight:800; line-height:1.25; }
 .mini-phone__screen--add{ background:#e6f7ea; color:#087c35; }
 .mini-phone__screen--result{ background:#edf7ef; color:#087c35; }
-.step__txt{ font-size:11px; line-height:1.65; color:var(--muted); }
+/* ▼2026-09-17 修正：左揃えだった。カードの中の番号・見出し・画像は中央揃えなので、
+   説明文だけ左に寄って見えていた。あわせて balance で行の長さをそろえる。
+   （auto-phrase はここでは使わない。91pxの列だと文節がまるごと次行に送られて
+     1行が半分しか埋まらなくなる） */
+.step__txt{
+  font-size:11px; line-height:1.7; color:var(--muted);
+  text-align:center; text-wrap:balance;
+}
 .punch{
   margin-top:14px; font-size:14px; font-weight:700; line-height:1.8;
   color:var(--navy); text-align:center;
@@ -813,19 +820,19 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
         <p class="step__no">1</p>
         <p class="step__ttl" data-todo="copy">LINEで<br>友だち追加</p>
         <div class="step__ph" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen mini-phone__screen--add">友だち<br>追加</span></span></div>
-        <p class="step__txt" data-todo="copy">ボタンを押すとLINEが開きます。登録に費用はかかりません。</p>
+        <p class="step__txt" data-todo="copy">タップするだけ。登録は無料です。</p>
       </li>
       <li class="step">
         <p class="step__no">2</p>
         <p class="step__ttl" data-todo="copy">質問に<br>答える</p>
         <div class="step__ph" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen">質問に<br>答える</span></span></div>
-        <p class="step__txt" data-todo="copy">年齢・退職の予定・健康保険に入っていた期間など。選ぶだけで進みます。</p>
+        <p class="step__txt" data-todo="copy">年齢や退職の予定など。選ぶだけで進みます。</p>
       </li>
       <li class="step">
         <p class="step__no">3</p>
         <p class="step__ttl" data-todo="copy">結果が<br>届く</p>
         <div class="step__ph" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen mini-phone__screen--result">確認<br>完了</span></span></div>
-        <p class="step__txt" data-todo="copy">対象になりそうかどうかと、金額の目安が届きます。</p>
+        <p class="step__txt" data-todo="copy">対象かどうかと、金額の目安が届きます。</p>
       </li>
     </ol>
 
