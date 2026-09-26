@@ -116,6 +116,10 @@ body{
   -webkit-text-size-adjust:100%;
 }
 img,svg{ max-width:100%; height:auto; display:block; }
+/* 折り返せない長い文字列（URL・英数の連続）が枠を突き破るのを防ぐ。
+   break-word は min-content を変えないので、日本語の行分割には影響しない。
+   grid の 1fr を minmax(0,1fr) にしているのと対で効く */
+body{ overflow-wrap:break-word; }
 a{ color:inherit; }
 p{ margin:0; }
 ul,ol{ margin:0; padding:0; list-style:none; }
@@ -350,7 +354,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 /* ============================================================
    ③LINEで3ステップ
    ============================================================ */
-.steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:14px; }
+.steps{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-top:14px; }
 .step{ background:var(--panel-2); border:1px solid var(--line); border-radius:10px; padding:10px 8px; }
 .step__no{
   display:grid; place-items:center; width:24px; height:24px; margin:0 auto 6px;
@@ -374,7 +378,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
    ④受け取れるお金は1つじゃない
    ============================================================ */
 .stat{ margin-top:16px; padding:14px; background:var(--pink-bg); border-radius:12px; }
-.stat__head{ display:grid; grid-template-columns:1fr 108px; gap:10px; align-items:center; }
+.stat__head{ display:grid; grid-template-columns:minmax(0,1fr) 108px; gap:10px; align-items:center; }
 .stat__lede{ font-size:13px; font-weight:700; color:var(--red); line-height:1.6; }
 .stat__big{ font-size:22px; font-weight:800; color:var(--red); line-height:1.5; }
 .stat__big b{ font-size:30px; }
@@ -391,7 +395,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .stat__src{ margin-top:6px; font-size:10px; line-height:1.6; color:var(--muted); }
 .stat__src a{ color:var(--muted); }
 
-.duo{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px; }
+.duo{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:10px; margin-top:14px; }
 .duo__card{ background:var(--panel-2); border:1px solid var(--line); border-radius:10px; padding:12px 10px; }
 .duo__ttl{ font-size:13.5px; font-weight:800; color:var(--navy); line-height:1.5; margin-bottom:4px; }
 .duo__txt{ font-size:11.5px; line-height:1.7; color:var(--muted); }
@@ -407,7 +411,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
    ⑤なぜ知られていないのか
    ============================================================ */
 .reasons{ display:flex; flex-direction:column; gap:12px; }
-.reason{ display:grid; grid-template-columns:44px 1fr; gap:10px; align-items:start; }
+.reason{ display:grid; grid-template-columns:44px minmax(0,1fr); gap:10px; align-items:start; }
 .reason__icon{ width:44px; height:44px; border-radius:10px; background-color:#fff; }
 .reason__ttl{ font-size:15px; font-weight:800; color:var(--navy); line-height:1.5; }
 .reason__txt{ font-size:12px; line-height:1.75; color:var(--muted); }
@@ -415,7 +419,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 /* ============================================================
    ⑥ひとりでやる？伴走してもらう？
    ============================================================ */
-.cmp{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:14px; }
+.cmp{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px; margin-top:14px; }
 .cmp__col{ border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff; }
 .cmp__head{
   padding:7px 6px; text-align:center; color:#fff;
@@ -436,7 +440,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .cmp__col--with .cmp__list li::before{ background:var(--rose); }
 .cmp__list b{ font-weight:800; }
 
-.callout{ display:grid; grid-template-columns:104px 1fr; gap:10px; align-items:center; margin-top:14px; }
+.callout{ display:grid; grid-template-columns:104px minmax(0,1fr); gap:10px; align-items:center; margin-top:14px; }
 .callout__art{ width:104px; aspect-ratio:104/74; margin:0; overflow:hidden; border-radius:10px; background:var(--panel); }
 /* support-advisors.webp は 467x700 で、2人の頭が原寸 y=185〜330 にある。
    68% だと y=250 から下しか出ず頭が切れるので 38%（y=140〜472）にした。
@@ -449,7 +453,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
    ============================================================ */
 /* 3列のまま横幅を稼ぐ。見出しが4行以上に折れると見本より縦に伸びる */
 .why{
-  display:grid; grid-template-columns:repeat(3,1fr); gap:6px;
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px;
   margin:14px -6px 0;
 }
 .why__card{
@@ -481,7 +485,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
      .lp は max-width:440px なので、画面をいくら広げても中身は408pxまで。
      ボタンが286pxを要求する以上、横並びはどの幅でも成立しない（480pxで検証済み）。 */
 .cta-bar{
-  display:grid; grid-template-columns:1fr; gap:10px; align-items:center;
+  display:grid; grid-template-columns:minmax(0,1fr); gap:10px; align-items:center;
   margin-top:16px; padding:11px 12px;
   background:var(--amber-bg); border-radius:12px;
 }
@@ -494,7 +498,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 /* ============================================================
    ⑧セルフチェック
    ============================================================ */
-.check-wrap{ display:grid; grid-template-columns:1fr 96px; gap:10px; align-items:end; margin-top:12px; }
+.check-wrap{ display:grid; grid-template-columns:minmax(0,1fr) 96px; gap:10px; align-items:end; margin-top:12px; }
 .check li{ position:relative; padding-left:26px; font-size:13px; line-height:1.7; color:var(--ink); }
 .check li + li{ margin-top:9px; }
 .check li::before{
@@ -513,7 +517,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 /* ============================================================
    ⑨サービス紹介
    ============================================================ */
-.brand{ display:grid; grid-template-columns:1fr 108px; gap:10px; align-items:center; }
+.brand{ display:grid; grid-template-columns:minmax(0,1fr) 108px; gap:10px; align-items:center; }
 .brand__art{ width:108px; aspect-ratio:108/86; margin:0; overflow:hidden; border-radius:10px; background:var(--panel); }
 /* 同上。68% だと y=223 からで頭が切れる。40%（y=131〜503）で頭が入る */
 .brand__art .asset-img{ object-position:50% 40%; }
@@ -528,7 +532,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
    ⑩断ってOK
    ============================================================ */
 .reject{ margin-top:12px; padding:14px; background:var(--amber-bg); border-radius:12px; }
-.reject__grid{ display:grid; grid-template-columns:1fr 92px; gap:10px; align-items:center; }
+.reject__grid{ display:grid; grid-template-columns:minmax(0,1fr) 92px; gap:10px; align-items:center; }
 .reject__list li{ position:relative; padding-left:14px; font-size:12.5px; line-height:1.75; }
 .reject__list li + li{ margin-top:7px; }
 .reject__list li::before{
@@ -545,7 +549,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .faq{ display:flex; flex-direction:column; gap:8px; margin-top:12px; }
 .faq__item{ border:1px solid var(--line); border-radius:10px; background:#fff; overflow:hidden; }
 .faq__q{
-  display:grid; grid-template-columns:1fr 22px; gap:8px; align-items:center;
+  display:grid; grid-template-columns:minmax(0,1fr) 22px; gap:8px; align-items:center;
   width:100%; margin:0; padding:12px 13px;
   background:none; border:0; font:inherit; text-align:left; cursor:pointer;
   font-size:13px; font-weight:700; color:var(--navy); line-height:1.6;
@@ -576,7 +580,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 /* ============================================================
    ⑫まとめ
    ============================================================ */
-.sum{ display:grid; grid-template-columns:132px 1fr; gap:12px; align-items:start; margin-top:12px; }
+.sum{ display:grid; grid-template-columns:132px minmax(0,1fr); gap:12px; align-items:start; margin-top:12px; }
 .sum__box{
   padding:12px 11px; background:var(--amber-bg);
   border:2px solid var(--amber); border-radius:10px;
@@ -644,7 +648,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   .h2{ font-size:19px; }
   /* 320pxで3列にすると1枚100pxしかなく、一言が1〜2文字だけ折り返して読めない。
      この幅だけ2列にする（見本は390px前提の設計なので、崩すのはここだけ） */
-  .why{ grid-template-columns:repeat(2,1fr); margin-inline:-8px; gap:6px; }
+  .why{ grid-template-columns:repeat(2,minmax(0,1fr)); margin-inline:-8px; gap:6px; }
   .why__ttl{ font-size:10px; line-height:1.45; }
   .cmp__list li{ font-size:11px; }
 }
