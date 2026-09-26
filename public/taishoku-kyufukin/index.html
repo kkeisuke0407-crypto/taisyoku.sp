@@ -473,13 +473,21 @@ ul,ol{ margin:0; padding:0; list-style:none; }
    枠を長方形にするとセルが歪む。小さくするのは可。 */
 .why__art{ width:64px; height:64px; margin:8px auto 0; border-radius:6px; background-color:var(--panel-2); }
 
-/* 黄色いCTA帯 */
+/* 黄色いCTA帯
+   ★スマホでは必ず1列。横並び(1fr auto)にすると、ボタン側が max-content を取って
+     テキスト側が潰れる。CTA文言を「LINEで自分が対象か確認する」に伸ばしたとき、
+     390pxで帯が195px・テキストが幅38pxの8行になった（2026-09-26に修正）。
+     文言を変えるたびに壊れるので、横並びに戻さないこと。
+     .lp は max-width:440px なので、画面をいくら広げても中身は408pxまで。
+     ボタンが286pxを要求する以上、横並びはどの幅でも成立しない（480pxで検証済み）。 */
 .cta-bar{
-  display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center;
+  display:grid; grid-template-columns:1fr; gap:10px; align-items:center;
   margin-top:16px; padding:11px 12px;
   background:var(--amber-bg); border-radius:12px;
 }
-.cta-bar__txt{ font-size:13.5px; font-weight:800; color:var(--navy); line-height:1.6; }
+.cta-bar__txt{ font-size:13.5px; font-weight:800; color:var(--navy); line-height:1.6; text-align:center; }
+.cta-bar__txt br{ display:none; }   /* 1列なら改行指定は不要。2行に割れて間延びする */
+
 .cta-bar .btn-line{ height:46px; }
 .cta-bar .btn-line__label{ font-size:16px; }
 
@@ -639,7 +647,6 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   .why{ grid-template-columns:repeat(2,1fr); margin-inline:-8px; gap:6px; }
   .why__ttl{ font-size:10px; line-height:1.45; }
   .cmp__list li{ font-size:11px; }
-  .cta-bar{ grid-template-columns:1fr; }
 }
 
 /* ============ CTAの光沢（キラン）============
