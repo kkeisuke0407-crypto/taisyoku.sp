@@ -4,3 +4,6 @@ dist/
 .DS_Store
 # プレビュー用の一時ファイル（確認用の使い捨て）
 preview-*.html
+
+# ローカル開発用のプレビュー設定（各自の環境依存）
+.claude/launch.json

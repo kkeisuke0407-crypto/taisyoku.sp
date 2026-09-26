@@ -255,7 +255,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   border:3px solid #13243a; border-bottom:0; border-radius:22px 22px 0 0;
   background:#13243a; box-shadow:0 5px 15px rgba(11,35,65,.2);
 }
-.chat-phone{ flex:1; min-height:0; overflow:hidden; border-radius:15px 15px 0 0; background:#e9f0f5; }
+.chat-phone{ position:relative; flex:1; min-height:0; overflow:hidden; border-radius:15px 15px 0 0; background:#e9f0f5; }
 .chat-phone__notch{ position:absolute; z-index:2; top:5px; left:50%; width:34%; height:5px; border-radius:999px; transform:translateX(-50%); background:#0b1626; }
 .chat-phone__bar{
   display:flex; align-items:center; justify-content:space-between; gap:4px;
@@ -263,7 +263,8 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   font-size:clamp(8px,2.4vw,10px); font-weight:700;
 }
 .chat-phone__brand{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.chat-phone__body{ display:flex; flex-direction:column; gap:8px; padding:10px 7px; }
+/* 下端の固定バッジに食い込まないよう、本文側に逃げ(44px)を作っている */
+.chat-phone__body{ display:flex; flex-direction:column; gap:7px; padding:10px 7px 44px; }
 .chat{ display:flex; align-items:flex-start; gap:4px; }
 .chat--sent{ justify-content:flex-end; }
 .chat__avatar{
@@ -277,6 +278,68 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   box-shadow:0 1px 2px rgba(27,52,79,.08);
 }
 .chat--sent .chat__bubble{ max-width:82%; background:#a9df8a; }
+
+/* ============================================================
+   LINE追加直後のやりとりのモーション（2026-09-26 追加）
+
+   このLPの成果地点はLINE追加の1本だけで、止めているのは理解不足ではなく
+   「押したら何が起きるか分からない」不安。だから制度説明ではなく、
+   追加直後の画面そのものを動かして見せている。
+
+   ★実装の注意
+   全要素が「同じ長さ・delay 0」の1本のタイムラインを共有し、登場タイミングは
+   @keyframes の % で持たせている。animation-delay をずらす方式にすると、
+   要素ごとに消える時刻がずれてループの継ぎ目が壊れる。
+   さらに .chat:nth-of-type(n) は .chat--typing より詳細度が高く、
+   delay 方式だと打ち消し合う。タイミングは下の % だけを触ること。
+   ============================================================ */
+.chat, .chat-phone__done{
+  opacity:0;
+  animation-duration:13s;
+  animation-timing-function:linear;
+  animation-iteration-count:infinite;
+}
+.chat:nth-of-type(1){ animation-name:m1; }   /* 0.4秒 */
+.chat:nth-of-type(2){ animation-name:m2; }   /* 1.8秒 */
+.chat:nth-of-type(3){ animation-name:m3; }   /* 3.3秒 */
+.chat:nth-of-type(4){ animation-name:m4; }   /* 4.6秒 */
+.chat:nth-of-type(5){ animation-name:m5; }   /* 6.0秒 */
+.chat:nth-of-type(6){ animation-name:mt; }   /* 7.0〜7.8秒（入力中） */
+.chat:nth-of-type(7){ animation-name:m7; }   /* 8.1秒 */
+.chat-phone__done   { animation-name:md; }   /* 9.4秒 */
+
+@keyframes m1{ 0%,3%{opacity:0;transform:translateY(7px) scale(.97)}   6%,93%{opacity:1;transform:none} 97%,100%{opacity:0;transform:translateY(-4px)} }
+@keyframes m2{ 0%,14%{opacity:0;transform:translateY(7px) scale(.97)} 17%,93%{opacity:1;transform:none} 97%,100%{opacity:0;transform:translateY(-4px)} }
+@keyframes m3{ 0%,25%{opacity:0;transform:translateY(7px) scale(.97)} 28%,93%{opacity:1;transform:none} 97%,100%{opacity:0;transform:translateY(-4px)} }
+@keyframes m4{ 0%,35%{opacity:0;transform:translateY(7px) scale(.97)} 38%,93%{opacity:1;transform:none} 97%,100%{opacity:0;transform:translateY(-4px)} }
+@keyframes m5{ 0%,46%{opacity:0;transform:translateY(7px) scale(.97)} 49%,93%{opacity:1;transform:none} 97%,100%{opacity:0;transform:translateY(-4px)} }
+@keyframes mt{ 0%,54%{opacity:0} 57%,60%{opacity:1} 63%,100%{opacity:0} }
+@keyframes m7{ 0%,62%{opacity:0;transform:translateY(7px) scale(.97)} 65%,93%{opacity:1;transform:none} 97%,100%{opacity:0;transform:translateY(-4px)} }
+@keyframes md{ 0%,72%{opacity:0;transform:translateY(5px)}            75%,93%{opacity:1;transform:none} 97%,100%{opacity:0} }
+
+/* 入力中の3点 */
+.chat--typing .chat__bubble{ display:flex; gap:3px; padding:8px 9px; }
+.chat--typing i{ width:4px; height:4px; border-radius:50%; background:#9aa6b2; animation:dot 1s ease-in-out infinite; }
+.chat--typing i:nth-child(2){ animation-delay:.15s; }
+.chat--typing i:nth-child(3){ animation-delay:.3s; }
+@keyframes dot{ 0%,60%,100%{ opacity:.3; transform:translateY(0) } 30%{ opacity:1; transform:translateY(-2px) } }
+
+/* 「ここまで約1分」。メッセージの行数が変わっても枠からはみ出さないよう下端に固定 */
+.chat-phone__done{
+  position:absolute; left:7px; right:7px; bottom:6px;
+  padding:5px 6px; border-radius:7px;
+  background:#e7f7ec; color:#0a7a36; text-align:center;
+  font-size:9px; font-weight:800; letter-spacing:.02em;
+}
+
+/* 療養中の読者向け。動きを望まない設定なら全部出したまま止める */
+@media (prefers-reduced-motion: reduce){
+  .chat, .chat-phone__done{ animation:none !important; opacity:1 !important; transform:none !important; }
+  .chat--typing{ display:none !important; }
+  .chat--typing i{ animation:none !important; }
+}
+
+.trust__caption{ margin:6px var(--pad) 0; font-size:10.5px; line-height:1.6; color:var(--muted); }
 .trust__list{ display:flex; flex-direction:column; gap:8px; }
 .trust__item{
   background:var(--panel); border-radius:10px; padding:12px 8px;
@@ -659,21 +722,35 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 
   <!-- ============ ②スマホ画面＋信頼バッジ ============ -->
   <div class="trust">
-    <figure class="trust__phone" aria-label="LINEで相談する画面のイメージ">
+    <figure class="trust__phone" aria-label="LINEで相談したときのやりとりのイメージ">
       <span class="chat-phone__notch" aria-hidden="true"></span>
       <div class="chat-phone" aria-hidden="true">
         <div class="chat-phone__bar"><span>‹</span><span class="chat-phone__brand">退職リリーフ</span><span>•••</span></div>
         <div class="chat-phone__body">
           <div class="chat">
             <span class="chat__avatar">相</span>
-            <p class="chat__bubble">はじめまして！<br>退職リリーフです。<br>受け取れる可能性を確認できます。</p>
+            <p class="chat__bubble">はじめまして。<br>退職リリーフです。</p>
           </div>
-          <div class="chat chat--sent"><p class="chat__bubble">お願いします！</p></div>
           <div class="chat">
             <span class="chat__avatar">相</span>
-            <p class="chat__bubble">いくつか質問します。<br>選ぶだけで進めます。</p>
+            <p class="chat__bubble">3つだけ質問させてください。<br>選ぶだけで進みます。</p>
+          </div>
+          <div class="chat chat--sent"><p class="chat__bubble">お願いします</p></div>
+          <div class="chat">
+            <span class="chat__avatar">相</span>
+            <p class="chat__bubble">健康保険の加入は<br>1年以上ありますか？</p>
+          </div>
+          <div class="chat chat--sent"><p class="chat__bubble">あります</p></div>
+          <div class="chat chat--typing">
+            <span class="chat__avatar">相</span>
+            <p class="chat__bubble"><i></i><i></i><i></i></p>
+          </div>
+          <div class="chat">
+            <span class="chat__avatar">相</span>
+            <p class="chat__bubble">確認できました。<br>金額の目安をお送りします。</p>
           </div>
         </div>
+        <p class="chat-phone__done">ここまで約1分・電話なし</p>
       </div>
     </figure>
     <div class="trust__list">
@@ -691,6 +768,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       </div>
     </div>
   </div>
+  <p class="trust__caption" data-todo="copy">※ 画面はイメージです。実際の質問内容・件数は状況により異なります。支給の可否は保険者の審査によります。</p>
 
   <!-- ============ ③LINEで3ステップ ============ -->
   <section class="sec sec--panel">
