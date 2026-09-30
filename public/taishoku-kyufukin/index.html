@@ -675,10 +675,17 @@ a[data-offline-cv-link]::after{
   background:linear-gradient(100deg,
     rgba(255,255,255,0) 0%, rgba(255,255,255,.28) 45%, rgba(255,255,255,.55) 50%,
     rgba(255,255,255,.28) 55%, rgba(255,255,255,0) 100%);
-  transform:skewX(-18deg);
+  transform:translateX(0) skewX(-18deg);
   animation:cta-shine 3.6s ease-in-out infinite;
 }
-@keyframes cta-shine{ 0%{ left:-75%; } 18%,100%{ left:130%; } }
+/* left を動かすと毎フレームレイアウト計算が走る（Lighthouseの「合成されないアニメーション」）。
+   transform で同じ軌跡を描く。translateX の%は自分の幅（ボタン幅の45%）が基準なので、
+   left の移動量 205%（-75%→130%）を 205÷45 = 455.5556% に換算している。
+   ★width・left を変えたら、この値も計算し直すこと */
+@keyframes cta-shine{
+  0%{ transform:translateX(0) skewX(-18deg); }
+  18%,100%{ transform:translateX(455.5556%) skewX(-18deg); }
+}
 a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 @media (prefers-reduced-motion: reduce){
   a[data-offline-cv-link]::after{ animation:none; opacity:0; }
