@@ -1,0 +1,114 @@
+---
+/*
+ * コラム共通レイアウト（2026-09-30 追加）
+ * ------------------------------------------------------------------
+ * 目的は「サイト全体として退職・失業保険・傷病手当金を扱う情報構造」を作ること。
+ * LPを説明記事化するためではない。
+ *
+ * 書き方の方針（崩さないこと）：
+ *   公的制度の基本情報 → 注意点 → 「自分の場合は？」 → 主力LPへ戻す
+ *   - 誇張しない。受給を保証しない。「誰でも」「必ず」「最短◯日」は書かない
+ *   - 受診や診断書の取得を促さない
+ *   - 数字は一次情報（ハローワーク・厚労省・協会けんぽ）で確認したものだけ
+ *
+ * ★このコラムをGoogle広告のサイトリンクに使わないこと（実測でCPAが悪化した）
+ */
+interface Props {
+  title: string;        // <title> と h1 に使う（サイト名は自動で付ける）
+  description: string;
+  slug: string;         // /column/<slug>/
+  checked: string;      // 一次情報を確認した日（表示用）
+}
+const { title, description, slug, checked } = Astro.props;
+const SITE = "https://taisyoku.hakobu-family.com";
+const CANONICAL = `${SITE}/column/${slug}/`;
+const PAGE_TITLE = `${title}｜退職給付金ガイド`;
+
+const COLUMNS = [
+  { slug: "shitsugyo-hoken-jikotsugou", title: "自己都合退職でも失業保険はもらえる？" },
+  { slug: "shitsugyo-teate-itsukara",   title: "失業手当はいつから・何ヶ月もらえる？" },
+  { slug: "taishoku-okane",             title: "退職後にもらえるお金・使える制度" },
+  { slug: "shobyo-taishoku",            title: "退職後も傷病手当金を受け取れる条件" },
+];
+const others = COLUMNS.filter((c) => c.slug !== slug);
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{PAGE_TITLE}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={CANONICAL} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={PAGE_TITLE} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={CANONICAL} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css?v=20260731" />
+
+  <!-- GA4のみ（GT-WB2N4H34 の宛先は G-DD332W5J8R だけ）。コラム→LPの回遊を見るため。
+       ★Astroページなので is:inline 必須（無いとESモジュール化されてタグが動かない） -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=GT-WB2N4H34"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date()); gtag('config', 'GT-WB2N4H34');
+  </script>
+
+  <style>
+    /* 表（styles.css には無いのでここだけで持つ） */
+    .tbl{ width:100%; border-collapse:collapse; margin:4px 0 14px; font-size:13.5px; line-height:1.7; }
+    .tbl th,.tbl td{ border:1px solid var(--line); padding:7px 9px; text-align:left; vertical-align:top; }
+    .tbl th{ background:var(--panel); color:var(--sumi); font-weight:700; }
+    .meta{ font-size:12px; color:var(--muted); margin:0 0 18px; }
+    .src{ margin-top:28px; font-size:12px; color:var(--muted); }
+    .src li{ font-size:12px; margin-bottom:4px; }
+    /* 記事末尾から主力LPへ戻す枠。アフィリリンクではない（送客CTAの計測対象外） */
+    .back{
+      margin:30px 0 0; padding:18px 16px; border-radius:10px;
+      background:#f1faf4; border:1px solid #cfe9d8; text-align:center;
+    }
+    .back__ttl{ margin:0 0 6px; font-size:15px; font-weight:700; color:var(--sumi); }
+    .back p{ font-size:13.5px; }
+    .back__btn{
+      display:inline-block; margin-top:12px; padding:12px 22px; border-radius:8px;
+      background:#06c755; color:#fff; font-weight:700; font-size:15px; text-decoration:none;
+    }
+    .more{ margin-top:30px; }
+    .more__ttl{ font-size:13px; font-weight:700; color:var(--sumi); margin:0 0 8px; }
+  </style>
+</head>
+<body>
+  <header class="site-header"><div class="wrap"><a href="/taishoku-kyufukin/">退職給付金ガイド</a></div></header>
+  <main>
+    <article>
+      <h1>{title}</h1>
+      <p class="meta">公開：2026年9月30日／制度の内容は{checked}時点で公的機関の情報を確認</p>
+
+      <slot />
+
+      <div class="back">
+        <p class="back__ttl">自分が対象になる制度を確認する</p>
+        <p>失業保険のほかに、退職前後で確認しておきたい制度があります。<br />支給を決めるのはハローワークと健康保険の保険者です。</p>
+        <a class="back__btn" href="/taishoku-kyufukin/">退職後に受け取れるお金を見る</a>
+      </div>
+
+      <slot name="sources" />
+    </article>
+
+    <nav class="more" aria-label="退職前に知っておきたい制度">
+      <p class="more__ttl">退職前に知っておきたい制度</p>
+      <ul>
+        {others.map((c) => <li><a href={`/column/${c.slug}/`}>{c.title}</a></li>)}
+      </ul>
+    </nav>
+  </main>
+  <footer class="site-footer"><div class="wrap">
+    <nav><a href="/operator/">運営者情報</a><a href="/privacy/">プライバシーポリシー</a><a href="/disclosure/">広告掲載について</a></nav>
+    <p class="copy">© 退職給付金ガイド</p>
+  </div></footer>
+</body>
+</html>

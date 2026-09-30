@@ -16,7 +16,7 @@
  */
 import { readFileSync, existsSync } from "node:fs";
 
-const PAGES = ["taishoku-kyufukin", "taisyoku-365"];
+const PAGES = ["taishoku-kyufukin", "taisyoku-365", "shitsugyo-hoken"];
 
 // [表示名, 出力HTMLに必ず含まれるべき文字列, 追加の条件]
 const REQUIRED = [
