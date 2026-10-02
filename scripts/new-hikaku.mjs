@@ -20,7 +20,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, copyFileSync } from
 import { pathToFileURL } from "node:url";
 import { resolve, dirname } from "node:path";
 
-const SITE = "https://taisyoku.hakobu-family.com";
+const SITE = "https://taisyoku.navolio.net";
 const TPL_DIR = "templates/hikaku-lp";
 
 /* ---------------------------------------------------------------- 小道具 */

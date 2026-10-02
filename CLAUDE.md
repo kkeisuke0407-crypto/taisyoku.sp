@@ -1,7 +1,9 @@
 # このリポジトリでの作業メモ（Claude 向け）
 
 退職給付金（雇用保険の基本手当／健康保険の傷病手当金）まわりのアフィリエイトLP。
-Astro + GitHub Pages。公開ドメインは **taisyoku.hakobu-family.com**。
+Astro + GitHub Pages。公開ドメインは **taisyoku.navolio.net**。
+（2026-10-02 に taisyoku.hakobu-family.com から移行。旧ドメインはGitHub Pagesの紐付けが外れて全ページ404。
+ドメインはPagesの設定画面で決まり、`public/CNAME` は合わせて書き換えてあるだけ）
 
 `gold-kaitori-site`（貴金属買取）から分離した。分けた理由は、案件のNG媒体条項に
 「関係のないジャンルのメディア」があり、買取ドメインに退職LPを置くと提携審査で

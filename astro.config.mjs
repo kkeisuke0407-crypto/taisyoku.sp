@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-const SITE = process.env.PUBLIC_SITE_URL ?? 'https://taisyoku.hakobu-family.com';
+const SITE = process.env.PUBLIC_SITE_URL ?? 'https://taisyoku.navolio.net';
 
 export default defineConfig({
   site: SITE,
