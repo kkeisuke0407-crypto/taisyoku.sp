@@ -64,6 +64,17 @@
 
 <!--
   ============================================================
+  2026-10-02 案件を退職リリーフ → YELL!!（合同会社Pay It Forward）に変更
+  ============================================================
+  - ASP申請中のため、送客リンクは空（JSの AFF.yell）。空の間はCTAを押しても
+    遷移せず、CVイベントも送らない。広告リンクが届いたら AFF.yell に入れるだけで動く
+  - YELL!!を推す内容に変更。CLAUDE.md の表現NGは本人指示によりこの版では適用しない
+  - 料金は載せない（本人指示）。却下条件は⑩「対象外になる方」で見せる
+  - 「退職が1か月以内に決まっている方」はYELL!!のサポート対象だが、面談成果のため
+    1か月以内でなくても成果になる。LPでは制限しない（本人指示）
+  - /shitsugyo-hoken/ は退職リリーフのまま（今回は対象外）
+
+  ============================================================
   主力LP（デザイン見本から作り直した版・2026-08-01 差し替え）
   ============================================================
   旧版（比較記事型ひな形ベース）は git 履歴に残っている。
@@ -530,7 +541,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 }
 
 /* ============================================================
-   ⑩断ってOK
+   ⑩対象外になる方（YELL!!の却下条件）
    ============================================================ */
 .reject{ margin-top:12px; padding:14px; background:var(--amber-bg); border-radius:12px; }
 .reject__grid{ display:grid; grid-template-columns:minmax(0,1fr) 92px; gap:10px; align-items:center; }
@@ -738,7 +749,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
             <span class="btn-line__logo">LINE</span>
             <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
           </a>
-          <p class="cta__sub" data-todo="copy">友だち追加だけ・無料／電話番号は不要<br>退職リリーフの公式サイトへ移動します</p>
+          <p class="cta__sub" data-todo="copy">対象：18〜64歳・雇用保険1年以上<br>YELL!!の公式サイトへ移動します</p>
         </div>
       </div>
     </div>
@@ -752,11 +763,11 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     <figure class="trust__phone" aria-label="LINEで相談したときのやりとりのイメージ">
       <span class="chat-phone__notch" aria-hidden="true"></span>
       <div class="chat-phone" aria-hidden="true">
-        <div class="chat-phone__bar"><span>‹</span><span class="chat-phone__brand">退職リリーフ</span><span>•••</span></div>
+        <div class="chat-phone__bar"><span>‹</span><span class="chat-phone__brand">YELL!!</span><span>•••</span></div>
         <div class="chat-phone__body">
           <div class="chat">
             <span class="chat__avatar">相</span>
-            <p class="chat__bubble">はじめまして。<br>退職リリーフです。</p>
+            <p class="chat__bubble">はじめまして。<br>YELL!!です。</p>
           </div>
           <div class="chat">
             <span class="chat__avatar">相</span>
@@ -765,7 +776,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
           <div class="chat chat--sent"><p class="chat__bubble">お願いします</p></div>
           <div class="chat">
             <span class="chat__avatar">相</span>
-            <p class="chat__bubble">健康保険の加入は<br>1年以上ありますか？</p>
+            <p class="chat__bubble">雇用保険の加入は<br>1年以上ありますか？</p>
           </div>
           <div class="chat chat--sent"><p class="chat__bubble">あります</p></div>
           <div class="chat chat--typing">
@@ -777,13 +788,13 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
             <p class="chat__bubble">確認できました。<br>金額の目安をお送りします。</p>
           </div>
         </div>
-        <p class="chat-phone__done">ここまで約1分・電話なし</p>
+        <p class="chat-phone__done">ここまでLINEで完結</p>
       </div>
     </figure>
     <div class="trust__list">
       <div class="trust__item" data-todo="copy">
         <span class="trust__icon" style="--icon-x:100%;--icon-y:0%" aria-hidden="true"></span>
-        社労士・弁護士<br>監修で安心
+        LINEで<br>24時間受付
       </div>
       <div class="trust__item" data-todo="copy">
         <span class="trust__icon" style="--icon-x:50%;--icon-y:50%" aria-hidden="true"></span>
@@ -791,7 +802,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       </div>
       <div class="trust__item" data-todo="copy">
         <span class="trust__icon" style="--icon-x:0%;--icon-y:100%" aria-hidden="true"></span>
-        相談は無料<br>ブロックOK
+        診断は無料<br>ブロックOK
       </div>
     </div>
   </div>
@@ -813,7 +824,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
         <p class="step__no">2</p>
         <p class="step__ttl" data-todo="copy">質問に<br>答える</p>
         <div class="step__ph" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen">質問に<br>答える</span></span></div>
-        <p class="step__txt" data-todo="copy">年齢・退職の予定・健康保険に入っていた期間など。選ぶだけで進みます。</p>
+        <p class="step__txt" data-todo="copy">年齢・退職の予定・雇用保険に入っていた期間など。選ぶだけで進みます。</p>
       </li>
       <li class="step">
         <p class="step__no">3</p>
@@ -823,7 +834,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       </li>
     </ol>
 
-    <p class="punch" data-todo="copy">ここまで、およそ1分。<br>やりとりはLINEだけ。</p>
+    <p class="punch" data-todo="copy">申請の準備まで、<br>やりとりはLINEだけ。</p>
   </section>
 
   <!-- ============ ④受け取れるお金は1つじゃない ============ -->
@@ -921,13 +932,13 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       <div class="cmp__col cmp__col--with">
         <h3 class="cmp__head" data-todo="copy">伴走してもらう</h3>
         <ul class="cmp__list" data-todo="copy">
-          <li>有料（相談は無料）</li>
+          <li>有料（診断は無料）</li>
           <li>決める前に相談できる</li>
           <li>一緒に組み立てる</li>
-          <li>準備と進め方を支援してもらえる</li>
-          <li>受給後まで相談できる</li>
+          <li>書類作成をサポートしてもらえる</li>
+          <li>受給期間中も相談できる</li>
           <li>先回りで防げる</li>
-          <li>退職代行のオプションあり</li>
+          <li>退職代行・転職支援もあり</li>
         </ul>
       </div>
     </div>
@@ -1007,7 +1018,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
         <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
       </a>
     </div>
-    <p class="note" style="margin-top:8px" data-todo="copy">※ ボタンをタップすると退職リリーフの公式サイトへ移動します。</p>
+    <p class="note" style="margin-top:8px" data-todo="copy">※ ボタンをタップするとYELL!!の公式サイトへ移動します。</p>
   </section>
 
   <!-- ============ ⑧セルフチェック ============ -->
@@ -1017,8 +1028,8 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     <div class="check-wrap">
       <ul class="check" data-todo="copy">
         <li>いま在職中、または退職してから間もない</li>
-        <!-- 傷病手当金の継続給付の要件は「健康保険」の被保険者期間。雇用保険ではない -->
-        <li>勤務先の健康保険に1年以上加入している（または加入していた）</li>
+        <!-- YELL!!の却下条件に合わせて雇用保険（直近2年以内に通算1年以上） -->
+        <li>直近2年以内に、雇用保険に通算1年以上加入している</li>
         <li>心身の不調があり、働き続けるのがつらい</li>
         <li>次の就職先は、まだ決まっていない</li>
         <li>辞めたあとの生活費に不安がある</li>
@@ -1037,13 +1048,13 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 
   <!-- ============ ⑨サービス紹介 ============ -->
   <section class="sec sec--panel">
-    <h2 class="h2" data-todo="copy">退職リリーフとは？<span class="pr-badge">PR</span></h2>
+    <h2 class="h2" data-todo="copy">YELL!!とは？<span class="pr-badge">PR</span></h2>
 
     <div class="brand">
       <p class="brand__txt" data-todo="copy">
-        運営は労働組合の新宿ユニオンで、社労士・弁護士の監修が入っています。
-        受け取れる可能性の確認から、退職日の決め方、書類の準備と進め方まで相談できます。
-        相談は無料。LINEで完結し、いつでもブロックできます。
+        退職給付金の申請サポートです。給付条件の確認から書類作成、申請方法まで、専門チームがLINEで伴走します。
+        自己都合で辞める場合も相談でき、最短1か月での受給開始を目指せます。
+        退職代行や転職支援まで、まとめて任せられます。診断は無料で、LINEは24時間受付です。
       </p>
       <figure class="brand__art">
         <img class="asset-img" src="./assets/support-advisors.webp" width="467" height="700" loading="lazy" decoding="async" alt="相談を支えるスタッフのイメージ">
@@ -1051,22 +1062,25 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </div>
 
     <p class="note" style="margin-top:12px" data-todo="copy">
-      ※ 申請するのは本人です。書類の準備や進め方を支援するもので、申請の代行は行いません。
-      受給を保証するものでも、受給額を増やすものでもありません。
+      ※ 運営：合同会社Pay It Forward。受給率100%（2025年5月時点・YELL!!公表）。
+      支給の可否は、ハローワーク・健康保険の保険者の審査によります。
     </p>
   </section>
 
-  <!-- ============ ⑩断ってOK ============ -->
+  <!-- ============ ⑩対象外になる方 ============
+       YELL!!の却下条件をそのまま見せる（対象外の人を送らない）。
+       「1か月以内に退職」は面談成果では却下理由ではないので入れない -->
   <section class="sec">
-    <h2 class="h2" data-todo="copy">こんな窓口は、その場で断ってOKです</h2>
+    <h2 class="h2" data-todo="copy">相談の前に。こんな方は対象外です</h2>
 
     <div class="reject">
       <div class="reject__grid">
         <ul class="reject__list" data-todo="copy">
-          <li>「条件を満たしていなくても大丈夫」「誰でももらえます」と言う</li>
-          <li>受診する病院や、診断書の書き方を指定してくる</li>
-          <li>受け取れる金額を、診断の時点で断言する</li>
-          <li>総額を聞いても答えず、契約を先に進めようとする</li>
+          <li>18歳未満、または65歳以上の方</li>
+          <li>法人の代表者・個人事業主の方</li>
+          <li>直近2年以内の雇用保険の加入が、通算1年に満たない方</li>
+          <li>障害者手帳をお持ちの方</li>
+          <li>公務員の方</li>
         </ul>
         <figure class="reject__art">
           <img class="asset-img" src="./assets/caution-buildings.webp" width="467" height="700" loading="lazy" decoding="async" alt="">
@@ -1075,7 +1089,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </div>
 
     <p class="note" style="margin-top:12px" data-todo="copy">
-      給付金を決めるのはハローワークと健康保険の保険者です。民間のサービスが増やすことはできません。
+      同じ方による重複のお申し込み、事実と異なる内容でのお申し込みはお受けできません。
     </p>
   </section>
 
@@ -1191,8 +1205,8 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
     </a>
     <p class="final__note" data-todo="copy">
-      ボタンをタップすると退職リリーフの公式サイトへ移動します。
-      診断は1分ほど。相談した時点で契約になることはありません。料金とサポート範囲は、契約前に必ず文字で確認してください。
+      ボタンをタップするとYELL!!の公式サイトへ移動します。
+      診断は無料です。料金とサポート範囲は、契約前に必ず文字で確認してください。
     </p>
   </section>
 
@@ -1238,11 +1252,11 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 <div class="sticky-cta" data-sticky hidden>
   <a class="btn-line" href="#" data-todo="link" data-track="sticky_line" data-offline-cv-link
      target="_blank" rel="sponsored nofollow noopener noreferrer"
-     aria-label="退職リリーフのLINEで自分が対象か確認する">
+     aria-label="YELL!!のLINEで自分が対象か確認する">
     <span class="btn-line__logo">LINE</span>
     <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
   </a>
-  <p class="sticky-cta__note" data-todo="copy">退職リリーフの公式サイトへ移動します</p>
+  <p class="sticky-cta__note" data-todo="copy">YELL!!の公式サイトへ移動します</p>
 </div>
 
 <script>
@@ -1299,8 +1313,9 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 
   /* ---------- CTAのリンク差し込み ＋ CV計測 ----------
      旧版と同じイベント体系。名前を変えるとGoogle広告側のCV設定と繋がらなくなる。 */
-  // ▼TODO：SLVRbulletの実アフィリリンクに差し替える
-  var AFF = { relief: "https://tr.slvrbullet.com/cl/w0000694921/47768/40002/2" };
+  // ▼YELL!!のASP広告リンクをここに入れる（ASP申請中のため空）。
+  //   空の間はCTAを押しても遷移せず、CVイベントも送らない（下の click 参照）
+  var AFF = { yell: "" };
   var LANDING = "taishoku_kyufukin";
   // gclid / gbraid / wbraid は **意図的に外している**。
   // クリック識別子の付与は SLVRbullet 公式タグ（pt.min.js）の担当。
@@ -1327,15 +1342,16 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 
   // ★CTAを増やしたら、必ずここの対象に入るclassを付ける（付け忘れ＝CV計測漏れ）
   Array.prototype.forEach.call(document.querySelectorAll('.btn-line'), function(el){
-    var url = fwd(AFF.relief);
+    var url = fwd(AFF.yell);
     if(url) el.setAttribute("href", url);
 
-    el.addEventListener("click", function(){
+    el.addEventListener("click", function(e){
+      if(!url){ e.preventDefault(); return; }    // リンク未設定：空クリックをCVとして送らない
       if(el.__busy) return;                       // 連打による二重CVを防止
       el.__busy = true; setTimeout(function(){ el.__busy = false; }, 1200);
 
       var params = {
-        affiliate_key: "relief",
+        affiliate_key: "yell",
         track_name: el.getAttribute("data-track") || "",
         cta_type: "line",
         landing_intent: LANDING,
