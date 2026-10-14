@@ -1316,9 +1316,9 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
   //   空にするとCTAを押しても遷移せず、CVイベントも送らない（下の click 参照）
   var AFF = { yorimichi: "https://t.felmat.net/fmcl?ak=X12115Q.1.8167402B.D141513M&pb=" };
   var LANDING = "taishoku_kyufukin";
-  // gclid / gbraid / wbraid は **意図的に外している**。
-  // クリック識別子の付与は SLVRbullet 公式タグ（pt.min.js）の担当。
-  // ここでも付けると ?gclid=X&compop=...&gclid=X と二重になる（実際に発生した）。
+  // gclid / gbraid / wbraid はページ末尾のfelmat公式タグが付与する。
+  // /offline-cv.js は回遊などでURLから識別子が消えた場合の補助として維持する。
+  // ここでは重ねて付与せず、従来のGA4イベントも維持する。
   var KEEP = /^(utm_|gad_|campaignid|keyword|matchtype|device|network|creative)$/i;
 
   function track(name, params){
@@ -1327,7 +1327,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       if(typeof gtag==="function") gtag("event", name, Object.assign({}, params||{}, { transport_type:"beacon" }));
     }catch(_){}
   }
-  // 着地URLのクエリ（utm_/gclid 等）をCTAへ転送し、タグ発火の取りこぼしを減らす
+  // 着地URLの広告分析用クエリをCTAへ転送する。クリックIDは公式タグで処理。
   function fwd(raw){
     if(!raw || raw === "#") return raw;
     try{
@@ -1356,7 +1356,8 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
         landing_intent: LANDING,
         link_url: url
       };
-      // 成果CV＝LINE追加。イベント名は金買取（gold_kaitori_*）と分けている
+      // このイベントは記事からのリンククリック（MCV）。
+      // 成果CVのLINE友だち追加はfelmatの成果発生時にAPIで通知される。
       var cv = "taishoku_relief_line_click";
       if(window.dataLayer) window.dataLayer.push(Object.assign({event:cv}, params));
       if(typeof gtag==="function"){
@@ -1411,15 +1412,12 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 })();
 </script>
 
-<!-- SLVRbullet 公式「パラメータ引き継ぎタグ」。
-     Google広告からの流入時、記事URLに付く gclid / wbraid / gbraid を
-     SLVRbullet広告リンクへ自動で引き継ぐ。成果連携の本体はこれ。
-     ※この下の offline-cv.js は、回遊でURLから識別子が消えた場合だけを補う。
-       URLに識別子があるときは動かないので、二重付与は起きない。 -->
-<script src="https://js.slvrbullet.com/pt.min.js"></script>
 <!-- オフラインCV用：GCLIDを90日保持し、アフィリリンクへ付け直す。
-     成果地点（LINE追加）は広告主側で確定するため、Google広告へは
-     オフラインCVとしてインポートする。その識別子を取りこぼさないための処理。 -->
+     公式タグによる処理後、対象リンクに不足している識別子だけを補う。
+     既存のdata-offline-cv-linkとGA4のMCVイベントは継続する。 -->
 <script src="/offline-cv.js" defer></script>
+<!-- felmat指定（2026-10-14）：記事へ直接設置し、必ずbody閉じタグ直前に置く。
+     LINE友だち追加の成果発生時に、既存CV 7752931919へAPI通知するためのID受渡し。 -->
+<script type="text/javascript" src="https://js.felmat.net/fmptr.js" async></script>
 </body>
 </html>

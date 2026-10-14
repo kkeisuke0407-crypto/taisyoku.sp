@@ -20,10 +20,13 @@ const PAGES = ["taishoku-kyufukin", "taisyoku-365", "shitsugyo-hoken"];
 
 // [表示名, 出力HTMLに必ず含まれるべき文字列, 追加の条件]
 const REQUIRED = [
-  ["SLVRbullet 公式パラメータ引き継ぎタグ", 'src="https://js.slvrbullet.com/pt.min.js"'],
   ["オフラインCVフェイルセーフ",            'src="/offline-cv.js"'],
   ["Googleタグ (gtag)",                     "googletagmanager.com/gtag/js"],
 ];
+
+// ASPが切り替わったページには、そのASPの公式タグを検査する。
+const SLVR_TAG = 'src="https://js.slvrbullet.com/pt.min.js"';
+const FELMAT_TAG = 'src="https://js.felmat.net/fmptr.js"';
 
 // これがHTMLに在ったら、Astroがモジュール化してしまっている
 const FORBIDDEN = [
@@ -40,6 +43,18 @@ for (const slug of PAGES) {
   for (const [label, needle] of REQUIRED) {
     const ok = html.includes(needle);
     console.log(`  ${ok ? "✓" : "✗"} ${label}`);
+    if (!ok) ng++;
+  }
+  if (slug === "taishoku-kyufukin") {
+    const tags = html.match(/<script\b[^>]*src="https:\/\/js\.felmat\.net\/fmptr\.js"[^>]*><\/script>/g) || [];
+    const ok = tags.length === 1 && /\basync(?:\s|>|=)/.test(tags[0]) &&
+      !/type="module"/.test(tags[0]) && !html.includes(SLVR_TAG) &&
+      /^\s*<\/body>\s*<\/html>\s*$/.test(html.slice(html.lastIndexOf(tags[0]) + tags[0].length));
+    console.log(`  ${ok ? "✓" : "✗"} felmat公式タグが1件、asyncでbody直前（旧ASPタグなし）`);
+    if (!ok) ng++;
+  } else {
+    const ok = html.includes(SLVR_TAG) && !html.includes(FELMAT_TAG);
+    console.log(`  ${ok ? "✓" : "✗"} SLVRbullet公式パラメータ引き継ぎタグ`);
     if (!ok) ng++;
   }
   for (const [label, needle] of FORBIDDEN) {
