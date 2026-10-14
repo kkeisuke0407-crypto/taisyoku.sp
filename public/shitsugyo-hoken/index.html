@@ -74,7 +74,8 @@
     - 計測の LANDING = "shitsugyo_hoken"（CVイベント名・アフィリリンクは主力LPと同じ）
     - 画像は /taishoku-kyufukin/assets/ を参照（二重コピーしない）
     - 免責の下に関連コラムへのリンク（LP上部には置かない。一本道のCV導線を邪魔しない）
-  H1「最大365万円」・CTAの文言/位置/数は主力LPと同一。変えない。
+  H1「最大310万円」（2026-10-14〜。旧365万円）・CTAの文言/位置/数は主力LPと同一。変えない。
+  ★2026-10-14 主力LPと同じく案件を よりみち給付金サポート（felmat）に変更。金額は310万円に統一。
   ★2026-10-02 主力LPと同じく案件を YELL!!（合同会社Pay It Forward）に変更。
     ASP申請中のため送客リンク（AFF.yell）は空。空の間はCTAで遷移もCV送信もしない。
     YELL!!を推す内容・料金は載せない・却下条件を⑩で見せる・1か月以内では絞らない（本人指示）。
@@ -316,7 +317,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   box-shadow:0 1px 2px rgba(27,52,79,.08);
 }
 .chat--sent .chat__bubble{ max-width:82%; background:#a9df8a; }
-/* 診断結果の金額だけ目立たせる（FVの「最大365万円」と同じ数字） */
+/* 診断結果の金額だけ目立たせる（FVの「最大310万円」と同じ数字） */
 .chat__bubble b{ font-weight:800; font-size:1.15em; color:var(--red); }
 
 /* ============================================================
@@ -565,7 +566,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 }
 
 /* ============================================================
-   ⑩対象外になる方（YELL!!の却下条件）
+   ⑩利用できる方（よりみちの利用条件）
    ============================================================ */
 .reject{ margin-top:12px; padding:14px; background:var(--amber-bg); border-radius:12px; }
 .reject__grid{ display:grid; grid-template-columns:minmax(0,1fr) 92px; gap:10px; align-items:center; }
@@ -752,12 +753,12 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </figure>
     <span class="fv__pr" aria-label="広告を含む記事です">PR</span>
     <p class="fv__tab" data-todo="copy">失業保険を調べている方へ</p>
-    <!-- AG03用の「意味の橋」。検索語（失業保険）→ 別の制度？ → 最大365万円 をつなぐ1行だけ。
+    <!-- AG03用の「意味の橋」。検索語（失業保険）→ 別の制度？ → 最大310万円 をつなぐ1行だけ。
          説明文にしないこと（金額・条件・受給方法の答えをここに書くと、読んで満足して離脱する） -->
     <p class="fv__bridge">失業保険とは別に、<br class="fv__bridge-br">確認しておきたい制度があります。</p>
 
     <h1 class="fv__h1" data-todo="copy">
-      <span class="fv__amount">最大<em>365</em><span class="u-unit">万円</span></span>
+      <span class="fv__amount">最大<em>310</em><span class="u-unit">万円</span></span>
       <span class="fv__lead">受け取れる制度を<br>ご存じですか？</span>
     </h1>
 
@@ -776,7 +777,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
             <span class="btn-line__logo">LINE</span>
             <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
           </a>
-          <p class="cta__sub" data-todo="copy">対象：18〜64歳・雇用保険1年以上<br>YELL!!の公式サイトへ移動します</p>
+          <p class="cta__sub" data-todo="copy">対象：在職中・雇用保険1年以上<br>よりみちの公式サイトへ移動します</p>
         </div>
       </div>
     </div>
@@ -790,11 +791,11 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     <figure class="trust__phone" aria-label="LINEで相談したときのやりとりのイメージ">
       <span class="chat-phone__notch" aria-hidden="true"></span>
       <div class="chat-phone" aria-hidden="true">
-        <div class="chat-phone__bar"><span>‹</span><span class="chat-phone__brand">YELL!!</span><span>•••</span></div>
+        <div class="chat-phone__bar"><span>‹</span><span class="chat-phone__brand">よりみち給付金サポート</span><span>•••</span></div>
         <div class="chat-phone__body">
           <div class="chat">
             <span class="chat__avatar">相</span>
-            <p class="chat__bubble">はじめまして！<br>YELL!!です。</p>
+            <p class="chat__bubble">はじめまして！<br>よりみちです。</p>
           </div>
           <div class="chat">
             <span class="chat__avatar">相</span>
@@ -812,7 +813,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
           </div>
           <div class="chat">
             <span class="chat__avatar">相</span>
-            <p class="chat__bubble">最大<b>365万円</b>の<br>受給が可能です！</p>
+            <p class="chat__bubble">最大<b>310万円</b>の<br>受給が可能です！</p>
           </div>
         </div>
         <p class="chat-phone__done">ここまでLINEで完結</p>
@@ -821,7 +822,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     <div class="trust__list">
       <div class="trust__item" data-todo="copy">
         <span class="trust__icon" style="--icon-x:100%;--icon-y:0%" aria-hidden="true"></span>
-        LINEで<br>24時間受付
+        弁護士<br>監修で安心
       </div>
       <div class="trust__item" data-todo="copy">
         <span class="trust__icon" style="--icon-x:50%;--icon-y:50%" aria-hidden="true"></span>
@@ -861,7 +862,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       </li>
     </ol>
 
-    <p class="punch" data-todo="copy">申請の準備まで、<br>ぜんぶLINEでできます。</p>
+    <p class="punch" data-todo="copy">申請の準備まで、<br>ぜんぶオンラインでできます。</p>
   </section>
 
   <!-- ============ ④受け取れるお金は1つじゃない ============ -->
@@ -957,13 +958,13 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       <div class="cmp__col cmp__col--with">
         <h3 class="cmp__head" data-todo="copy">手伝ってもらう</h3>
         <ul class="cmp__list" data-todo="copy">
-          <li>有料（診断は無料）</li>
+          <li>料金は相談時に案内（診断は無料）</li>
           <li>決める前に相談できる</li>
           <li>一緒に考えてくれる</li>
           <li>書類づくりを手伝ってくれる</li>
-          <li>もらっている間も相談できる</li>
+          <li>専属の担当者に相談できる</li>
           <li>前もって防げる</li>
-          <li>退職代行・転職の手伝いもあり</li>
+          <li>全国どこからでもオンライン</li>
         </ul>
       </div>
     </div>
@@ -1042,7 +1043,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
         <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
       </a>
     </div>
-    <p class="note" style="margin-top:8px" data-todo="copy">※ ボタンをタップするとYELL!!の公式サイトへ移動します。</p>
+    <p class="note" style="margin-top:8px" data-todo="copy">※ ボタンをタップするとよりみち給付金サポートの公式サイトへ移動します。</p>
   </section>
 
   <!-- ============ ⑧セルフチェック ============ -->
@@ -1052,12 +1053,12 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     <div class="check-wrap">
       <ul class="check" data-todo="copy">
         <li>在職中で、退職を検討している</li>
-        <!-- YELL!!の却下条件に合わせて雇用保険（直近2年以内に通算1年以上） -->
+        <!-- よりみちの利用条件（退職日以前の2年間に雇用保険12か月以上）に合わせている -->
         <li>ここ2年で、雇用保険に入っていた期間が合計1年以上ある</li>
         <li>体や心の調子が悪くて、働き続けるのがつらい</li>
         <li>次の仕事は、まだ決まっていない</li>
         <li>辞めたあとの生活費に不安がある</li>
-        <li>会社に「辞めたい」と言い出せない</li>
+        <li>給付金の手続きを、ひとりでやるのは不安</li>
       </ul>
       <figure class="check__art">
         <img class="asset-img" src="/taishoku-kyufukin/assets/selfcheck-woman.webp" width="467" height="700" loading="lazy" decoding="async" alt="スマートフォンを見ながら確認する女性のイメージ">
@@ -1071,11 +1072,11 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 
   <!-- ============ ⑨サービス紹介 ============ -->
   <section class="sec sec--panel">
-    <h2 class="h2" data-todo="copy">YELL!!とは？<span class="pr-badge">PR</span></h2>
+    <h2 class="h2" data-todo="copy">よりみち給付金サポートとは？<span class="pr-badge">PR</span></h2>
 
     <div class="brand">
       <p class="brand__txt" data-todo="copy">
-        退職給付金の申請を手伝ってくれるサービスです。もらえるかの確認から書類づくり、申請のやり方まで、専門チームがLINEでサポート。自分から辞める場合もOKで、最短1か月でもらい始めることを目指せます。退職代行や転職の相談もまとめてお任せ。診断は無料、LINEは24時間受付です。
+        失業保険の申請を手伝ってくれるサービスです。LINEの無料診断でもらえそうな額がわかったら、専属の担当者が今の状況に合わせて、受給までの流れを説明してくれます。必要な書類の準備から申請まで、オンラインでサポート。自分から辞める場合も使えて、最短1か月でもらい始めることを目指せます。全国どこからでも相談でき、LINEは24時間受付です。
       </p>
       <figure class="brand__art">
         <img class="asset-img" src="/taishoku-kyufukin/assets/support-advisors.webp" width="467" height="700" loading="lazy" decoding="async" alt="相談を支えるスタッフのイメージ">
@@ -1083,24 +1084,23 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </div>
 
     <p class="note" style="margin-top:12px" data-todo="copy">
-      ※ 運営：合同会社Pay It Forward。受給率100%（2025年5月時点・YELL!!公表）。支給の可否は、ハローワーク・健康保険の保険者の審査によります。
+      ※ 運営：株式会社よりみち（東京都中央区日本橋）。監修：弁護士法人プロテクトスタンス 代表弁護士 五十部紀英。支給の可否は、ハローワークの審査によります。
     </p>
   </section>
 
-  <!-- ============ ⑩対象外になる方 ============
-       YELL!!の却下条件をそのまま見せる（対象外の人を送らない）。
+  <!-- ============ ⑩利用できる方 ============
+       よりみち給付金サポートが「以下の方限定」として出している条件をそのまま見せる。
        「1か月以内に退職」は面談成果では却下理由ではないので入れない -->
   <section class="sec">
-    <h2 class="h2" data-todo="copy">相談の前にチェック！こんな方は対象外です</h2>
+    <h2 class="h2" data-todo="copy">相談の前にチェック！使えるのはこんな方です</h2>
 
     <div class="reject">
       <div class="reject__grid">
         <ul class="reject__list" data-todo="copy">
-          <li>18歳未満、または65歳以上の方</li>
-          <li>法人の代表者・個人事業主の方</li>
-          <li>ここ2年で、雇用保険に入っていた期間が合計1年未満の方</li>
-          <li>障害者手帳をお持ちの方</li>
-          <li>公務員の方</li>
+          <li>いま会社に勤めていて、退職を予定している方</li>
+          <li>次の仕事が、まだ決まっていない方</li>
+          <li>仕事で、心にストレスを抱えている方</li>
+          <li>辞める日までの2年間に、雇用保険に12か月以上入っている方</li>
         </ul>
         <figure class="reject__art">
           <img class="asset-img" src="/taishoku-kyufukin/assets/caution-buildings.webp" width="467" height="700" loading="lazy" decoding="async" alt="">
@@ -1109,7 +1109,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </div>
 
     <p class="note" style="margin-top:12px" data-todo="copy">
-      同じ方の重複申し込みや、事実とちがう内容での申し込みはお受けできません。
+      よりみち給付金サポートが案内している利用条件です。当てはまっても、必ず使えるとはかぎりません。
     </p>
   </section>
 
@@ -1225,7 +1225,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
     </a>
     <p class="final__note" data-todo="copy">
-      ボタンを押すとYELL!!の公式サイトに移動します。診断は無料です。料金やサポートの内容は、申し込む前に必ず確認してくださいね。
+      ボタンを押すとよりみち給付金サポートの公式サイトに移動します。診断は無料です。料金やサポートの内容は、申し込む前に必ず確認してくださいね。
     </p>
   </section>
 
@@ -1236,7 +1236,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       <li>本ページは、公開されている情報をもとに編集部が作成した紹介記事です</li>
       <li>傷病手当金・失業保険は、法令に定める要件を満たした場合に、保険者（健康保険組合・協会けんぽ）またはハローワークの審査を経て支給されるものです。本ページで紹介するサービスは、受給を保証するものではありません</li>
       <li>給付金の申請は本人が行うものです。本ページで紹介するサービスは、書類の準備や進め方の支援を行うものであり、申請の代行を行うものではありません</li>
-      <li>本ページに記載の金額は、いずれも制度上の計算例です。実際に受け取れる金額・期間は、標準報酬月額・被保険者期間・療養の状況により異なります</li>
+      <li>「最大310万円」は、よりみち給付金サポートが公表している失業保険の受給額の上限です。実際に受け取れる金額・期間は、離職前の賃金・年齢・雇用保険の加入期間・離職理由などにより異なり、条件を満たさない場合はこれより少なくなります</li>
       <li>心身の不調がないにもかかわらず、受給を目的として受診や診断書の取得を行うことは、不正受給にあたるおそれがあります</li>
       <li>掲載内容は<span id="today"></span>時点の情報です。最新の条件は各公式サイトおよび公的機関でご確認ください</li>
     </ul>
@@ -1271,11 +1271,11 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 <div class="sticky-cta" data-sticky hidden>
   <a class="btn-line" href="#" data-todo="link" data-track="sticky_line" data-offline-cv-link
      target="_blank" rel="sponsored nofollow noopener noreferrer"
-     aria-label="YELL!!のLINEで自分が対象か確認する">
+     aria-label="よりみち給付金サポートのLINEで自分が対象か確認する">
     <span class="btn-line__logo">LINE</span>
     <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
   </a>
-  <p class="sticky-cta__note" data-todo="copy">YELL!!の公式サイトへ移動します</p>
+  <p class="sticky-cta__note" data-todo="copy">よりみち給付金サポートの公式サイトへ移動します</p>
 </div>
 
 <script>
@@ -1332,9 +1332,9 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 
   /* ---------- CTAのリンク差し込み ＋ CV計測 ----------
      旧版と同じイベント体系。名前を変えるとGoogle広告側のCV設定と繋がらなくなる。 */
-  // ▼YELL!!のASP広告リンクをここに入れる（ASP申請中のため空）。
-  //   空の間はCTAを押しても遷移せず、CVイベントも送らない（下の click 参照）
-  var AFF = { yell: "" };
+  // ▼よりみち給付金サポート（felmat）の広告リンク。
+  //   空にするとCTAを押しても遷移せず、CVイベントも送らない（下の click 参照）
+  var AFF = { yorimichi: "https://t.felmat.net/fmcl?ak=X12115Q.1.8167402B.D141513M&pb=" };
   var LANDING = "shitsugyo_hoken";   // AG03専用LP。主力LPは "taishoku_kyufukin"
   // gclid / gbraid / wbraid は **意図的に外している**。
   // クリック識別子の付与は SLVRbullet 公式タグ（pt.min.js）の担当。
@@ -1361,7 +1361,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 
   // ★CTAを増やしたら、必ずここの対象に入るclassを付ける（付け忘れ＝CV計測漏れ）
   Array.prototype.forEach.call(document.querySelectorAll('.btn-line'), function(el){
-    var url = fwd(AFF.yell);
+    var url = fwd(AFF.yorimichi);
     if(url) el.setAttribute("href", url);
 
     el.addEventListener("click", function(e){
@@ -1370,7 +1370,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       el.__busy = true; setTimeout(function(){ el.__busy = false; }, 1200);
 
       var params = {
-        affiliate_key: "yell",
+        affiliate_key: "yorimichi",
         track_name: el.getAttribute("data-track") || "",
         cta_type: "line",
         landing_intent: LANDING,
