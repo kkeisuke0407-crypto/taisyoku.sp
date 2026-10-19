@@ -16,7 +16,7 @@
  */
 import { readFileSync, existsSync } from "node:fs";
 
-const PAGES = ["taishoku-kyufukin", "taisyoku-365", "shitsugyo-hoken"];
+const PAGES = ["taishoku-kyufukin", "taisyoku-365", "shitsugyo-hoken", "hikaku", "hikaku/yorimichi.html"];
 
 // [表示名, 出力HTMLに必ず含まれるべき文字列, 追加の条件]
 const REQUIRED = [
@@ -35,7 +35,7 @@ const FORBIDDEN = [
 
 let ng = 0;
 for (const slug of PAGES) {
-  const f = `dist/${slug}/index.html`;
+  const f = slug.endsWith(".html") ? `dist/${slug}` : `dist/${slug}/index.html`;
   if (!existsSync(f)) { console.error(`✗ ${f} が無い`); ng++; continue; }
   const html = readFileSync(f, "utf-8");
   console.log(`\n/${slug}/`);
@@ -45,7 +45,8 @@ for (const slug of PAGES) {
     console.log(`  ${ok ? "✓" : "✗"} ${label}`);
     if (!ok) ng++;
   }
-  if (slug === "taishoku-kyufukin") {
+  // felmat（よりみち）へ送客するページは felmat 公式タグ。/hikaku/ の2ページも同じ
+  if (slug === "taishoku-kyufukin" || slug.startsWith("hikaku")) {
     const tags = html.match(/<script\b[^>]*src="https:\/\/js\.felmat\.net\/fmptr\.js"[^>]*><\/script>/g) || [];
     const ok = tags.length === 1 && /\basync(?:\s|>|=)/.test(tags[0]) &&
       !/type="module"/.test(tags[0]) && !html.includes(SLVR_TAG) &&

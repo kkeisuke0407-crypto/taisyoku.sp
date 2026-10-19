@@ -1,0 +1,112 @@
+/* ============================================================
+   /hikaku/ だけで使う補助CSS
+   - 本体のパーツは yk-parts.css（Documents/lp-parts-yakuzaishi の parts.css をそのままコピー）
+   - ここには ①ページの枠 ②体験談パーツ集（lp-parts-taikendan）から借りた mt-talk / mt-say / mt-mark
+     ③素材が無い部分の置き換え（ロゴ＝文字、アバター＝年代の文字）だけを書く。新しいブロックは作らない
+   ============================================================ */
+:root {
+  --mt-blue: #0066bf; --mt-blue-bg: #eef5fc;
+  --mt-red: #e2231a; --mt-red-bg: #fdeeee;
+  --mt-mark: #fff100; --mt-sub: #777;
+}
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: #f3f5f8; overflow-wrap: break-word; }
+.hk-wrap { max-width: 640px; margin: 0 auto; padding: 0 12px 24px; background: #fff; overflow: hidden; }
+.hk-wrap img { max-width: 100%; height: auto; }
+.yk-body a { color: var(--yk-blue-d); }
+.yk-body .yk-btn { color: #fff; }
+
+/* 見出しの改行位置を日本語の文節で整える（Safari 17.4+ / Chrome 119+。非対応でも崩れない） */
+.yk-hero__ttl, .yk-sec-ttl, .yk-best3__ttl, .yk-numh, .yk-rankcatch, .yk-pickup__ttl, .yk-finder__ttl,
+.yk-svchead__catch, .yk-catch, .mt-talk__b, .mt-say__b { word-break: auto-phrase; }
+
+/* A-1 FV：見出しの上の小さな1行と、丸の下の注記 */
+.hk-hero__lead { margin: 0 0 .2em !important; font-size: 13px; font-weight: 700; color: var(--yk-blue-d); }
+.yk-hero__ttl .hk-num { display: block; font-size: 1.9em; line-height: 1.1; color: var(--yk-green-d); letter-spacing: -.01em; }
+.yk-hero__ttl .hk-num small { font-size: .45em; }
+.yk-hero__img-real { align-self: end; width: 100%; height: auto; max-height: 230px; object-fit: contain; object-position: bottom; }
+.hk-hero__note { grid-column: 1 / -1; margin: .5em 0 0 !important; font-size: 10.5px !important; line-height: 1.5 !important; color: var(--yk-sub); }
+
+/* A-2 ロゴの横流し：ロゴ素材が無いのでサービス名の文字で出す（yk-logos のルール「利用条件不明なら文字表記」） */
+.hk-logos__cap { margin: 0 !important; padding: 6px 0 0; background: #f2f5f9; text-align: center; font-size: 11px !important; color: var(--yk-sub); }
+.yk-logos__track li.hk-logo-txt { flex-basis: auto; padding: 0 .8em; font-size: 11.5px; font-weight: 700; color: var(--yk-blue-d); white-space: nowrap; }
+
+/* 体験談パーツ集 mt-talk（導入の会話）。lp-parts-taikendan/parts.css からそのまま */
+.mt-mark { font-weight: 700; background: linear-gradient(transparent 55%, var(--mt-mark) 55%); }
+.mt-red { color: var(--mt-red); font-weight: 700; }
+.mt-talk { margin: 1.2em 0 1.6em; }
+.mt-talk__row { display: flex; align-items: flex-start; gap: 12px; margin: 0 0 1em; animation: mt-talk-in .45s ease-out both; }
+.mt-talk__row:nth-of-type(2) { animation-delay: .35s; }
+.mt-talk__row:nth-of-type(3) { animation-delay: .7s; }
+.mt-talk__row:nth-of-type(4) { animation-delay: 1.05s; }
+.mt-talk__row:nth-of-type(5) { animation-delay: 1.4s; }
+.mt-talk__row:nth-of-type(6) { animation-delay: 1.75s; }
+@keyframes mt-talk-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .mt-talk__row { animation: none; } }
+.mt-talk__row--r { flex-direction: row-reverse; }
+.mt-talk__who { flex: 0 0 60px; text-align: center; }
+.mt-talk__icon { display: grid; place-items: center; width: 56px; height: 56px; margin: 0 auto; border: 2px solid #9cc3e8; border-radius: 50%; background: var(--mt-blue-bg); overflow: hidden; color: var(--mt-blue); font-size: 13px; font-weight: 900; line-height: 1.2; }
+.mt-talk__icon img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; }
+.mt-talk__row--r .mt-talk__icon { border-color: #f0a9a5; background: var(--mt-red-bg); color: var(--mt-red); }
+.mt-talk__name { display: block; margin-top: .25em; font-size: 11px; font-weight: 700; color: var(--mt-sub); line-height: 1.3; }
+.mt-talk__b { position: relative; max-width: calc(100% - 72px); margin-top: 4px; padding: .6em .9em; border: 2px solid #9cc3e8; border-radius: 12px; background: #fff; font-size: 15.5px; line-height: 1.75; }
+.mt-talk__b::before { content: ""; position: absolute; top: 16px; left: -11px; border-style: solid; border-width: 8px 11px 8px 0; border-color: transparent #9cc3e8 transparent transparent; }
+.mt-talk__b::after { content: ""; position: absolute; top: 18px; left: -7px; border-style: solid; border-width: 6px 8px 6px 0; border-color: transparent #fff transparent transparent; }
+.mt-talk__row--r .mt-talk__b { border-color: #f0a9a5; }
+.mt-talk__row--r .mt-talk__b::before { left: auto; right: -11px; border-width: 8px 0 8px 11px; border-color: transparent transparent transparent #f0a9a5; }
+.mt-talk__row--r .mt-talk__b::after { left: auto; right: -7px; border-width: 6px 0 6px 8px; border-color: transparent transparent transparent #fff; }
+.mt-talk__row--think .mt-talk__b { border-style: dashed; background: #fafafa; color: #555; font-size: 14.5px; }
+.mt-talk__row--think .mt-talk__b::before, .mt-talk__row--think .mt-talk__b::after { display: none; }
+
+/* 体験談パーツ集 mt-say（ひとことつぶやき）。読者の本音だけを言わせる */
+.mt-say { display: flex; align-items: center; gap: 12px; margin: 1.3em 0; }
+.mt-say__icon { flex: 0 0 52px; display: grid; place-items: center; width: 52px; height: 52px; border: 2px solid #f0a9a5; border-radius: 50%; background: var(--mt-red-bg); overflow: hidden; color: var(--mt-red); font-size: 12px; font-weight: 900; line-height: 1.2; }
+.mt-say__icon img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; }
+.mt-say__b { position: relative; margin: 0 !important; padding: .55em .9em; border: 2px solid #f0a9a5; border-radius: 12px; background: #fff; font-size: 15.5px; font-weight: 700; line-height: 1.65; }
+.mt-say__b::before { content: ""; position: absolute; top: 50%; left: -11px; margin-top: -8px; border-style: solid; border-width: 8px 11px 8px 0; border-color: transparent #f0a9a5 transparent transparent; }
+.mt-say__b::after { content: ""; position: absolute; top: 50%; left: -7px; margin-top: -6px; border-style: solid; border-width: 6px 8px 6px 0; border-color: transparent #fff transparent transparent; }
+
+/* 画像素材の無い部分の置き換え */
+.yk-voice__face.hk-face { display: grid; place-items: center; background: var(--yk-blue-bg); color: var(--yk-blue-d); font-size: 13px; font-weight: 900; }
+.yk-editor__chara.hk-chara { object-fit: cover; object-position: 50% 6%; background: #fff; }
+.yk-jobcard__pay small, .yk-jobex .yk-kv b { font-weight: 900; }
+.hk-band { display: block; margin: 0 auto 4px; padding: .5em; border-radius: 6px; background: var(--yk-blue-bg); color: var(--yk-blue-d); font-weight: 900; text-align: center; }
+
+/* 比較表の文字サイズ（6社・4列をスマホ幅に収める） */
+.yk-cmp td small { display: block; color: var(--yk-sub); font-size: 10.5px; line-height: 1.45; }
+.hk-note { margin: .4em 0 1.2em !important; }
+
+/* yk-finder の結果（ソウガクの rk-result と同じ役割） */
+.hk-result { margin: 1em 0 1.6em; }
+.hk-result[hidden] { display: none; }
+.hk-result__item { margin: 0 0 .8em; padding: .8em 1em; border: 2px solid var(--yk-rule); border-radius: 8px; background: #fff; }
+.hk-result__item.is-pick { border-color: var(--yk-orange); background: var(--yk-cream); }
+.hk-result__name { margin: 0 0 .2em !important; font-weight: 900; color: var(--yk-blue-d); }
+.hk-result__item ul { margin: 0 0 .6em; padding-left: 1.2em; font-size: 13px; }
+
+/* 個別ページ・採点基準ページの本文見出し */
+.hk-h2 { margin: 1.8em 0 .8em; padding: .5em .7em; border-radius: 4px; background: var(--yk-blue); color: #fff; font-size: 18px; line-height: 1.45; }
+.hk-p { font-size: 15px; }
+
+/* ロゴ素材が無い箇所（BEST3・比較表・早見表・求人例カード）はサービス名の文字で出す */
+.hk-logotext { display: grid; place-items: center; width: 100%; height: 100%; font-size: 10.5px; font-weight: 900; line-height: 1.25; color: var(--yk-blue-d); text-align: center; word-break: auto-phrase; }
+.yk-matrix__item .hk-logotext { font-size: 10px; }
+.yk-matrix__item.is-pick .hk-logotext { height: auto; padding: 2px 0; font-size: 12px; }
+.yk-pickup__img img, .yk-svchead__img img { display: block; width: 100%; height: 100%; object-fit: contain; }
+
+/* 会話アイコン・編集部キャラ：既存の縦長イラスト（467×700）から顔まわりを切り出す */
+.mt-talk__icon, .mt-say__icon { position: relative; }   /* yk-editor__chara は元から position:absolute なので触らない */
+.mt-talk__icon img.hk-ic, .mt-say__icon img.hk-ic { position: absolute; max-width: none; height: auto; object-fit: fill; }
+.mt-talk__icon img.hk-ic--a { width: 145px; left: -62px; top: -65px; }   /* 相談者：selfcheck-woman */
+.mt-talk__icon img.hk-ic--b { width: 145px; left: -74px; top: -74px; }   /* 編集部：summary-pointing-woman */
+.mt-say__icon img.hk-ic--a { width: 135px; left: -58px; top: -61px; }
+.yk-editor__chara.hk-chara-box { overflow: hidden; background: #fff; }
+.yk-editor__chara.hk-chara-box img { position: absolute; max-width: none; width: 106px; height: auto; left: -45px; top: -50px; }
+/* FVの人物：画像の白地を背景のグラデーションになじませる */
+.yk-hero__img-real { mix-blend-mode: multiply; }
+/* 改行させたくない語のまとまり（Safari は word-break:auto-phrase 非対応のため手で指定） */
+.hk-nw { white-space: nowrap; }
+.hk-scroll .yk-cmp td:first-child, .hk-scroll .yk-cmp th, .hk-res td:nth-child(2) { white-space: nowrap; }
+/* yk-numh / yk-order は中の span をすべてラベルとして装飾するので、見出し文は b で包む */
+.yk-numh .hk-t { flex: 1 1 auto; min-width: 0; font-weight: inherit; }
+.yk-numh b.hk-nw, .yk-order b.hk-nw { font-weight: inherit; }
