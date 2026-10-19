@@ -118,3 +118,11 @@ body { margin: 0; background: #f3f5f8; overflow-wrap: break-word; }
 .yk-pickup__list.hk-one .yk-pickup__img { aspect-ratio: auto; }
 /* 写真のアイコン（ソウガクの icon_*.webp）は正方形なので切り抜き不要 */
 .yk-voice__face img { display: block; }
+/* 各社ロゴ（公式サイトのロゴ。2026-10-19取得）。枠に収める */
+.yk-best3__logo img, .yk-cmp__logo img, .yk-jobex__logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.hk-mlogo { display: grid; place-items: center; width: 100%; height: 100%; padding: 3px 4px; }
+.hk-mlogo img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+.yk-matrix__item.is-pick .hk-mlogo { height: 30px; padding: 2px 0 4px; }
+.yk-matrix__item .hk-mlogo img { max-height: 24px; }
+.yk-matrix__item.is-pick .hk-mlogo img { max-height: 28px; }
+.yk-matrix__item { display: block; overflow: hidden; }
