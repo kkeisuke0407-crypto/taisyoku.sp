@@ -126,3 +126,5 @@ body { margin: 0; background: #f3f5f8; overflow-wrap: break-word; }
 .yk-matrix__item .hk-mlogo img { max-height: 24px; }
 .yk-matrix__item.is-pick .hk-mlogo img { max-height: 28px; }
 .yk-matrix__item { display: block; overflow: hidden; }
+.yk-voice__face img { width: 100% !important; height: 100% !important; object-fit: cover; }
+.yk-voice__face { display: block; }   /* パーツ見本は span.yk-ph（display:grid）前提。img を入れると inline のままで丸枠にならない */
