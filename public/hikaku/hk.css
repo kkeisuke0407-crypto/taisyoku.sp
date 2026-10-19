@@ -128,3 +128,6 @@ body { margin: 0; background: #f3f5f8; overflow-wrap: break-word; }
 .yk-matrix__item { display: block; overflow: hidden; }
 .yk-voice__face img { width: 100% !important; height: 100% !important; object-fit: cover; }
 .yk-voice__face { display: block; }   /* パーツ見本は span.yk-ph（display:grid）前提。img を入れると inline のままで丸枠にならない */
+/* ロゴの横流し：ソウガクの rk-logos と同じ枠。.hk-wrap img{height:auto} に高さを上書きされ、正方形ロゴが切れていた */
+.rk-logos .yk-logos__track li { flex: 0 0 112px; height: 40px; padding: 4px 8px; }
+.rk-logos .yk-logos__track img { display: block; width: 100%; height: 100% !important; max-height: 32px; object-fit: contain; }
