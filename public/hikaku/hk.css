@@ -13,8 +13,6 @@ html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: #f3f5f8; overflow-wrap: break-word; }
 .hk-wrap { max-width: 640px; margin: 0 auto; padding: 0 12px 24px; background: #fff; overflow: hidden; }
 .hk-wrap img { max-width: 100%; height: auto; }
-.yk-body a { color: var(--yk-blue-d); }
-.yk-body .yk-btn { color: #fff; }
 
 /* 見出しの改行位置を日本語の文節で整える（Safari 17.4+ / Chrome 119+。非対応でも崩れない） */
 .yk-hero__ttl, .yk-sec-ttl, .yk-best3__ttl, .yk-numh, .yk-rankcatch, .yk-pickup__ttl, .yk-finder__ttl,
@@ -94,14 +92,6 @@ body { margin: 0; background: #f3f5f8; overflow-wrap: break-word; }
 .yk-matrix__item.is-pick .hk-logotext { height: auto; padding: 2px 0; font-size: 12px; }
 .yk-pickup__img img, .yk-svchead__img img { display: block; width: 100%; height: 100%; object-fit: contain; }
 
-/* 会話アイコン・編集部キャラ：既存の縦長イラスト（467×700）から顔まわりを切り出す */
-.mt-talk__icon, .mt-say__icon { position: relative; }   /* yk-editor__chara は元から position:absolute なので触らない */
-.mt-talk__icon img.hk-ic, .mt-say__icon img.hk-ic { position: absolute; max-width: none; height: auto; object-fit: fill; }
-.mt-talk__icon img.hk-ic--a { width: 145px; left: -62px; top: -65px; }   /* 相談者：selfcheck-woman */
-.mt-talk__icon img.hk-ic--b { width: 145px; left: -74px; top: -74px; }   /* 編集部：summary-pointing-woman */
-.mt-say__icon img.hk-ic--a { width: 135px; left: -58px; top: -61px; }
-.yk-editor__chara.hk-chara-box { overflow: hidden; background: #fff; }
-.yk-editor__chara.hk-chara-box img { position: absolute; max-width: none; width: 106px; height: auto; left: -45px; top: -50px; }
 /* FVの人物：画像の白地を背景のグラデーションになじませる */
 .yk-hero__img-real { mix-blend-mode: multiply; }
 /* 改行させたくない語のまとまり（Safari は word-break:auto-phrase 非対応のため手で指定） */
@@ -110,3 +100,21 @@ body { margin: 0; background: #f3f5f8; overflow-wrap: break-word; }
 /* yk-numh / yk-order は中の span をすべてラベルとして装飾するので、見出し文は b で包む */
 .yk-numh .hk-t { flex: 1 1 auto; min-width: 0; font-weight: inherit; }
 .yk-numh b.hk-nw, .yk-order b.hk-nw { font-weight: inherit; }
+
+/* ===== 2026-10-19 差し替え：ソウガク比較LPと同じ「日付帯＋ヒーロー画像」（ranking.css の rk-update / lp-hero / rk-logos / rk-topshot と同じ見た目） ===== */
+.rk-update { margin: 0 -12px !important; padding: .4em .6em; background: #1d3557; color: #fff; font-size: 17px; font-weight: 900; line-height: 1.35 !important; letter-spacing: .03em; text-align: center; }
+.rk-update span { margin-left: .15em; color: #ffe066; }
+.lp-hero { margin: 0 -12px; line-height: 0; }
+.lp-hero img { display: block; width: 100%; height: auto; }
+.lp-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.rk-logos { margin: 0 -12px; }
+.hk-hero__note2 { margin: .5em 0 .8em !important; }
+.rk-topshot { margin: 0 0 .6em; }
+.rk-topshot a { display: block; }
+.rk-topshot img { display: block; width: 100%; height: auto; border: 1px solid var(--yk-rule); border-radius: 6px; }
+.rk-topshot figcaption { margin-top: 3px; font-size: 11px; color: var(--yk-sub); text-align: right; }
+/* 迷ったらまずは：よりみちだけ（本人指示）。2列の箱を1列にする */
+.yk-pickup__list.hk-one { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+.yk-pickup__list.hk-one .yk-pickup__img { aspect-ratio: auto; }
+/* 写真のアイコン（ソウガクの icon_*.webp）は正方形なので切り抜き不要 */
+.yk-voice__face img { display: block; }
