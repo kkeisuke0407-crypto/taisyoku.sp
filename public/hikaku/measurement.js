@@ -1,6 +1,6 @@
 /* /hikaku/ の計測。ソウガク比較LP（online-tutor.navolio.net/lp-measurement.js）と同じイベント体系。
  *
- * ★gtag の読み込みと config は各HTMLの <head> にある（GT-WB2N4H34 ＋ AW-18129603657）。
+ * ★gtag の読み込みと config は各HTMLの <head> にある（GT-WB2N4H34 ＋ AW-18129603657 ＋ AW-18361935725）。
  *   ここは「何をいつ送るか」だけを持つ。G-DD332W5J8R を読み込みIDに使わないこと（404でGA4が止まる）。
  *
  * 送るもの（GA4だけ。send_to に GT-WB2N4H34 を指定。宛先は G-DD332W5J8R のみ）
