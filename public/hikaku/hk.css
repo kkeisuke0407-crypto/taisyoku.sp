@@ -137,3 +137,7 @@ body { margin: 0; background: #f3f5f8; overflow-wrap: break-word; }
 
 /* 受給事例カードの写真：パーツの margin:10px に .hk-wrap img{max-width:100%} の幅が重なり、右が20px切れていた */
 .yk-jobcard__img { display: block; width: calc(100% - 20px); max-width: none; }
+
+/* LINEへのボタン（本人指示 2026-10-22：導入会話のCTAをLINEっぽい緑に） */
+.yk-btn.hk-btn--line { background: linear-gradient(#1fd36a, #06c755); box-shadow: 0 3px 0 #04a046; }
+.yk-btn.hk-btn--line:active { box-shadow: 0 1px 0 #04a046; }
