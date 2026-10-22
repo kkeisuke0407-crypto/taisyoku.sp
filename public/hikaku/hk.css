@@ -11,7 +11,7 @@
 }
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: #f3f5f8; overflow-wrap: break-word; }
-.hk-wrap { max-width: 640px; margin: 0 auto; padding: 0 12px 24px; background: #fff; overflow: hidden; }
+.hk-wrap { max-width: 640px; margin: 0 auto; padding: 0 12px; background: #fff; overflow: hidden; } /* 下の余白はフッターの下に白帯として出ていたので0 */
 .hk-wrap img { max-width: 100%; height: auto; }
 
 /* 見出しの改行位置を日本語の文節で整える（Safari 17.4+ / Chrome 119+。非対応でも崩れない） */
@@ -134,3 +134,6 @@ body { margin: 0; background: #f3f5f8; overflow-wrap: break-word; }
 /* 比較表の直後の「絶対に見逃せない」：赤で強調 */
 .yk-listbox.hk-must { border: 2px solid var(--yk-red); background: #fff6f6; }
 .yk-listbox.hk-must .yk-listbox__ttl { color: var(--yk-red); }
+
+/* 受給事例カードの写真：パーツの margin:10px に .hk-wrap img{max-width:100%} の幅が重なり、右が20px切れていた */
+.yk-jobcard__img { display: block; width: calc(100% - 20px); max-width: none; }
