@@ -16,7 +16,7 @@
  */
 import { readFileSync, existsSync } from "node:fs";
 
-const PAGES = ["taishoku-kyufukin", "taisyoku-365", "shitsugyo-hoken", "hikaku", "hikaku/yorimichi.html"];
+const PAGES = ["taishoku-kyufukin", "taisyoku-365", "hikaku", "hikaku/yorimichi.html"];  // shitsugyo-hoken は2026-10-26に転送ページ化（計測対象外）
 
 // [表示名, 出力HTMLに必ず含まれるべき文字列, 追加の条件]
 const REQUIRED = [
