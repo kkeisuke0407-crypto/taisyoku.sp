@@ -69,9 +69,6 @@
   - 送客リンクは felmat（JSの AFF.yorimichi）。FV・スマホ画面の金額は、よりみち公表の上限
     「最大310万円」に統一（本人指示。旧365万円は傷病手当金での計算値）
   - ⑩はよりみちの「以下の方限定」の利用条件を表示。退職代行・転職支援・料金はよりみちに無いので書かない
-  - 2026-10-26 FVのボタン下・⑧・⑩を felmat 案件ページの「対象者」に合わせた（本人指示「全部やって」）。
-    在職中・3か月以内に退職予定・内定なし・月給19万円以上・退職理由がストレスや健康・雇用保険1年以上・64歳以下
-    複製（/shitsugyo-hoken/ ほか）は scripts/make-kyufukin-clones.mjs で本体から作り直す
   ============================================================
   （以下は 2026-10-02 YELL!! 版のメモ。方針は引き続き有効）
   2026-10-02 案件を退職リリーフ → YELL!!（合同会社Pay It Forward）に変更
@@ -761,7 +758,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
             <span class="btn-line__logo">LINE</span>
             <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
           </a>
-          <p class="cta__sub" data-todo="copy">対象：在職中・<span style="white-space:nowrap">3か月以内に退職予定</span>・<span style="white-space:nowrap">月給19万円以上</span><br>よりみちの公式サイトへ移動します</p>
+          <p class="cta__sub" data-todo="copy">対象：在職中・雇用保険1年以上<br>よりみちの公式サイトへ移動します</p>
         </div>
       </div>
     </div>
@@ -1036,12 +1033,12 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 
     <div class="check-wrap">
       <ul class="check" data-todo="copy">
-        <!-- はじめの5つは felmat 案件ページの「対象者」（2026-10-26）。最後の1つは相談したい気持ちの確認 -->
-        <li>在職中で、<span style="white-space:nowrap">3か月以内に</span>辞める予定</li>
+        <li>在職中で、退職を検討している</li>
+        <!-- よりみちの利用条件（退職日以前の2年間に雇用保険12か月以上）に合わせている -->
+        <li>ここ2年で、雇用保険に入っていた期間が合計1年以上ある</li>
+        <li>体や心の調子が悪くて、働き続けるのがつらい</li>
         <li>次の仕事は、まだ決まっていない</li>
-        <li>体や心の不調・<span style="white-space:nowrap">ストレスで</span>辞めたい</li>
-        <li>月の給料（基本給＋手当）が<span style="white-space:nowrap">19万円以上</span></li>
-        <li>今の職場で<span style="white-space:nowrap">1年以上</span>働いている（<span style="white-space:nowrap">ここ2年で</span><span style="white-space:nowrap">雇用保険1年以上</span>でもOK）</li>
+        <li>辞めたあとの生活費に不安がある</li>
         <li>給付金の手続きを、ひとりでやるのは不安</li>
       </ul>
       <figure class="check__art">
@@ -1050,7 +1047,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </div>
 
     <p class="note" style="margin-top:12px" data-todo="copy">
-      はじめの5つにすべて当てはまる方が、よりみち給付金サポートの相談の対象です。もらえるかどうかを決めるのは、ハローワークや健康保険の窓口です。
+      3つ以上当てはまったら、一度チェックしてみる価値ありです。当てはまらないものがあっても、対象外とはかぎりません。決めるのは、ハローワークや健康保険の窓口です。
     </p>
   </section>
 
@@ -1073,20 +1070,18 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
   </section>
 
   <!-- ============ ⑩利用できる方 ============
-       felmat 案件ページの「対象者（以下すべてに当てはまる方）」をそのまま見せる（2026-10-26）。
-       障害年金の受給・自己破産は却下条件なので注記に入れる -->
+       よりみち給付金サポートが「以下の方限定」として出している条件をそのまま見せる。
+       「1か月以内に退職」は面談成果では却下理由ではないので入れない -->
   <section class="sec">
-    <h2 class="h2" data-todo="copy">相談の前にチェック！使えるのは<span style="white-space:nowrap">こんな方です</span></h2>
+    <h2 class="h2" data-todo="copy">相談の前にチェック！使えるのはこんな方です</h2>
 
     <div class="reject">
       <div class="reject__grid">
         <ul class="reject__list" data-todo="copy">
-          <li>いま会社に勤めていて、辞める日が決まっているか、<span style="white-space:nowrap">3か月以内に</span><span style="white-space:nowrap">辞める予定の方</span></li>
-          <li>次の仕事の内定を、まだもらっていない方</li>
-          <li>ストレスや体調の不調が、辞める理由の方</li>
-          <li>月の基本給＋手当が、<span style="white-space:nowrap">19万円以上の方</span></li>
-          <li>今の職場で1年以上働いている方（1年未満でも、ここ2年で<span style="white-space:nowrap">雇用保険に</span><span style="white-space:nowrap">1年以上</span>入っていれば対象）</li>
-          <li>64歳以下の方</li>
+          <li>いま会社に勤めていて、退職を予定している方</li>
+          <li>次の仕事が、まだ決まっていない方</li>
+          <li>仕事で、心にストレスを抱えている方</li>
+          <li>辞める日までの2年間に、雇用保険に12か月以上入っている方</li>
         </ul>
         <figure class="reject__art">
           <img class="asset-img" src="./assets/caution-buildings.webp" width="467" height="700" loading="lazy" decoding="async" alt="">
@@ -1095,7 +1090,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </div>
 
     <p class="note" style="margin-top:12px" data-todo="copy">
-      よりみち給付金サポートが案内している利用条件です。障害年金を受け取っている方、自己破産をされている方は対象外です。当てはまっても、必ず使えるとはかぎりません。
+      よりみち給付金サポートが案内している利用条件です。当てはまっても、必ず使えるとはかぎりません。
     </p>
   </section>
 

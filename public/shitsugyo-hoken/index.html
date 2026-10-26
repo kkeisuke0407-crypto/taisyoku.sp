@@ -57,7 +57,7 @@
 
 <!-- WebSite / WebPage。ページ上に実在する情報（サイト名・URL・title・description）だけで組む。
      運営者情報ページに法人名・所在地などの記載が無いので Organization は入れていない。
-     トップ（/）はこのLPへの転送ページなので BreadcrumbList も入れていない（1階層しかない） -->
+     BreadcrumbList も入れていない（階層が無い） -->
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://taisyoku.navolio.net/#website","name":"退職給付金ガイド","url":"https://taisyoku.navolio.net/","inLanguage":"ja"},{"@type":"WebPage","@id":"https://taisyoku.navolio.net/shitsugyo-hoken/#webpage","url":"https://taisyoku.navolio.net/shitsugyo-hoken/","name":"失業保険だけじゃない？退職後に確認したい制度｜退職給付金ガイド","description":"失業保険・失業手当を調べている方へ。退職後に確認したい制度は失業保険だけではありません。自分が対象になる制度をLINEで確認できます。","inLanguage":"ja","isPartOf":{"@id":"https://taisyoku.navolio.net/#website"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://taisyoku.navolio.net/taishoku-kyufukin/assets/hero-office-worker.webp","width":467,"height":700}}]}</script>
 
 <!-- FAQ構造化データ。本文のアコーディオンと同じ内容を出す（食い違わせないこと） -->
@@ -65,29 +65,23 @@
 
 <!--
   ============================================================
-  AG03_UNEMPLOYMENT（失業保険）専用LP（2026-09-30 追加）。広告「失業保険」→LPの意味的一致を強めるための複製
+  AG03_UNEMPLOYMENT（失業保険）専用LP（2026-09-30 追加）
+  ============================================================
+  /taishoku-kyufukin/ の複製。広告「失業保険」→LPの意味的一致を強めるためだけに作った。
+  主力LPとの差分はこれだけ（それ以外を変えないこと。主力LPを直したらこちらにも反映する）：
+    - title / meta description / canonical / OG
+    - FVタブ「失業保険を調べている方へ」＋ H1直前の橋渡し1行（.fv__bridge）
+    - H2「退職後に受け取れるお金は、失業保険だけじゃない」
+    - 計測の LANDING = "shitsugyo_hoken"（CVイベント名・アフィリリンクは主力LPと同じ）
+    - 画像は /taishoku-kyufukin/assets/ を参照（二重コピーしない）
+    - 免責の下に関連コラムへのリンク（LP上部には置かない。一本道のCV導線を邪魔しない）
+  H1「最大310万円」（2026-10-14〜。旧365万円）・CTAの文言/位置/数は主力LPと同一。変えない。
+  ★2026-10-14 主力LPと同じく案件を よりみち給付金サポート（felmat）に変更。金額は310万円に統一。
+  ★2026-10-02 主力LPと同じく案件を YELL!!（合同会社Pay It Forward）に変更。
+    ASP申請中のため送客リンク（AFF.yell）は空。空の間はCTAで遷移もCV送信もしない。
+    YELL!!を推す内容・料金は載せない・却下条件を⑩で見せる・1か月以内では絞らない（本人指示）。
+    CLAUDE.md の表現NGはこの版では適用しない（本人指示）
   ★広告のサイトリンク・深いアンカーからこのページへ流入させないこと（FVを飛ばすとCPAが悪化した実測あり）
-  ★ scripts/make-kyufukin-clones.mjs が /taishoku-kyufukin/ から生成。ここを直接編集しない
-    （本体を直してスクリプトを実行する。複製だけ変えたい箇所はスクリプトの CLONES に書く）
-  ============================================================
-  2026-10-14 案件を YELL!! → よりみち給付金サポート（株式会社よりみち・felmat）に変更
-  - 送客リンクは felmat（JSの AFF.yorimichi）。FV・スマホ画面の金額は、よりみち公表の上限
-    「最大310万円」に統一（本人指示。旧365万円は傷病手当金での計算値）
-  - ⑩はよりみちの「以下の方限定」の利用条件を表示。退職代行・転職支援・料金はよりみちに無いので書かない
-  - 2026-10-26 FVのボタン下・⑧・⑩を felmat 案件ページの「対象者」に合わせた（本人指示「全部やって」）。
-    在職中・3か月以内に退職予定・内定なし・月給19万円以上・退職理由がストレスや健康・雇用保険1年以上・64歳以下
-    複製（/shitsugyo-hoken/ ほか）は scripts/make-kyufukin-clones.mjs で本体から作り直す
-  ============================================================
-  （以下は 2026-10-02 YELL!! 版のメモ。方針は引き続き有効）
-  2026-10-02 案件を退職リリーフ → YELL!!（合同会社Pay It Forward）に変更
-  ============================================================
-  - ASP申請中のため、送客リンクは空（JSの AFF.yell）。空の間はCTAを押しても
-    遷移せず、CVイベントも送らない。広告リンクが届いたら AFF.yell に入れるだけで動く
-  - YELL!!を推す内容に変更。CLAUDE.md の表現NGは本人指示によりこの版では適用しない
-  - 料金は載せない（本人指示）。却下条件は⑩「対象外になる方」で見せる
-  - 「退職が1か月以内に決まっている方」はYELL!!のサポート対象だが、面談成果のため
-    1か月以内でなくても成果になる。LPでは制限しない（本人指示）
-  - /shitsugyo-hoken/ は退職リリーフのまま（今回は対象外）
 
   ============================================================
   主力LP（デザイン見本から作り直した版・2026-08-01 差し替え）
@@ -223,6 +217,21 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   background:var(--navy); color:#fff;
   font-size:13px; font-weight:700; letter-spacing:.02em; line-height:1.6;
   border-radius:0 6px 6px 0;
+}
+/* AG03の橋渡し1行。H1より弱く、FVタブより少し強い階層にする。
+   タブの下余白を詰めて、この1行ぶんCTAが下がりすぎないようにしている */
+.fv__tab{ margin-bottom:8px; }
+/* 390px端末の本文幅358pxに1行で入る大きさ（14.5pxでは実測360pxで2px溢れた）。
+   文言を伸ばしたら折り返すので、必ず390pxで実測すること */
+.fv__bridge{
+  margin:0 0 6px; font-size:14px; font-weight:800; line-height:1.5;
+  color:var(--navy); letter-spacing:0; white-space:nowrap;
+}
+.fv__bridge-br{ display:none; }   /* 1行に入る幅では改行しない */
+/* 375px以下は1行に入らない。語の途中ではなく読点で割る */
+@media (max-width:379px){
+  .fv__bridge{ white-space:normal; }
+  .fv__bridge-br{ display:inline; }
 }
 .fv__h1{ margin:0; font-weight:800; color:var(--navy); letter-spacing:.01em; line-height:1.28; }
 .fv__amount{ display:block; font-size:33px; line-height:1.05; white-space:nowrap; }
@@ -731,21 +740,6 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
    inline-block にすると、この2つの塊の間だけで折り返す。
    幅が足りるボタンでは1行のままになる。 */
 .cta-seg{ display:inline-block; }
-
-/* 複製LPの橋渡し1行。H1より弱く、FVタブより少し強い階層にする。
-   タブの下余白を詰めて、この1行ぶんCTAが下がりすぎないようにしている */
-.fv__tab{ margin-bottom:8px; }
-/* 390px端末の本文幅358pxに1行で入る大きさ。文言を伸ばしたら折り返すので、必ず390pxで実測すること */
-.fv__bridge{
-  margin:0 0 6px; font-size:14px; font-weight:800; line-height:1.5;
-  color:var(--navy); letter-spacing:0; white-space:nowrap;
-}
-.fv__bridge-br{ display:none; }   /* 1行に入る幅では改行しない */
-/* 375px以下は1行に入らない。語の途中ではなく読点で割る */
-@media (max-width:379px){
-  .fv__bridge{ white-space:normal; }
-  .fv__bridge-br{ display:inline; }
-}
 </style>
 </head>
 <body class="no-js">
@@ -760,6 +754,8 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </figure>
     <span class="fv__pr" aria-label="広告を含む記事です">PR</span>
     <p class="fv__tab" data-todo="copy">失業保険を調べている方へ</p>
+    <!-- AG03用の「意味の橋」。検索語（失業保険）→ 別の制度？ → 最大310万円 をつなぐ1行だけ。
+         説明文にしないこと（金額・条件・受給方法の答えをここに書くと、読んで満足して離脱する） -->
     <p class="fv__bridge">失業保険とは別に、<br class="fv__bridge-br">確認しておきたい制度があります。</p>
 
     <h1 class="fv__h1" data-todo="copy">
@@ -782,7 +778,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
             <span class="btn-line__logo">LINE</span>
             <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
           </a>
-          <p class="cta__sub" data-todo="copy">対象：在職中・<span style="white-space:nowrap">3か月以内に退職予定</span>・<span style="white-space:nowrap">月給19万円以上</span><br>よりみちの公式サイトへ移動します</p>
+          <p class="cta__sub" data-todo="copy">対象：在職中・雇用保険1年以上<br>よりみちの公式サイトへ移動します</p>
         </div>
       </div>
     </div>
@@ -1057,12 +1053,12 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 
     <div class="check-wrap">
       <ul class="check" data-todo="copy">
-        <!-- はじめの5つは felmat 案件ページの「対象者」（2026-10-26）。最後の1つは相談したい気持ちの確認 -->
-        <li>在職中で、<span style="white-space:nowrap">3か月以内に</span>辞める予定</li>
+        <li>在職中で、退職を検討している</li>
+        <!-- よりみちの利用条件（退職日以前の2年間に雇用保険12か月以上）に合わせている -->
+        <li>ここ2年で、雇用保険に入っていた期間が合計1年以上ある</li>
+        <li>体や心の調子が悪くて、働き続けるのがつらい</li>
         <li>次の仕事は、まだ決まっていない</li>
-        <li>体や心の不調・<span style="white-space:nowrap">ストレスで</span>辞めたい</li>
-        <li>月の給料（基本給＋手当）が<span style="white-space:nowrap">19万円以上</span></li>
-        <li>今の職場で<span style="white-space:nowrap">1年以上</span>働いている（<span style="white-space:nowrap">ここ2年で</span><span style="white-space:nowrap">雇用保険1年以上</span>でもOK）</li>
+        <li>辞めたあとの生活費に不安がある</li>
         <li>給付金の手続きを、ひとりでやるのは不安</li>
       </ul>
       <figure class="check__art">
@@ -1071,7 +1067,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </div>
 
     <p class="note" style="margin-top:12px" data-todo="copy">
-      はじめの5つにすべて当てはまる方が、よりみち給付金サポートの相談の対象です。もらえるかどうかを決めるのは、ハローワークや健康保険の窓口です。
+      3つ以上当てはまったら、一度チェックしてみる価値ありです。当てはまらないものがあっても、対象外とはかぎりません。決めるのは、ハローワークや健康保険の窓口です。
     </p>
   </section>
 
@@ -1094,20 +1090,18 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
   </section>
 
   <!-- ============ ⑩利用できる方 ============
-       felmat 案件ページの「対象者（以下すべてに当てはまる方）」をそのまま見せる（2026-10-26）。
-       障害年金の受給・自己破産は却下条件なので注記に入れる -->
+       よりみち給付金サポートが「以下の方限定」として出している条件をそのまま見せる。
+       「1か月以内に退職」は面談成果では却下理由ではないので入れない -->
   <section class="sec">
-    <h2 class="h2" data-todo="copy">相談の前にチェック！使えるのは<span style="white-space:nowrap">こんな方です</span></h2>
+    <h2 class="h2" data-todo="copy">相談の前にチェック！使えるのはこんな方です</h2>
 
     <div class="reject">
       <div class="reject__grid">
         <ul class="reject__list" data-todo="copy">
-          <li>いま会社に勤めていて、辞める日が決まっているか、<span style="white-space:nowrap">3か月以内に</span><span style="white-space:nowrap">辞める予定の方</span></li>
-          <li>次の仕事の内定を、まだもらっていない方</li>
-          <li>ストレスや体調の不調が、辞める理由の方</li>
-          <li>月の基本給＋手当が、<span style="white-space:nowrap">19万円以上の方</span></li>
-          <li>今の職場で1年以上働いている方（1年未満でも、ここ2年で<span style="white-space:nowrap">雇用保険に</span><span style="white-space:nowrap">1年以上</span>入っていれば対象）</li>
-          <li>64歳以下の方</li>
+          <li>いま会社に勤めていて、退職を予定している方</li>
+          <li>次の仕事が、まだ決まっていない方</li>
+          <li>仕事で、心にストレスを抱えている方</li>
+          <li>辞める日までの2年間に、雇用保険に12か月以上入っている方</li>
         </ul>
         <figure class="reject__art">
           <img class="asset-img" src="/taishoku-kyufukin/assets/caution-buildings.webp" width="467" height="700" loading="lazy" decoding="async" alt="">
@@ -1116,7 +1110,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </div>
 
     <p class="note" style="margin-top:12px" data-todo="copy">
-      よりみち給付金サポートが案内している利用条件です。障害年金を受け取っている方、自己破産をされている方は対象外です。当てはまっても、必ず使えるとはかぎりません。
+      よりみち給付金サポートが案内している利用条件です。当てはまっても、必ず使えるとはかぎりません。
     </p>
   </section>
 
@@ -1249,9 +1243,9 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </ul>
   </div>
 
-  <!-- ============ 関連コラム（最下部だけ） ============
-       詳しく知りたい人だけが見る補足。LP上部・CTA付近には置かない（一本道のCV導線を邪魔しない）。
-       広告のサイトリンクには使わない。 -->
+  <!-- ============ 関連コラム（このLPだけ・最下部だけ） ============
+       サイト全体として退職・失業保険・傷病手当金を扱う情報構造にするためのリンク。
+       広告のサイトリンクには使わない。LP上部には置かない。 -->
   <nav class="related" aria-label="退職前に知っておきたい制度">
     <p class="related__ttl">退職前に知っておきたい制度</p>
     <ul>
@@ -1342,10 +1336,10 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
   // ▼よりみち給付金サポート（felmat）の広告リンク。
   //   空にするとCTAを押しても遷移せず、CVイベントも送らない（下の click 参照）
   var AFF = { yorimichi: "https://t.felmat.net/fmcl?ak=X12115Q.1.8167402B.D141513M&pb=" };
-  var LANDING = "shitsugyo_hoken";   // 複製LP。主力LPは "taishoku_kyufukin"
-  // gclid / gbraid / wbraid はページ末尾のfelmat公式タグが付与する。
-  // /offline-cv.js は回遊などでURLから識別子が消えた場合の補助として維持する。
-  // ここでは重ねて付与せず、従来のGA4イベントも維持する。
+  var LANDING = "shitsugyo_hoken";   // AG03専用LP。主力LPは "taishoku_kyufukin"
+  // gclid / gbraid / wbraid は **意図的に外している**。
+  // クリック識別子の付与は SLVRbullet 公式タグ（pt.min.js）の担当。
+  // ここでも付けると ?gclid=X&compop=...&gclid=X と二重になる（実際に発生した）。
   var KEEP = /^(utm_|gad_|campaignid|keyword|matchtype|device|network|creative)$/i;
 
   function track(name, params){
@@ -1354,7 +1348,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
       if(typeof gtag==="function") gtag("event", name, Object.assign({}, params||{}, { transport_type:"beacon" }));
     }catch(_){}
   }
-  // 着地URLの広告分析用クエリをCTAへ転送する。クリックIDは公式タグで処理。
+  // 着地URLのクエリ（utm_/gclid 等）をCTAへ転送し、タグ発火の取りこぼしを減らす
   function fwd(raw){
     if(!raw || raw === "#") return raw;
     try{
@@ -1383,8 +1377,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
         landing_intent: LANDING,
         link_url: url
       };
-      // このイベントは記事からのリンククリック（MCV）。
-      // 成果CVのLINE友だち追加はfelmatの成果発生時にAPIで通知される。
+      // 成果CV＝LINE追加。イベント名は金買取（gold_kaitori_*）と分けている
       var cv = "taishoku_relief_line_click";
       if(window.dataLayer) window.dataLayer.push(Object.assign({event:cv}, params));
       if(typeof gtag==="function"){
@@ -1439,12 +1432,15 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 })();
 </script>
 
+<!-- SLVRbullet 公式「パラメータ引き継ぎタグ」。
+     Google広告からの流入時、記事URLに付く gclid / wbraid / gbraid を
+     SLVRbullet広告リンクへ自動で引き継ぐ。成果連携の本体はこれ。
+     ※この下の offline-cv.js は、回遊でURLから識別子が消えた場合だけを補う。
+       URLに識別子があるときは動かないので、二重付与は起きない。 -->
+<script src="https://js.slvrbullet.com/pt.min.js"></script>
 <!-- オフラインCV用：GCLIDを90日保持し、アフィリリンクへ付け直す。
-     公式タグによる処理後、対象リンクに不足している識別子だけを補う。
-     既存のdata-offline-cv-linkとGA4のMCVイベントは継続する。 -->
+     成果地点（LINE追加）は広告主側で確定するため、Google広告へは
+     オフラインCVとしてインポートする。その識別子を取りこぼさないための処理。 -->
 <script src="/offline-cv.js" defer></script>
-<!-- felmat指定（2026-10-14）：記事へ直接設置し、必ずbody閉じタグ直前に置く。
-     LINE友だち追加の成果発生時に、既存CV 7752931919へAPI通知するためのID受渡し。 -->
-<script type="text/javascript" src="https://js.felmat.net/fmptr.js" async></script>
 </body>
 </html>

@@ -16,9 +16,7 @@
  */
 import { readFileSync, existsSync } from "node:fs";
 
-const PAGES = ["taishoku-kyufukin", "taisyoku-365", "shitsugyo-hoken", "taishoku-taicho", "taishoku-junbi", "hikaku", "hikaku/yorimichi.html"];
-// felmat（よりみち）へ送客するページ。kyufukin の複製（scripts/make-kyufukin-clones.mjs）と /hikaku/
-const FELMAT_PAGES = new Set(["taishoku-kyufukin", "shitsugyo-hoken", "taishoku-taicho", "taishoku-junbi"]);
+const PAGES = ["taishoku-kyufukin", "taisyoku-365", "shitsugyo-hoken", "hikaku", "hikaku/yorimichi.html"];
 
 // [表示名, 出力HTMLに必ず含まれるべき文字列, 追加の条件]
 const REQUIRED = [
@@ -48,7 +46,7 @@ for (const slug of PAGES) {
     if (!ok) ng++;
   }
   // felmat（よりみち）へ送客するページは felmat 公式タグ。/hikaku/ の2ページも同じ
-  if (FELMAT_PAGES.has(slug) || slug.startsWith("hikaku")) {
+  if (slug === "taishoku-kyufukin" || slug.startsWith("hikaku")) {
     const tags = html.match(/<script\b[^>]*src="https:\/\/js\.felmat\.net\/fmptr\.js"[^>]*><\/script>/g) || [];
     const ok = tags.length === 1 && /\basync(?:\s|>|=)/.test(tags[0]) &&
       !/type="module"/.test(tags[0]) && !html.includes(SLVR_TAG) &&
