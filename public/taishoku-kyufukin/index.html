@@ -69,6 +69,9 @@
   - 送客リンクは felmat（JSの AFF.yorimichi）。FV・スマホ画面の金額は、よりみち公表の上限
     「最大310万円」に統一（本人指示。旧365万円は傷病手当金での計算値）
   - ⑩はよりみちの「以下の方限定」の利用条件を表示。退職代行・転職支援・料金はよりみちに無いので書かない
+  - 2026-10-26 FVのボタン下・⑧・⑩を felmat 案件ページの「対象者」に合わせた（本人指示「全部やって」）。
+    在職中・3か月以内に退職予定・内定なし・月給19万円以上・退職理由がストレスや健康・雇用保険1年以上・64歳以下
+    複製（/shitsugyo-hoken/ ほか）は scripts/make-kyufukin-clones.mjs で本体から作り直す
   ============================================================
   （以下は 2026-10-02 YELL!! 版のメモ。方針は引き続き有効）
   2026-10-02 案件を退職リリーフ → YELL!!（合同会社Pay It Forward）に変更
@@ -723,6 +726,42 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
    inline-block にすると、この2つの塊の間だけで折り返す。
    幅が足りるボタンでは1行のままになる。 */
 .cta-seg{ display:inline-block; }
+
+/* ============================================================
+   ⑩-2〜⑩-4・⑪-2（2026-10-26 追加。Google広告「独自のコンテンツが不十分」への対応で、
+   このページにしかない情報＝計算した早見表・受け取る順番・やることリスト・作り方を足した）
+   ============================================================ */
+.kx-table{ width:100%; border-collapse:collapse; margin-top:12px; background:#fff; font-size:12.5px; }
+.kx-table th, .kx-table td{ border:1px solid var(--line); padding:8px 5px; text-align:center; line-height:1.5; vertical-align:middle; }
+.kx-table thead th{ background:var(--navy); color:#fff; font-size:12px; font-weight:800; }
+.kx-table thead small{ display:block; color:#cfd6df; font-size:10.5px; font-weight:700; }
+.kx-table tbody th{ background:var(--panel); color:var(--navy); font-weight:800; white-space:nowrap; }
+.kx-table b{ display:block; font-size:15px; color:var(--navy); }
+.kx-table tbody small{ display:block; font-size:11px; color:var(--muted); }
+.kx-notes{ margin-top:10px; padding-left:1.1em; }
+.kx-notes li{ list-style:disc; font-size:11.5px; line-height:1.7; color:var(--muted); }
+.kx-notes li + li{ margin-top:4px; }
+.kx-flow{ list-style:none; margin:14px 0 0; padding:0; }
+.kx-flow li{ position:relative; padding:0 0 16px 44px; }
+.kx-flow li::before{
+  content:attr(data-no); position:absolute; left:0; top:0; width:30px; height:30px; border-radius:50%;
+  background:var(--navy); color:#fff; font-weight:800; font-size:14px; line-height:30px; text-align:center;
+}
+.kx-flow li::after{ content:""; position:absolute; left:14px; top:32px; bottom:2px; width:2px; background:var(--line); }
+.kx-flow li:last-child::after{ display:none; }
+.kx-flow__when{ display:inline-block; margin-bottom:2px; font-size:11.5px; font-weight:800; color:var(--green-dk); }
+.kx-flow__ttl{ font-size:14.5px; font-weight:800; color:var(--navy); line-height:1.5; }
+.kx-flow__txt{ margin-top:4px; font-size:13px; line-height:1.75; color:var(--ink); }
+.kx-todo{ margin-top:14px; display:grid; gap:12px; }
+.kx-todo__box{ padding:12px 14px; border:1px solid var(--line); border-radius:12px; background:#fff; }
+.kx-todo__ttl{ font-size:14px; font-weight:800; color:var(--navy); }
+.kx-todo__box ul{ margin-top:8px; }
+.kx-todo__box li{ position:relative; padding-left:24px; font-size:13px; line-height:1.7; }
+.kx-todo__box li + li{ margin-top:6px; }
+.kx-todo__box li::before{ content:""; position:absolute; left:0; top:.3em; width:15px; height:15px; border:2px solid var(--green); border-radius:3px; }
+.kx-refs{ margin-top:10px; padding-left:1.1em; }
+.kx-refs li{ list-style:disc; font-size:12.5px; line-height:1.7; }
+.kx-refs li + li{ margin-top:4px; }
 </style>
 </head>
 <body class="no-js">
@@ -758,7 +797,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
             <span class="btn-line__logo">LINE</span>
             <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
           </a>
-          <p class="cta__sub" data-todo="copy">対象：在職中・雇用保険1年以上<br>よりみちの公式サイトへ移動します</p>
+          <p class="cta__sub" data-todo="copy">対象：在職中・<span style="white-space:nowrap">3か月以内に退職予定</span>・<span style="white-space:nowrap">月給19万円以上</span><br>よりみちの公式サイトへ移動します</p>
         </div>
       </div>
     </div>
@@ -1033,12 +1072,12 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 
     <div class="check-wrap">
       <ul class="check" data-todo="copy">
-        <li>在職中で、退職を検討している</li>
-        <!-- よりみちの利用条件（退職日以前の2年間に雇用保険12か月以上）に合わせている -->
-        <li>ここ2年で、雇用保険に入っていた期間が合計1年以上ある</li>
-        <li>体や心の調子が悪くて、働き続けるのがつらい</li>
+        <!-- はじめの5つは felmat 案件ページの「対象者」（2026-10-26）。最後の1つは相談したい気持ちの確認 -->
+        <li>在職中で、<span style="white-space:nowrap">3か月以内に</span>辞める予定</li>
         <li>次の仕事は、まだ決まっていない</li>
-        <li>辞めたあとの生活費に不安がある</li>
+        <li>体や心の不調・<span style="white-space:nowrap">ストレスで</span>辞めたい</li>
+        <li>月の給料（基本給＋手当）が<span style="white-space:nowrap">19万円以上</span></li>
+        <li>今の職場で<span style="white-space:nowrap">1年以上</span>働いている（<span style="white-space:nowrap">ここ2年で</span><span style="white-space:nowrap">雇用保険1年以上</span>でもOK）</li>
         <li>給付金の手続きを、ひとりでやるのは不安</li>
       </ul>
       <figure class="check__art">
@@ -1047,7 +1086,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </div>
 
     <p class="note" style="margin-top:12px" data-todo="copy">
-      3つ以上当てはまったら、一度チェックしてみる価値ありです。当てはまらないものがあっても、対象外とはかぎりません。決めるのは、ハローワークや健康保険の窓口です。
+      はじめの5つにすべて当てはまる方が、よりみち給付金サポートの相談の対象です。もらえるかどうかを決めるのは、ハローワークや健康保険の窓口です。
     </p>
   </section>
 
@@ -1070,18 +1109,20 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
   </section>
 
   <!-- ============ ⑩利用できる方 ============
-       よりみち給付金サポートが「以下の方限定」として出している条件をそのまま見せる。
-       「1か月以内に退職」は面談成果では却下理由ではないので入れない -->
+       felmat 案件ページの「対象者（以下すべてに当てはまる方）」をそのまま見せる（2026-10-26）。
+       障害年金の受給・自己破産は却下条件なので注記に入れる -->
   <section class="sec">
-    <h2 class="h2" data-todo="copy">相談の前にチェック！使えるのはこんな方です</h2>
+    <h2 class="h2" data-todo="copy">相談の前にチェック！使えるのは<span style="white-space:nowrap">こんな方です</span></h2>
 
     <div class="reject">
       <div class="reject__grid">
         <ul class="reject__list" data-todo="copy">
-          <li>いま会社に勤めていて、退職を予定している方</li>
-          <li>次の仕事が、まだ決まっていない方</li>
-          <li>仕事で、心にストレスを抱えている方</li>
-          <li>辞める日までの2年間に、雇用保険に12か月以上入っている方</li>
+          <li>いま会社に勤めていて、辞める日が決まっているか、<span style="white-space:nowrap">3か月以内に</span><span style="white-space:nowrap">辞める予定の方</span></li>
+          <li>次の仕事の内定を、まだもらっていない方</li>
+          <li>ストレスや体調の不調が、辞める理由の方</li>
+          <li>月の基本給＋手当が、<span style="white-space:nowrap">19万円以上の方</span></li>
+          <li>今の職場で1年以上働いている方（1年未満でも、ここ2年で<span style="white-space:nowrap">雇用保険に</span><span style="white-space:nowrap">1年以上</span>入っていれば対象）</li>
+          <li>64歳以下の方</li>
         </ul>
         <figure class="reject__art">
           <img class="asset-img" src="./assets/caution-buildings.webp" width="467" height="700" loading="lazy" decoding="async" alt="">
@@ -1090,12 +1131,98 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
     </div>
 
     <p class="note" style="margin-top:12px" data-todo="copy">
-      よりみち給付金サポートが案内している利用条件です。当てはまっても、必ず使えるとはかぎりません。
+      よりみち給付金サポートが案内している利用条件です。障害年金を受け取っている方、自己破産をされている方は対象外です。当てはまっても、必ず使えるとはかぎりません。
     </p>
   </section>
 
-  <!-- ============ ⑪FAQ ============ -->
+  <!-- ============ ⑩-2 給料別の目安（2026-10-26 追加） ============
+       金額は国の計算式で編集部が計算した例。
+       失業保険：厚生労働省「基本手当日額の計算式及び金額（令和8年8月1日～）」30〜59歳の式。賃金日額＝月給×6÷180（1円未満切り捨て）
+       傷病手当金：協会けんぽの式。標準報酬月額÷30（10円未満四捨五入）×2/3（1円未満四捨五入）
+       毎年8月に失業保険の計算式の境目が変わるので、8月に見直すこと -->
   <section class="sec sec--panel">
+    <h2 class="h2" data-todo="copy">給料別に見る、<br>受け取れるお金の目安</h2>
+    <p class="lead" data-todo="copy">受け取れる額は、給料と年齢、働いていた期間で決まります。国が公表している計算式で、よくある3つのケースを計算してみました。</p>
+
+    <table class="kx-table">
+      <thead>
+        <tr><th>月給<small>額面</small></th><th>失業保険<small>1日あたり／90日分</small></th><th>傷病手当金<small>1日あたり／30日分</small></th></tr>
+      </thead>
+      <tbody>
+        <tr><th>20万円</th><td><b>5,036円</b><small>90日で約45万円</small></td><td><b>4,447円</b><small>30日で約13万円</small></td></tr>
+        <tr><th>25万円</th><td><b>5,775円</b><small>90日で約52万円</small></td><td><b>5,780円</b><small>30日で約17万円</small></td></tr>
+        <tr><th>30万円</th><td><b>6,307円</b><small>90日で約57万円</small></td><td><b>6,667円</b><small>30日で約20万円</small></td></tr>
+      </tbody>
+    </table>
+    <ul class="kx-notes" data-todo="copy">
+      <li>失業保険：30〜59歳で辞めた場合。辞める前6か月の給料（残業代などを含む額面）が毎月同じとして計算。自分から辞めて、雇用保険に入っていた期間が1年以上10年未満なら90日分です（10年以上20年未満は120日分、20年以上は150日分）。辞めた理由によって日数は変わります。</li>
+      <li>傷病手当金：健康保険の標準報酬月額（月給20万円→20万円、25万円→26万円、30万円→30万円）が12か月同じとして計算。受け取れるのは、支給が始まってから通算1年6か月までです。</li>
+      <li>実際の金額は、ハローワークと健康保険の審査で決まります。2つを同時に受け取ることはできません。</li>
+    </ul>
+  </section>
+
+  <!-- ============ ⑩-3 受け取る順番（2026-10-26 追加） ============ -->
+  <section class="sec">
+    <h2 class="h2" data-todo="copy">体調を崩して辞めるときの、<br>受け取る順番</h2>
+    <p class="lead" data-todo="copy">傷病手当金と失業保険は、同時には受け取れません。順番をまちがえると、受け取れる期間をむだにしてしまいます。</p>
+
+    <ol class="kx-flow" data-todo="copy">
+      <li data-no="1"><span class="kx-flow__when">在職中</span>
+        <p class="kx-flow__ttl">休んで、治療に専念する</p>
+        <p class="kx-flow__txt">病気やケガで働けない日が3日続くと、4日目から傷病手当金の対象になります。最初の3日間は「待期」といって支給されません。</p></li>
+      <li data-no="2"><span class="kx-flow__when">退職日</span>
+        <p class="kx-flow__ttl">この日は出勤しない</p>
+        <p class="kx-flow__txt">辞めた後も傷病手当金を受け取り続けるには、辞める日の前日まで健康保険に続けて1年以上入っていて、辞める日に働いていないことが必要です。半日でも出勤すると対象外になります。</p></li>
+      <li data-no="3"><span class="kx-flow__when">退職後</span>
+        <p class="kx-flow__ttl">傷病手当金を受け取りながら治す</p>
+        <p class="kx-flow__txt">支給が始まってから通算1年6か月まで受け取れます。申請は、医師に働けない状態だと書いてもらい、1か月ごとに出すのが一般的です。</p></li>
+      <li data-no="4"><span class="kx-flow__when">退職後、早めに</span>
+        <p class="kx-flow__ttl">失業保険の「受給期間の延長」を申請</p>
+        <p class="kx-flow__txt">失業保険を受け取れる期限は、原則として辞めた翌日から1年です。病気で30日以上働けないときは、ハローワークに申請すると期限を最長4年まで先に延ばせます。治療中に期限が切れるのを防ぐための手続きです。</p></li>
+      <li data-no="5"><span class="kx-flow__when">働けるようになったら</span>
+        <p class="kx-flow__ttl">失業保険に切りかえる</p>
+        <p class="kx-flow__txt">ハローワークで仕事探しの申し込みをして、失業保険の手続きに進みます。体調を理由に辞めた場合は、給付制限の扱いが変わることがあります。</p></li>
+    </ol>
+  </section>
+
+  <!-- ============ ⑩-4 辞める前後にやること（2026-10-26 追加） ============ -->
+  <section class="sec sec--panel">
+    <h2 class="h2" data-todo="copy">辞める前後にやること<br>チェックリスト</h2>
+    <p class="lead" data-todo="copy">お金の手続きには、それぞれ期限があります。時期ごとに分けると、このくらいあります。</p>
+
+    <div class="kx-todo" data-todo="copy">
+      <div class="kx-todo__box"><p class="kx-todo__ttl">辞める前</p><ul>
+        <li>有給休暇が何日残っているか確認する</li>
+        <li>雇用保険・健康保険に入っていた期間を確認する</li>
+        <li>辞める理由（体調・残業・職場の環境など）を整理しておく</li>
+        <li>辞めたあとの健康保険を、任意継続と国民健康保険で比べておく</li>
+      </ul></div>
+      <div class="kx-todo__box"><p class="kx-todo__ttl">退職日</p><ul>
+        <li>傷病手当金を受け取り続けるなら、この日は出勤しない</li>
+        <li>離職票を出してもらうよう、会社に伝えておく</li>
+      </ul></div>
+      <div class="kx-todo__box"><p class="kx-todo__ttl">辞めてから14日以内</p><ul>
+        <li>国民健康保険・国民年金に切りかえる（任意継続を選ぶなら20日以内に申し込み）</li>
+      </ul></div>
+      <div class="kx-todo__box"><p class="kx-todo__ttl">離職票が届いたら</p><ul>
+        <li>働けるならハローワークで仕事探しの申し込み、働けないなら受給期間の延長を申請</li>
+        <li>傷病手当金を受け取っている間は、1か月ごとに申請書を出す</li>
+      </ul></div>
+    </div>
+
+    <div class="cta-bar">
+      <p class="cta-bar__txt" data-todo="copy">自分の場合の順番を、<br>先に確認しておこう。</p>
+      <a class="btn-line" href="#" data-todo="link" data-track="todo_line" data-offline-cv-link
+         target="_blank" rel="sponsored nofollow noopener noreferrer">
+        <span class="btn-line__logo">LINE</span>
+        <span class="btn-line__label" data-todo="copy"><span class="cta-seg">LINEで自分が</span><span class="cta-seg">対象か確認する</span></span>
+      </a>
+    </div>
+    <p class="note" style="margin-top:8px" data-todo="copy">※ ボタンをタップするとよりみち給付金サポートの公式サイトへ移動します。</p>
+  </section>
+
+  <!-- ============ ⑪FAQ ============ -->
+  <section class="sec">
     <h2 class="h2" data-todo="copy">よくある質問</h2>
 
     <div class="faq" id="faq" data-todo="copy">
@@ -1179,6 +1306,19 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
         </div></div>
       </div>
     </div>
+  </section>
+
+  <!-- ============ ⑪-2 このページの作り方（2026-10-26 追加） ============ -->
+  <section class="sec sec--panel">
+    <h2 class="h2" data-todo="copy">このページの作り方</h2>
+    <p class="lead" data-todo="copy">このページは、退職給付金ガイド編集部が、厚生労働省・ハローワーク・全国健康保険協会（協会けんぽ）が公開している資料をもとに作っています。金額の例は、公開されている計算式で編集部が計算したものです。サービスの紹介は、よりみち給付金サポートの公式サイトと、広告主から提供された情報にもとづいています。</p>
+    <ul class="kx-refs">
+      <li><a href="https://www.mhlw.go.jp/content/001726936.pdf" target="_blank" rel="noopener noreferrer">厚生労働省「基本手当日額の計算式及び金額（令和8年8月1日～）」</a></li>
+      <li><a href="https://www.hellowork.mhlw.go.jp/insurance/insurance_basicbenefit.html" target="_blank" rel="noopener noreferrer">ハローワークインターネットサービス「基本手当について」</a></li>
+      <li><a href="https://www.kyoukaikenpo.or.jp/benefit/injury_and_sickness_allowance/index.html" target="_blank" rel="noopener noreferrer">全国健康保険協会「傷病手当金」</a></li>
+      <li><a href="https://www.kyoukaikenpo.or.jp/disclosure/statistics/statistical_survey/beneficiary_status_survey/r05/" target="_blank" rel="noopener noreferrer">全国健康保険協会「現金給付受給者状況調査」令和5年度</a></li>
+    </ul>
+    <p class="note" style="margin-top:10px" data-todo="copy">最終更新：2026年10月26日。制度の金額や条件は毎年見直されます。最新の情報は各公的機関でご確認ください。</p>
   </section>
 
   <!-- ============ ⑫まとめ ============ -->
