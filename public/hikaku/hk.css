@@ -147,3 +147,6 @@ body { margin: 0; background: #f3f5f8; overflow-wrap: break-word; }
 .hk-fvcta__catch { margin: 0 0 .45em !important; font-size: 15px; font-weight: 900; }
 .hk-fvcta .yk-btn { font-size: 17px; }
 .hk-fvcta__sub { margin: 6px 0 0 !important; font-size: 11px; color: #6e7580; }
+/* ボタン内のLINEロゴ風バッジ（kyufukin の .btn-line__logo と同じ見せ方：白地に緑の文字） */
+.hk-linelogo { display: inline-flex; align-items: center; justify-content: center; margin-right: .5em; padding: .15em .45em; border-radius: 6px; background: #fff; color: #06c755; font-size: 12px; font-weight: 900; letter-spacing: .02em; line-height: 1.2; }
+.hk-fvcta .yk-btn { font-size: 18px; }
