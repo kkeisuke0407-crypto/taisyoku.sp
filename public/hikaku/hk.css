@@ -144,7 +144,7 @@ body { margin: 0; background: #f3f5f8; overflow-wrap: break-word; }
 
 /* ロゴの下のLINE CTA（2026-10-26）。kyufukin の FV CTA と同じ文言。キャッチは yk-catch の＼／で挟む */
 .hk-fvcta { margin: 12px 0 10px; text-align: center; }
-.hk-fvcta__catch { margin: 0 0 .45em !important; font-size: 15px; font-weight: 900; }
+.hk-fvcta__catch { margin: 0 0 .45em !important; font-size: 15px; font-weight: 900; color: var(--yk-red); }  /* 赤文字（本人指示 2026-10-26）。ページの他の赤（.yk-red）と同じ色 */
 .hk-fvcta .yk-btn { font-size: 17px; }
 .hk-fvcta__sub { margin: 6px 0 0 !important; font-size: 11px; color: #6e7580; }
 /* ボタン内のLINEロゴ風バッジ（kyufukin の .btn-line__logo と同じ見せ方：白地に緑の文字） */
