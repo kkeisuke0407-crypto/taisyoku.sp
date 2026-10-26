@@ -142,10 +142,8 @@ body { margin: 0; background: #f3f5f8; overflow-wrap: break-word; }
 .yk-btn.hk-btn--line { background: linear-gradient(#1fd36a, #06c755); box-shadow: 0 3px 0 #04a046; }
 .yk-btn.hk-btn--line:active { box-shadow: 0 1px 0 #04a046; }
 
-/* FV直下のLINE CTA（2026-10-26）。kyufukin の .fv__cta と同じ文言・並び（バッジ→見出し→ボタン→注記） */
-.hk-fvcta { margin: 14px 0 10px; text-align: center; }
-.hk-fvcta__badge { display: inline-block; margin: 0 0 4px !important; padding: .2em .9em; border-radius: 999px; background: #fff4d6; color: #8a5a00; font-size: 12px; font-weight: 800; }
-.hk-fvcta__head { margin: 0 0 8px !important; font-size: 20px; font-weight: 900; color: var(--yk-ink, #2b3440); line-height: 1.4 !important; }
-.hk-fvcta__head span { color: #06c755; }
+/* ロゴの下のLINE CTA（2026-10-26）。kyufukin の FV CTA と同じ文言。キャッチは yk-catch の＼／で挟む */
+.hk-fvcta { margin: 12px 0 10px; text-align: center; }
+.hk-fvcta__catch { margin: 0 0 .45em !important; font-size: 15px; font-weight: 900; }
 .hk-fvcta .yk-btn { font-size: 17px; }
 .hk-fvcta__sub { margin: 6px 0 0 !important; font-size: 11px; color: #6e7580; }
