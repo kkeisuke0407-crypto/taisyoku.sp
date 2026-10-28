@@ -1462,10 +1462,27 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
   // ここでは重ねて付与せず、従来のGA4イベントも維持する。
   var KEEP = /^(utm_|gad_|campaignid|keyword|matchtype|device|network|creative)$/i;
 
+  // 2026-10-28 アプリ内ブラウザから来た人を数える（P-MAXでMCVはあるのに成果が0件のため）。
+  // LINEアプリへの切り替えで止まりやすいのはアプリ独自のブラウザ。どれだけ来ているかを
+  // 着地とMCVの両方のイベントに browser_env として付ける。遷移先や見た目は変えない。
+  // ※ YouTube等のGoogle広告は Custom Tabs／SFSafariViewController で開くことが多く、UAは通常のブラウザと同じ → "browser"
+  var BROWSER_ENV = (function(ua){
+    if(/FBAN|FBAV|FB_IAB|FBIOS/i.test(ua)) return "facebook";
+    if(/Instagram/i.test(ua)) return "instagram";
+    if(/\bLine\//i.test(ua)) return "line";
+    if(/TikTok|BytedanceWebview|musical_ly/i.test(ua)) return "tiktok";
+    if(/Twitter/i.test(ua)) return "x";
+    if(/YJApp|YahooJapan/i.test(ua)) return "yahoo_app";
+    if(/Android/i.test(ua) && /; wv\)/i.test(ua)) return "android_webview";
+    if(/(iPhone|iPad|iPod)/i.test(ua) && !/Safari\//i.test(ua)) return "ios_webview";
+    return "browser";
+  })(navigator.userAgent || "");
+
   function track(name, params){
     try{
-      if(window.dataLayer) window.dataLayer.push(Object.assign({event:name}, params||{}));
-      if(typeof gtag==="function") gtag("event", name, Object.assign({}, params||{}, { transport_type:"beacon" }));
+      params = Object.assign({ browser_env:BROWSER_ENV }, params||{});
+      if(window.dataLayer) window.dataLayer.push(Object.assign({event:name}, params));
+      if(typeof gtag==="function") gtag("event", name, Object.assign({}, params, { transport_type:"beacon" }));
     }catch(_){}
   }
   // 着地URLの広告分析用クエリをCTAへ転送する。クリックIDは公式タグで処理。
@@ -1492,6 +1509,7 @@ a[data-offline-cv-link] > *{ position:relative; z-index:2; }
 
       var params = {
         affiliate_key: "yorimichi",
+        browser_env: BROWSER_ENV,
         track_name: el.getAttribute("data-track") || "",
         cta_type: "line",
         landing_intent: LANDING,
